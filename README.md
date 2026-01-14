@@ -74,3 +74,99 @@ SystemChatBoxRealtime/
 ├── .gitignore
 ├── SystemChatBoxRealtime.sln
 └── README.md
+-------------------------------
+WebServer/
+│
+├─ Controllers/
+│   ├─ HomeController.cs
+│   ├─ AccountController.cs
+│   └─ ...
+│
+├─ Models/                  (Entity/Domain models hoặc EF models)
+│   ├─ Account.cs
+│   ├─ Post.cs
+│   └─ ...
+│
+├─ ViewModels/              (DTO cho View: form, list, detail)
+│   ├─ Account/
+│   │   ├─ LoginVm.cs
+│   │   └─ RegisterVm.cs
+│   ├─ Post/
+│   │   ├─ PostListVm.cs
+│   │   └─ PostDetailVm.cs
+│   └─ Shared/
+│       └─ PaginationVm.cs
+│
+├─ Services/                (Business logic)
+│   ├─ Interfaces/
+│   │   ├─ IAuthService.cs
+│   │   └─ IPostService.cs
+│   ├─ AuthService.cs
+│   └─ PostService.cs
+│
+├─ Data/                    (EF Core DbContext, migrations, seeding)
+│   ├─ SocialNetworkContext.cs
+│   ├─ Seed/
+│   │   └─ DataSeeder.cs
+│   └─ Migrations/
+│
+├─ Infrastructure/          (Email, FileStorage, Cache, External)
+│   ├─ Email/
+│   │   ├─ EmailSettings.cs
+│   │   └─ SmtpEmailSender.cs
+│   └─ ...
+│
+├─ Filters/                 (ActionFilter, ExceptionFilter)
+│   └─ ...
+│
+├─ Middlewares/             (Custom middleware)
+│   └─ ...
+│
+├─ Views/
+│   ├─ Shared/
+│   │   ├─ _Layout.cshtml
+│   │   ├─ _LayoutAuth.cshtml        (layout riêng cho login/register)
+│   │   ├─ _LayoutAdmin.cshtml       (nếu có admin)
+│   │   ├─ _ViewImports.cshtml
+│   │   ├─ _ViewStart.cshtml
+│   │   ├─ _ValidationScriptsPartial.cshtml
+│   │   └─ Components/               (ViewComponent views)
+│   │       └─ Navbar/
+│   │           └─ Default.cshtml
+│   │
+│   ├─ Home/
+│   │   ├─ Index.cshtml
+│   │   └─ ...
+│   ├─ Account/
+│   │   ├─ Login.cshtml
+│   │   └─ Register.cshtml
+│   └─ Post/
+│       ├─ Index.cshtml
+│       └─ Detail.cshtml
+│
+├─ Views/Shared/Partials/            (Partial view)
+│   ├─ _Navbar.cshtml
+│   ├─ _Footer.cshtml
+│   ├─ _Sidebar.cshtml
+│   ├─ _Breadcrumb.cshtml
+│   └─ _Toast.cshtml
+│
+├─ TagHelpers/              (Custom tag helpers nếu cần)
+│   └─ ...
+│
+├─ wwwroot/
+│   ├─ css/
+│   │   ├─ vendor/
+│   │   └─ app/
+│   │       ├─ site.css
+│   │       └─ auth.css
+│   ├─ js/
+│   │   ├─ vendor/
+│   │   └─ app/
+│   │       ├─ site.js
+│   │       └─ auth.js
+│   ├─ img/
+│   └─ lib/                  (nếu dùng LibMan)
+│
+├─ appsettings.json
+└─ Program.cs
