@@ -1,0 +1,6 @@
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\favicon.ico
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\auth\login.js
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\css\site.css
+wwwroot\css\site.css
+wwwroot\favicon.ico
+wwwroot\js\auth\login.js

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationServer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace ApplicationServer.Controllers
             _context = context;
         }
 
-        [HttpPost("auth/login")]
+        [HttpPost("login")]
         public async Task<IActionResult> login([FromBody] ReqLogin req)
         {
             try
@@ -37,7 +37,7 @@ namespace ApplicationServer.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("auth/register")]
+        [HttpPost("register")]
         public async Task<IActionResult> register([FromBody] ReqRegister req)
         {
             try

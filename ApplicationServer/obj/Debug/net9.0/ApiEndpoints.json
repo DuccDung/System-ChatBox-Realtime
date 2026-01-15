@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "ContainingType": "ApplicationServer.Controllers.AuthController",
+    "Method": "login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ApplicationServer.Dtos.Auth.ReqLogin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApplicationServer.Controllers.AuthController",
+    "Method": "register",
+    "RelativePath": "api/auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ApplicationServer.Dtos.Auth.ReqRegister",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

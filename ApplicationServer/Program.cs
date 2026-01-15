@@ -1,10 +1,10 @@
 using ApplicationServer;
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+Env.Load();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -13,10 +13,18 @@ builder.Services.AddDbContext<SocialNetworkContext>(options =>
         Environment.GetEnvironmentVariable("DB_Connection")
     )
 );
-
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("webServer", policy =>
+    {
+        policy.WithOrigins(Environment.GetEnvironmentVariable("WebServer_Origin") ?? "")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
+});
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+app.UseCors("webServer");
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
