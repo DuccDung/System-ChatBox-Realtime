@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\pages\\login\\main.css"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\register\\main.css",
+      "PackagePath": "staticwebassets\\css\\pages\\register\\main.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -23,6 +27,14 @@
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js",
       "PackagePath": "staticwebassets\\js\\pages\\auth\\login.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\register\\main.js",
+      "PackagePath": "staticwebassets\\js\\pages\\register\\main.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\register\\validate.js",
+      "PackagePath": "staticwebassets\\js\\pages\\register\\validate.js"
     },
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\authService.js",

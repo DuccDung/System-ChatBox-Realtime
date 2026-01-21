@@ -16,6 +16,7 @@ namespace WebServer.Controllers
             _authService = authService;
         }
         public IActionResult Login() { return View(); }
+        public IActionResult Register() { return View(); }
 
         [HttpPost("/auth/login")]
         public async Task<IActionResult> HandleLogin([FromBody] ReqLoginDto req)
