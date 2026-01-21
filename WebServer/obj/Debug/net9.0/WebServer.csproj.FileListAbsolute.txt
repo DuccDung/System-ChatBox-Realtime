@@ -41,4 +41,7 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\bin\Debug\net9.0\Sprache.dll
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\WebServer.csproj.AssemblyReference.cache
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\WebServer.csproj.Up2Date
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\oi9fxlfn1b-3r8b2a0bt1.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\z9cno03gix-w8z81bh9ah.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\gom932ohkq-kr6lynnxuv.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\qlbb9wptzp-r2wngzcfeb.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\66ebtzjdw2-ra8xlfss9c.gz

@@ -1,6 +1,12 @@
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\services\authService.js
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\core\api.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\favicon.ico
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\auth\login.js
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\auth\login.js
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\utils\helper.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\css\site.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
-wwwroot\js\auth\login.js
+wwwroot\js\core\api.js
+wwwroot\js\pages\auth\login.js
+wwwroot\js\services\authService.js
+wwwroot\js\utils\helper.js

@@ -13,8 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\auth\\login.js",
-      "PackagePath": "staticwebassets\\js\\auth\\login.js"
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\core\\api.js",
+      "PackagePath": "staticwebassets\\js\\core\\api.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js",
+      "PackagePath": "staticwebassets\\js\\pages\\auth\\login.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\authService.js",
+      "PackagePath": "staticwebassets\\js\\services\\authService.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\utils\\helper.js",
+      "PackagePath": "staticwebassets\\js\\utils\\helper.js"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebServer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
