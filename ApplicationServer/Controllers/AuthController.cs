@@ -22,7 +22,7 @@ namespace ApplicationServer.Controllers
             try
             {
                 var user = await _context.Accounts.FirstOrDefaultAsync(u => u.Email == req.email && u.Password == req.password);
-                if (user == null) return BadRequest("Invalid email or password");
+                if (user == null) return BadRequest("email or password is incorrect!"); ;
                 return Ok(new ResLogin
                 {
                     AccountId = user.AccountId,

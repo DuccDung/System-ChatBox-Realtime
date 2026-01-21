@@ -22,7 +22,7 @@ namespace WebServer.Controllers
         {
             try
             {
-                if (req == null) return BadRequest("Invalid login data.");
+                if (req == null) return BadRequest();
                 var data = await _authService.LoginAsync(new LoginVm { Email = req.Email, Password = req.Password });
 
                 var claims = new List<Claim>

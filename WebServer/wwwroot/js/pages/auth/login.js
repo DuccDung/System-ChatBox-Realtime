@@ -18,15 +18,14 @@ btnSubmit.addEventListener("click", async (event) => {
     try {
         const res = await authService.login(email, password , rememberMe);
 
-        if (res.status === 200) {
+        if (res.status == 200) {
             window.localStorage.setItem("user", JSON.stringify(res.data));
             window.location.href = "/dashboard";
         } else {
-            alert("Login failed");
+            alert("Email và mật khẩu chưa đúng, vui lòng nhập lại!");
         }
     } catch (error) {
-        alert(error?.response?.data?.message || error?.message || "An error occurred during login.");
-        console.error(error);
+        alert("Email và mật khẩu chưa đúng, vui lòng nhập lại!");
     } finally {
         load(false);
     }

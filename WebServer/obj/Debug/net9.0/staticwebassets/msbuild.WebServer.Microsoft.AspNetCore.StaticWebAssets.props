@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>r2wngzcfeb</Fingerprint>
-      <Integrity>3QEsuQ3SgnmrExidBWHPFeaO6DRcPOeSfy0C5JfVD4s=</Integrity>
+      <Fingerprint>ouc2vv5ncu</Fingerprint>
+      <Integrity>kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\auth\login.js'))</OriginalItemSpec>
