@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VeSpSA79aS3odc8BYVMni6F0IyGmptqP/cyQuN5jApM=",
+  "Hash": "kLG4J0cK86Ry/OZ4DgHNrb0MVi7e1XG92EZNWTWWHBg=",
   "Source": "WebServer",
   "BasePath": "_content/WebServer",
   "Mode": "Default",
@@ -80,6 +80,27 @@
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\core\\api.js"
     },
     {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\hdo11bqr3a-0htdmda2ld.gz",
+      "SourceId": "WebServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/WebServer",
+      "RelativePath": "css/pages/login/main#[.{fingerprint=0htdmda2ld}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "yalhz0w05i",
+      "Integrity": "GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css"
+    },
+    {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\ix9wf2ufhu-61n19gt1b8.gz",
       "SourceId": "WebServer",
       "SourceType": "Discovered",
@@ -101,12 +122,12 @@
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-ouc2vv5ncu.gz",
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-21pcx6mnbf.gz",
       "SourceId": "WebServer",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/WebServer",
-      "RelativePath": "js/pages/auth/login#[.{fingerprint=ouc2vv5ncu}]?.js.gz",
+      "RelativePath": "js/pages/auth/login#[.{fingerprint=21pcx6mnbf}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -115,8 +136,8 @@
       "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "glng68a3q8",
-      "Integrity": "dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk=",
+      "Fingerprint": "z309huexih",
+      "Integrity": "z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js"
@@ -227,6 +248,27 @@
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\WebServer.bundle.scp.css"
     },
     {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css",
+      "SourceId": "WebServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\",
+      "BasePath": "_content/WebServer",
+      "RelativePath": "css/pages/login/main#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0htdmda2ld",
+      "Integrity": "dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\pages\\login\\main.css"
+    },
+    {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\site.css",
       "SourceId": "WebServer",
       "SourceType": "Discovered",
@@ -304,8 +346,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ouc2vv5ncu",
-      "Integrity": "kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0=",
+      "Fingerprint": "21pcx6mnbf",
+      "Integrity": "tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\pages\\auth\\login.js"
@@ -354,6 +396,304 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/pages/login/main.0htdmda2ld.css",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\hdo11bqr3a-0htdmda2ld.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000723589001"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1381"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:32:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0htdmda2ld"
+        },
+        {
+          "Name": "label",
+          "Value": "css/pages/login/main.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug="
+        }
+      ]
+    },
+    {
+      "Route": "css/pages/login/main.0htdmda2ld.css",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4163"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:32:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0htdmda2ld"
+        },
+        {
+          "Name": "label",
+          "Value": "css/pages/login/main.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug="
+        }
+      ]
+    },
+    {
+      "Route": "css/pages/login/main.0htdmda2ld.css.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\hdo11bqr3a-0htdmda2ld.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:32:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0htdmda2ld"
+        },
+        {
+          "Name": "label",
+          "Value": "css/pages/login/main.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A="
+        }
+      ]
+    },
+    {
+      "Route": "css/pages/login/main.css",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\hdo11bqr3a-0htdmda2ld.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000723589001"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1381"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:32:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug="
+        }
+      ]
+    },
+    {
+      "Route": "css/pages/login/main.css",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4163"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:32:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dCA0G+C3zvtMxEMcKnBfTkLJWfD9qOg+fpAVyGobQug="
+        }
+      ]
+    },
+    {
+      "Route": "css/pages/login/main.css.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\hdo11bqr3a-0htdmda2ld.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1381"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:32:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GomckNo37FEuBFzeRqfCTCefNwlZuMxY/asL7e/418A="
+        }
+      ]
+    },
     {
       "Route": "css/site.b9sayid5wm.css",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\zigcu1lsu9-b9sayid5wm.gz",
@@ -1249,13 +1589,13 @@
       ]
     },
     {
-      "Route": "js/pages/auth/login.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-ouc2vv5ncu.gz",
+      "Route": "js/pages/auth/login.21pcx6mnbf.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-21pcx6mnbf.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001538461538"
+          "Quality": "0.000550357733"
         }
       ],
       "ResponseHeaders": [
@@ -1265,19 +1605,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "649"
+          "Value": "1816"
         },
         {
           "Name": "ETag",
-          "Value": "\"dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk=\""
+          "Value": "\"z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 Jan 2026 19:24:05 GMT"
+          "Value": "Wed, 21 Jan 2026 20:43:21 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -1293,18 +1633,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0=\""
+          "Value": "W/\"tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "21pcx6mnbf"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/auth/login.js"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0="
+          "Value": "sha256-tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI="
         }
       ]
     },
     {
-      "Route": "js/pages/auth/login.js",
+      "Route": "js/pages/auth/login.21pcx6mnbf.js",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1314,7 +1662,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1495"
+          "Value": "6340"
         },
         {
           "Name": "Content-Type",
@@ -1322,121 +1670,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0=\""
+          "Value": "\"tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 Jan 2026 19:24:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0="
-        }
-      ]
-    },
-    {
-      "Route": "js/pages/auth/login.js.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-ouc2vv5ncu.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "649"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 21 Jan 2026 19:24:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk="
-        }
-      ]
-    },
-    {
-      "Route": "js/pages/auth/login.ouc2vv5ncu.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-ouc2vv5ncu.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001538461538"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "649"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 21 Jan 2026 19:24:05 GMT"
+          "Value": "Wed, 21 Jan 2026 20:43:21 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ouc2vv5ncu"
+          "Value": "21pcx6mnbf"
         },
         {
           "Name": "label",
@@ -1444,13 +1692,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0="
+          "Value": "sha256-tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI="
         }
       ]
     },
     {
-      "Route": "js/pages/auth/login.ouc2vv5ncu.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js",
+      "Route": "js/pages/auth/login.21pcx6mnbf.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-21pcx6mnbf.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1459,7 +1707,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1495"
+          "Value": "1816"
         },
         {
           "Name": "Content-Type",
@@ -1467,56 +1715,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0=\""
+          "Value": "\"z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 21 Jan 2026 19:24:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ouc2vv5ncu"
-        },
-        {
-          "Name": "label",
-          "Value": "js/pages/auth/login.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-kBjNn5v+SZt8uGMk3J+gXRIQ+EATm21wo6S7DOA+Ne0="
-        }
-      ]
-    },
-    {
-      "Route": "js/pages/auth/login.ouc2vv5ncu.js.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-ouc2vv5ncu.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "649"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 21 Jan 2026 19:24:05 GMT"
+          "Value": "Wed, 21 Jan 2026 20:43:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1534,7 +1737,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ouc2vv5ncu"
+          "Value": "21pcx6mnbf"
         },
         {
           "Name": "label",
@@ -1542,7 +1745,144 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-dCFmBuITrLdBFHp077h1vKNXBdja6J2EY28FU14oYXk="
+          "Value": "sha256-z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/auth/login.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-21pcx6mnbf.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000550357733"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1816"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:43:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/auth/login.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6340"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:43:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tsJgIFOoB/VdDTPfyX+z4DY8tdWkm30OOjxR7JPVrMI="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/auth/login.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qlbb9wptzp-21pcx6mnbf.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1816"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 21 Jan 2026 20:43:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z3Gocam6P2FcDrmjUqfdDzn7bKr6Yizv5U9CjfJClO0="
         }
       ]
     },

@@ -1,5 +1,17 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/WebServer/css/pages/login/main.0htdmda2ld.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\pages\login\main.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"0htdmda2ld"},{"Name":"integrity","Value":"sha256-dCA0G\u002BC3zvtMxEMcKnBfTkLJWfD9qOg\u002BfpAVyGobQug="},{"Name":"label","Value":"_content/WebServer/css/pages/login/main.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"4163"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022dCA0G\u002BC3zvtMxEMcKnBfTkLJWfD9qOg\u002BfpAVyGobQug=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 Jan 2026 20:32:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/WebServer/css/pages/login/main.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\pages\login\main.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dCA0G\u002BC3zvtMxEMcKnBfTkLJWfD9qOg\u002BfpAVyGobQug="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4163"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022dCA0G\u002BC3zvtMxEMcKnBfTkLJWfD9qOg\u002BfpAVyGobQug=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 Jan 2026 20:32:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebServer/css/site.b9sayid5wm.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -36,17 +48,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kr6lynnxuv"},{"Name":"integrity","Value":"sha256-gBxKrZg8M5Xtu/z1X0oKF5Qu6wi\u002B2FcSm/TElWzgpH0="},{"Name":"label","Value":"_content/WebServer/js/core/api.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"315"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022gBxKrZg8M5Xtu/z1X0oKF5Qu6wi\u002B2FcSm/TElWzgpH0=\u0022"},{"Name":"Last-Modified","Value":"Tue, 20 Jan 2026 12:08:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/auth/login.21pcx6mnbf.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\auth\login.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"21pcx6mnbf"},{"Name":"integrity","Value":"sha256-tsJgIFOoB/VdDTPfyX\u002Bz4DY8tdWkm30OOjxR7JPVrMI="},{"Name":"label","Value":"_content/WebServer/js/pages/auth/login.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6340"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022tsJgIFOoB/VdDTPfyX\u002Bz4DY8tdWkm30OOjxR7JPVrMI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 Jan 2026 20:43:21 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/auth/login.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\auth\login.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kBjNn5v\u002BSZt8uGMk3J\u002BgXRIQ\u002BEATm21wo6S7DOA\u002BNe0="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1495"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022kBjNn5v\u002BSZt8uGMk3J\u002BgXRIQ\u002BEATm21wo6S7DOA\u002BNe0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 Jan 2026 19:24:05 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/auth/login.ouc2vv5ncu.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\auth\login.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ouc2vv5ncu"},{"Name":"integrity","Value":"sha256-kBjNn5v\u002BSZt8uGMk3J\u002BgXRIQ\u002BEATm21wo6S7DOA\u002BNe0="},{"Name":"label","Value":"_content/WebServer/js/pages/auth/login.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1495"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022kBjNn5v\u002BSZt8uGMk3J\u002BgXRIQ\u002BEATm21wo6S7DOA\u002BNe0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 Jan 2026 19:24:05 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-tsJgIFOoB/VdDTPfyX\u002Bz4DY8tdWkm30OOjxR7JPVrMI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6340"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022tsJgIFOoB/VdDTPfyX\u002Bz4DY8tdWkm30OOjxR7JPVrMI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 21 Jan 2026 20:43:21 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebServer/js/services/authService.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\services\authService.js'))</AssetFile>

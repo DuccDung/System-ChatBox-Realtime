@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\WebServer.w4h58cchms.bundle.scp.css"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css",
+      "PackagePath": "staticwebassets\\css\\pages\\login\\main.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
