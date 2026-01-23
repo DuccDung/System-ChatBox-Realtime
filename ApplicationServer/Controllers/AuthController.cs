@@ -43,16 +43,16 @@ namespace ApplicationServer.Controllers
             try
             {
                 var existingUser = await _context.Accounts.FirstOrDefaultAsync(u => u.Email == req.email);
-                if (existingUser == null) return BadRequest("acc early exits");
+                if (existingUser != null) return BadRequest(new { status = false, message = "user is early exits!" });
                 var newUser = new Account
                 {
                     Email = req.email!,
                     Password = req.password!,
-                    AccountName = "New User"
+                    AccountName = req.accountName!
                 };
                 await _context.Accounts.AddAsync(newUser);
                 await _context.SaveChangesAsync();
-                return Ok("Init success new user.");
+                return Ok(new { status = true, message = "Init success new user." });
             }
             catch (Exception ex)
             {

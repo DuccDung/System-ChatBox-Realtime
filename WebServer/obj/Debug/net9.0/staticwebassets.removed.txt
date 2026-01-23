@@ -1,0 +1,1 @@
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\register\validate.js

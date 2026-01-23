@@ -33,10 +33,6 @@
       "PackagePath": "staticwebassets\\js\\pages\\register\\main.js"
     },
     {
-      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\register\\validate.js",
-      "PackagePath": "staticwebassets\\js\\pages\\register\\validate.js"
-    },
-    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\authService.js",
       "PackagePath": "staticwebassets\\js\\services\\authService.js"
     },

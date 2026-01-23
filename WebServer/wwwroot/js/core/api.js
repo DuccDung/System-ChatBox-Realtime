@@ -2,7 +2,6 @@
 
 export const api_origin = axios.create({
     baseURL: window.location.origin,
-    timeout: 15000,
     withCredentials: true,
     headers: {
         "Content-Type": "application/json",

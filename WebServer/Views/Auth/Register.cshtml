@@ -19,8 +19,7 @@
             <form id="signup-form" novalidate>
               <!-- Họ và tên -->
               <div class="field" id="name-field">
-                <input
-                  id="fullname"
+                <input id="signup-accountname"
                   name="fullname"
                   type="text"
                   placeholder="Họ và tên"
@@ -49,8 +48,7 @@
 
               <!-- Email hoặc số điện thoại -->
               <div class="field" id="contact-field">
-                <input
-                  id="contact"
+                <input id="signup-email"
                   name="contact"
                   type="text"
                   inputmode="email"
@@ -80,8 +78,7 @@
 
               <!-- Mật khẩu -->
               <div class="field" id="pass-field">
-                <input
-                  id="password"
+                <input id="signup-password"
                   name="password"
                   type="password"
                   placeholder="Mật khẩu"
@@ -158,8 +155,7 @@
 
               <!-- Xác nhận mật khẩu -->
               <div class="field" id="confirm-field">
-                <input
-                  id="confirm"
+                <input id="signup-confirm-password"
                   name="confirm"
                   type="password"
                   placeholder="Nhập lại mật khẩu"
@@ -247,6 +243,14 @@
         </div>
       </main>
     </div>
-    <script type="module" src="@Url.Content("~/js/pages/register/validate.js")" asp-append-version="true"></script>
+    <!-- Overlay -->
+    <div class="pageLoading" aria-hidden="true">
+        <div class="box">Đang xử lý...</div>
+    </div>
+    <script type="module"
+            src="~/js/pages/register/main.js"
+            asp-append-version="true">
+    </script>
+
   </body>
 </html>

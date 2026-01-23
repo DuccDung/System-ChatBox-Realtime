@@ -60,6 +60,26 @@ namespace WebServer.Controllers
             }
 
         }
+        [HttpPost("/auth/register")]
+        public async Task<IActionResult> HandleRegister([FromBody] ReqRegisterDto req)
+        {
+            try
+            {
+                if (req == null) return BadRequest();
+                var data = await _authService.RegisterAsync(new RegisterVm
+                {
+                    UserName = req.AccountName,
+                    Email = req.Email,
+                    Password = req.Password
+                });
+                if (!data.Status) return BadRequest(new { status = "error", message = data.Message });
+                return Ok(new { status = "success", message = data.Message });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { status = "error", message = ex.Message });
+            }
+        }
 
     }
 }

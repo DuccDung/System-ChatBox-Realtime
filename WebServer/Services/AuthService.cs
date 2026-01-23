@@ -36,10 +36,34 @@ namespace WebServer.Services
             }
         }
 
-        public Task RegisterAsync(RegisterVm vm, CancellationToken ct = default)
+        public async Task<ResRegisterDto> RegisterAsync(RegisterVm vm, CancellationToken ct = default)
         {
-            if(vm == null) throw new ArgumentNullException(nameof(vm));
-            throw new NotImplementedException();
+            if (vm == null) throw new ArgumentNullException(nameof(vm));
+            var req = new ReqRegisterDto
+            {
+                AccountName = vm.UserName!,
+                Email = vm.Email!,
+                Password = vm.Password!
+            };
+            try
+            {
+                var res = await _http.PostAsJsonAsync("api/auth/register", req, ct);
+                if (!res.IsSuccessStatusCode)
+                {
+                    return new ResRegisterDto
+                    {
+                        Status = false,
+                        Message = await res.Content.ReadAsStringAsync(ct)
+                    };
+                }
+                var data = await res.Content.ReadFromJsonAsync<ResRegisterDto>(ct);
+                if (data == null) throw new Exception("Failed to deserialize register response");
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error during registration", ex);
+            }
         }
     }
 }
