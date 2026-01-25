@@ -27,5 +27,10 @@ namespace WebServer.Controllers
             await Task.CompletedTask;
             return View();
         }
+        [HttpGet("/chat/search_view")]
+        public IActionResult SearchView()
+        {
+            return PartialView("Partials/_FormFriends");
+        }
     }
 }

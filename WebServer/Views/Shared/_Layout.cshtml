@@ -10,6 +10,8 @@
 <body>
     @await Html.PartialAsync("Partials/_Topbar")
     @RenderBody()
+    <div class="modal" id="form_modal-main"></div>
     @* @await Html.PartialAsync("Partials/_FormFriends") // this is form search friends and create conversation*@ 
 </body>
+<script type="module" src="~/js/pages/chat/main.js" asp-append-version="true"></script>
 </html>
