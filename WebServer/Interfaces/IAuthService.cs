@@ -1,7 +1,7 @@
 ﻿using WebServer.Dtos;
 using WebServer.ViewModels.Auth;
 
-namespace WebServer.Services
+namespace WebServer.Interfaces
 {
     public interface IAuthService
     {

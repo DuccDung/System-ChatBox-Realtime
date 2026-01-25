@@ -5,6 +5,270 @@
       "PackagePath": "staticwebassets\\WebServer.w4h58cchms.bundle.scp.css"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\arrow-left.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\arrow-left.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\bell.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\bell.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\controller.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\controller.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\dots.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\dots.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\emoji.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\emoji.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\facebook.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\facebook.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\filetype-gif.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\filetype-gif.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\gif.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\gif.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\grid.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\grid.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\home.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\home.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\house-door.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\house-door.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\image.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\image.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\images.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\images.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\info.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\info.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\messenger.png",
+      "PackagePath": "staticwebassets\\assets\\icons\\messenger.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\messenger2.png",
+      "PackagePath": "staticwebassets\\assets\\icons\\messenger2.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\mic-fill.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\mic-fill.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\mic.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\mic.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\options.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\options.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\people-fill.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\people-fill.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\phone.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\phone.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\play-btn.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\play-btn.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\search.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\search.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\send.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\send.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\settings.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\settings.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\shop copy.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\shop copy.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\shop.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\shop.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\sticker.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\sticker.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\stickies.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\stickies.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\tv.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\tv.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\users.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\users.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\video.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\video.svg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\1.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\10.png",
+      "PackagePath": "staticwebassets\\assets\\images\\10.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\2.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\3.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\4.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\5.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\6.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\7.png",
+      "PackagePath": "staticwebassets\\assets\\images\\7.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\8.png",
+      "PackagePath": "staticwebassets\\assets\\images\\8.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\9.png",
+      "PackagePath": "staticwebassets\\assets\\images\\9.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar-default.png",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar-default.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_1.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_2.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_3.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_4.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_5.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_6.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\avatar_change_7.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\avatar_change_7.webp"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\contact-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\contact-1.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\contact-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\contact-2.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\contact-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\contact-3.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\contact-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\contact-4.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\contact-5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\contact-5.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto1.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto1.webp"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto10.png",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto10.png"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto2.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto2.webp"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto3.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto4.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto4.webp"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto5.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto6.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto7.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto8.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\images\\pphoto9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\pphoto9.jpg"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\home\\main.css",
+      "PackagePath": "staticwebassets\\css\\pages\\home\\main.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\login\\main.css",
       "PackagePath": "staticwebassets\\css\\pages\\login\\main.css"
     },

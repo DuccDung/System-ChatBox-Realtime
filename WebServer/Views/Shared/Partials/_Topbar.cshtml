@@ -1,0 +1,33 @@
+﻿@using WebServer.Dtos
+@{
+    var user = (UserDto)ViewBag.User;
+}
+<div class="topbar">
+    <!-- Left: Logo + Search -->
+    <div class="top-left">
+        <a class="brand" href="../home.html">
+            <img src="~/assets/icons/facebook.svg" alt="" />
+        </a>
+        <div class="searchbar-top">
+            <img src="~/assets/icons/search.svg" alt="" />
+            <input type="text" placeholder="Tìm kiếm trên Facebook" />
+        </div>
+    </div>
+
+    <!-- Center: Main nav -->
+    <div class="top-center"></div>
+
+    <!-- Right: Options -->
+    <div class="top-right">
+        <button class="icon-btn">
+            <img src="~/assets/icons/grid.svg" alt="" />
+        </button>
+        <button class="icon-btn">
+            <img src="~/assets/icons/bell.svg" alt="" />
+        </button>
+        <button class="avatar">
+            <img src="@user.PhotoPath" alt="" />
+        </button>
+    </div> 
+
+</div>

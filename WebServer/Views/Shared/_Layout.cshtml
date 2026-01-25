@@ -1,1 +1,15 @@
-﻿
+﻿<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Messenger</title>
+    <link rel="stylesheet" href="~/css/pages/home/main.css" asp-append-version="true" />
+    <link rel="icon" href="~/assets/icons/facebook.svg" />
+</head>
+<body>
+    @await Html.PartialAsync("Partials/_Topbar")
+    @RenderBody()
+    @* @await Html.PartialAsync("Partials/_FormFriends") // this is form search friends and create conversation*@ 
+</body>
+</html>

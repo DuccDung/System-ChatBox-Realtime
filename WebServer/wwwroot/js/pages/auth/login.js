@@ -120,7 +120,7 @@ async function handleSubmit(e) {
 
         if (res?.status === 200) {
             window.localStorage.setItem("user", JSON.stringify(res.data));
-            window.location.href = "/dashboard";
+            window.location.href = "/home/main";
             return;
         }
 

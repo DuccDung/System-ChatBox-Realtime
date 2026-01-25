@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using WebServer.Dtos;
-using WebServer.Services;
+using WebServer.Interfaces;
 using WebServer.ViewModels.Auth;
 
 namespace WebServer.Controllers
@@ -27,19 +27,19 @@ namespace WebServer.Controllers
                 var data = await _authService.LoginAsync(new LoginVm { Email = req.Email, Password = req.Password });
 
                 var claims = new List<Claim>
-            {
-              new Claim(ClaimTypes.NameIdentifier , data.AccountId.ToString()),
-              new Claim(ClaimTypes.Name , data.Email),
-            };
+                {
+                  new Claim(ClaimTypes.NameIdentifier , data.AccountId.ToString()),
+                  new Claim(ClaimTypes.Name , data.Email),
+                };
 
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
                 if (req.RememberMe)
                 {
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal,
-                        new AuthenticationProperties
+                        new AuthenticationProperties 
                         {
-                            IsPersistent = true,
+                            IsPersistent = true, // thêm thuộc tính để duy duytrì hệ thống lưu cookie đăng nhập
                             ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
                         });
                 }
