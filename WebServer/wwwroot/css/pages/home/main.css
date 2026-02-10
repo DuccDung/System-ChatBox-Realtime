@@ -20,6 +20,18 @@
     --form_friends-radius: 12px;
     --form_friends-radius-sm: 10px;
     --form_friends-font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    --form_personal_modal-w: 420px;
+    --form_personal_radius: 14px;
+    /* THAY 2 URL NÀY */
+    --form_personal_cover-url: url("~/assets/images/cover_default.jpg");
+    --form_personal_avatar-url: url("~/assets/images/avatar-default.png");
+    --form_personal_bg: #f5f6f8;
+    --form_personal_card: #ffffff;
+    --form_personal_text: #111827;
+    --form_personal_muted: #6b7280;
+    --form_personal_line: #e5e7eb;
+    --form_personal_blue: #2563eb;
+    --form_personal_btn-bg: #eef0f3;
 }
 
 * {
@@ -1757,7 +1769,7 @@ body.light .chat-action-btn {
 /* Small screens */
 @media (max-width: 420px) {
     .form_friends__country {
-        min-width: 120px;
+        min-width: 0px;
     }
 
     .form_friends__footer {
@@ -1769,3 +1781,310 @@ body.light .chat-action-btn {
         }
 }
 
+.form_friends.is-hidden {
+    display: none;
+}
+
+
+
+
+/* =========================
+   APP MODAL SHELL (Generic)
+   ========================= */
+
+.app_modal[hidden] {
+    display: none !important;
+}
+
+.app_modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999; /* cao hơn topbar */
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+/* Overlay */
+.app_modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+/* chỉ overlay, không khung trắng */
+.app_modal__panel {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    width: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+/* nếu content inject có nền/padding riêng thì để nó tự quyết */
+.app_modal__content {
+    background: transparent;
+}
+
+
+/* Optional: nếu muốn panel full-width cho một số content,
+   bạn có thể set bằng JS: appModal.classList.add("app_modal--wide") */
+.app_modal.app_modal--wide .app_modal__panel {
+    width: min(980px, 98vw);
+}
+
+/* Mobile: panel sát hơn */
+@media (max-width: 480px) {
+    .app_modal {
+        padding: 10px;
+    }
+
+    .app_modal__panel {
+        border-radius: 12px;
+        width: 98vw;
+        max-height: 94vh;
+    }
+}
+
+
+/*======================================================*/
+
+.form_personal_modal * {
+    box-sizing: border-box;
+}
+
+.form_personal_modal {
+    width: min(var(--form_personal_modal-w), calc(100vw - 36px));
+    max-height: min(860px, calc(100vh - 36px));
+    background: var(--form_personal_card);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    position: relative;
+}
+
+/* Top bar */
+.form_personal_topbar {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid var(--form_personal_line);
+    background: #fff;
+}
+
+.form_personal_title {
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: .1px;
+}
+
+.form_personal_icon-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: #0f172a;
+}
+
+    .form_personal_icon-btn:hover {
+        background: #f3f4f6;
+    }
+
+.form_personal_left {
+    left: 8px;
+}
+
+.form_personal_right {
+    right: 8px;
+}
+
+.form_personal_icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Content scroll */
+.form_personal_content {
+    background: var(--form_personal_bg);
+    overflow: auto;
+    max-height: calc(min(860px, calc(100vh - 36px)) - 54px);
+}
+
+/* Cover */
+.form_personal_cover {
+    height: 190px;
+    background-image: var(--form_personal_cover-url);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+    .form_personal_cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,0) 40%, rgba(0,0,0,.06));
+        pointer-events: none;
+    }
+
+/* Sheet */
+.form_personal_sheet {
+    background: #fff;
+    padding: 16px 16px 12px;
+    position: relative;
+}
+
+.form_personal_avatar {
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    background-image: var(--form_personal_avatar-url);
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #fff;
+    position: absolute;
+    left: 16px;
+    top: -37px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+}
+
+.form_personal_name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 22px;
+    padding-left: 92px;
+    padding-right: 4px;
+}
+
+.form_personal_name {
+    font-size: 22px;
+    font-weight: 750;
+    color: #0f172a;
+    line-height: 1.1;
+}
+
+.form_personal_edit {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    color: #111827;
+    cursor: pointer;
+}
+
+    .form_personal_edit:hover {
+        background: #f3f4f6;
+    }
+
+.form_personal_actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+    padding: 0 0 4px;
+}
+
+.form_personal_btn {
+    flex: 1;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid #e6e8ee;
+    background: var(--form_personal_btn-bg);
+    font-weight: 650;
+    cursor: pointer;
+}
+
+    .form_personal_btn:active {
+        transform: translateY(1px);
+    }
+
+.form_personal_primary {
+    color: var(--form_personal_blue);
+}
+
+/* Sections */
+.form_personal_section {
+    background: #fff;
+    margin-top: 10px;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(229,231,235,.7);
+    border-bottom: 1px solid rgba(229,231,235,.7);
+}
+
+.form_personal_section-title {
+    font-weight: 750;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.form_personal_rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form_personal_row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.form_personal_label {
+    color: var(--form_personal_muted);
+    font-weight: 600;
+    min-width: 110px;
+}
+
+.form_personal_value {
+    color: #0f172a;
+    font-weight: 650;
+    text-align: left;
+    flex: 1;
+}
+
+.form_personal_empty {
+    color: #9ca3af;
+    text-align: center;
+    padding: 28px 0 10px;
+    font-weight: 600;
+}
+
+.form_personal_spacer {
+    height: 14px;
+}
+
+/* Mobile feel */
+@media (max-width: 420px) {
+    :root {
+        --form_personal_modal-w: 100vw;
+    }
+
+    .form_personal_modal {
+        width: 100%;
+        border-radius: 16px;
+    }
+
+}
+
+/* =========================
+   END OF FORM PERSONAL MODAL
+   ========================= */
+.form_personal_modal.is-hidden {
+    display: none !important;
+}
+
+.form_personal_content.is-hidden {
+    display: none !important;
+}

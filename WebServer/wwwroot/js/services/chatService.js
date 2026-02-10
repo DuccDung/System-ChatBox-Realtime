@@ -2,7 +2,20 @@
 
 export const chatService = {
     async getFormSearch() {
-        const res = await api_origin.get("/chat/search_view");
-        return res;
+        return await api_origin.get("/chat/search_view");
+    },
+
+    async searchUsersByEmail(email) {
+        return await api_origin.get("/chat/search_user", {
+            params: { email }
+        });
+    },
+    async getPersonalView(userId) {
+        return await api_origin.get("/chat/personal", {
+            params: { userId }
+        });
+    },
+    async getThreadsView() {
+        return await api_origin.get("/chat/threads"); // HTML partial
     }
 };

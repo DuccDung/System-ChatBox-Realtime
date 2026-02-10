@@ -69,6 +69,19 @@ public partial class SocialNetworkContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("photo_path");
+            entity.Property(e => e.DateOfBirth)
+                .HasColumnName("date_of_birth"); 
+
+            entity.Property(e => e.Gender)
+                .HasColumnName("gender");
+
+            entity.Property(e => e.Bio)
+                .HasMaxLength(500)
+                .HasColumnName("bio");
+
+            entity.Property(e => e.PhotoBackground)
+               .HasMaxLength(500)
+               .HasColumnName("photo_background");
         });
 
         modelBuilder.Entity<Conversation>(entity =>

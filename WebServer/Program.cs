@@ -19,6 +19,15 @@ builder.Services.AddHttpClient<IAuthService, AuthService>(
         client.BaseAddress = new Uri(opt.BaseUrl);
         //client.Timeout = TimeSpan.FromSeconds(opt.TimeoutSeconds);
     });
+builder.Services.AddHttpClient<IConversationService, ConversationService>(
+    (sp , client) =>
+    {
+        var opt = sp.GetRequiredService<IOptions<ApiClientOptions>>().Value;
+        client.BaseAddress = new Uri(opt.BaseUrl);
+        //client.Timeout = TimeSpan.FromSeconds(opt.TimeoutSeconds);
+    }
+
+    );
 builder.Services.AddHttpClient<IUserService, UserService>(
     (sp, client) =>
     {

@@ -15,6 +15,12 @@ public partial class Account
 
     public string? PhotoPath { get; set; }
 
+    public string? PhotoBackground { get; set; }
+
+    public DateOnly? DateOfBirth { get; set; }     
+    public byte? Gender { get; set; }              
+    public string? Bio { get; set; }               
+
     public virtual ICollection<ConversationMember> ConversationMembers { get; set; } = new List<ConversationMember>();
 
     public virtual ICollection<Friendship> FriendshipAddressees { get; set; } = new List<Friendship>();
