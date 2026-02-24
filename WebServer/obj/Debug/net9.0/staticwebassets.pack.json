@@ -297,6 +297,14 @@
       "PackagePath": "staticwebassets\\js\\pages\\auth\\login.js"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\chat_composer.js",
+      "PackagePath": "staticwebassets\\js\\pages\\chat\\chat_composer.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\chat_realtime.js",
+      "PackagePath": "staticwebassets\\js\\pages\\chat\\chat_realtime.js"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\handle_choice_item_threads.js",
       "PackagePath": "staticwebassets\\js\\pages\\chat\\handle_choice_item_threads.js"
     },
@@ -319,6 +327,10 @@
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\chatService.js",
       "PackagePath": "staticwebassets\\js\\services\\chatService.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\ws-client.js",
+      "PackagePath": "staticwebassets\\js\\services\\ws-client.js"
     },
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\utils\\helper.js",

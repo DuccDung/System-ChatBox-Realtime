@@ -17,4 +17,30 @@ namespace WebServer.Dtos
         [JsonPropertyName("lastMessageAt")]
         public DateTime? LastMessageAt { get; set; }
     }
+    public class ConversationMessageDto
+    {
+        public int MessageId { get; set; }
+        public int ConversationId { get; set; }
+        public string Content { get; set; } = "";
+        public string MessageType { get; set; } = "text";
+        public DateTime CreatedAt { get; set; }
+        public bool IsRead { get; set; }
+        public bool IsRemove { get; set; }
+        public int? ParentMessageId { get; set; }
+        public SenderDto Sender { get; set; } = new SenderDto();
+    }
+
+    public class SenderDto
+    {
+        public int AccountId { get; set; }
+        public string AccountName { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string? PhotoPath { get; set; }
+    }
+    public class SendMessageRequest
+    {
+        public int ConversationId { get; set; }
+        public string? Content { get; set; }
+        public int? ParentMessageId { get; set; }
+    }
 }

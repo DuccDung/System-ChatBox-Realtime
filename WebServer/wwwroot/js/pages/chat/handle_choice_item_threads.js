@@ -1,163 +1,133 @@
-﻿// threads-ui.js
-(function () {
-    // Ưu tiên id="threadList". Nếu không có thì fallback ".thread-list"
-    const threadList = document.getElementById("threadList")
-    const scroller = document.getElementById("messageScroller");
-    const peerName = document.getElementById("peerName");
-    const peerAvatar = document.getElementById("peerAvatar");
-    const peerStatus = document.getElementById("peerStatus");
+﻿import { chatService } from "../../services/chatService.js";
+import { subscribeConversation } from "../../services/ws-client.js";
 
-    if (!threadList) {
-        console.warn("Thread list not found (#threadList or .thread-list)");
-        return;
-    }
+const threadList = document.getElementById("threadList");
+const peerName = document.getElementById("peerName");
+const peerAvatar = document.getElementById("peerAvatar");
+const peerStatus = document.getElementById("peerStatus");
 
-    // =========================
-    // 1) CLICK TRONG THREAD LIST
-    // =========================
+console.log("threads-ui loaded", { threadList: !!threadList });
+
+if (!threadList) {
+    console.warn("Thread list not found (#threadList)");
+} else {
     threadList.addEventListener("click", async (e) => {
-        // A) Nếu click nút 3 chấm -> toggle menu và dừng
+        console.log("threadList click", e.target);
+
         const moreBtn = e.target.closest(".more-btn");
         if (moreBtn) {
             e.stopPropagation();
-
             const item = moreBtn.closest(".thread-item");
             if (!item) return;
 
             const menu = item.querySelector(".thread-menu");
             if (!menu) return;
 
-            // Đóng menu của các thread khác
             closeAllMenusExcept(menu);
-
-            // Toggle menu hiện tại
             menu.hidden = !menu.hidden;
             return;
         }
 
-        // B) Nếu click vào 1 item -> mở conversation
         const item = e.target.closest(".thread-item");
         if (!item || !threadList.contains(item)) return;
 
-        // Đóng tất cả menu khi click vào item (trừ khi click nút 3 chấm)
         closeAllMenusExcept(null);
-
-        const conversationId = item.dataset.id; // data-id="@t.ConversationId"
-        if (!conversationId) return;
-
-        // 1) Set ACTIVE UI
-        setActiveItem(item);
-
-        // 2) Update header từ data-* (bạn đã add data-name, data-avatar)
-        if (peerName) peerName.textContent = item.dataset.name || "Người dùng";
-        if (peerAvatar) peerAvatar.src = item.dataset.avatar || peerAvatar.src;
-        if (peerStatus) peerStatus.textContent = ""; // sau này fill presence
-
-        // 3) (Optional) khi mở thì bỏ highlight/unread UI
-        item.classList.remove("highlight");
-        item.classList.remove("unread");
-        const badge = item.querySelector(".unread-badge");
-        if (badge) badge.remove();
-
-        // 4) Load messages
-        await loadMessages(conversationId);
+        await openThread(item);
     });
 
-    // =========================
-    // 2) CLICK NGOÀI -> ĐÓNG MENU
-    // =========================
     document.addEventListener("click", (e) => {
-        // nếu click không nằm trong threadList -> đóng menu
         if (!e.target.closest("#threadList") && !e.target.closest(".thread-list")) {
             closeAllMenusExcept(null);
         }
     });
 
-    // =========================
-    // HELPERS
-    // =========================
-    function closeAllMenusExcept(menuToKeep) {
-        document.querySelectorAll(".thread-menu").forEach((m) => {
-            if (m !== menuToKeep) m.hidden = true;
-        });
-    }
+    // ✅ Auto open first thread (khi list render xong)
+    autoOpenFirstThreadWhenReady();
+}
 
-    function setActiveItem(item) {
-        document.querySelectorAll(".thread-item.active").forEach((li) => {
-            li.classList.remove("active");
-        });
-        item.classList.add("active");
-    }
+function closeAllMenusExcept(menuToKeep) {
+    document.querySelectorAll(".thread-menu").forEach((m) => {
+        if (m !== menuToKeep) m.hidden = true;
+    });
+}
 
-    // =========================
-    // 3) LOAD MESSAGES (AJAX)
-    // =========================
-    async function loadMessages(conversationId) {
-        if (!scroller) return;
+function setActiveItem(item) {
+    document.querySelectorAll(".thread-item.active").forEach((li) => li.classList.remove("active"));
+    item.classList.add("active");
+}
 
-        // UI loading
-        scroller.innerHTML = `<div class="loading">Đang tải...</div>`;
+/** Mở thread giống như click */
+async function openThread(item) {
+    const conversationId = item.dataset.id;
+    if (!conversationId) return;
 
-        try {
-            // TODO: đổi endpoint cho đúng backend bạn
-            // Ví dụ: /Conversations/{id}/Messages (MVC) hoặc /api/conversations/{id}/messages
-            const url = `/api/conversations/${conversationId}/messages?limit=50`;
+    setActiveItem(item);
 
-            const res = await fetch(url, { credentials: "include" });
-            if (!res.ok) throw new Error(await res.text());
+    if (peerName) peerName.textContent = item.dataset.name || "Người dùng";
+    if (peerAvatar) peerAvatar.src = item.dataset.avatar || peerAvatar.src;
+    if (peerStatus) peerStatus.textContent = "";
 
-            const messages = await res.json();
-            renderMessages(messages);
-        } catch (err) {
-            console.error(err);
-            scroller.innerHTML = `<div class="error">Không tải được tin nhắn.</div>`;
-        }
-    }
+    item.classList.remove("highlight", "unread");
+    const badge = item.querySelector(".unread-badge");
+    if (badge) badge.remove();
 
-    // =========================
-    // 4) RENDER MESSAGES
-    // =========================
-    function renderMessages(messages) {
-        if (!scroller) return;
-        scroller.innerHTML = "";
+    await loadMessages(conversationId);
+    subscribeConversation(parseInt(conversationId, 10));
+}
 
-        // bạn set CURRENT_USER_ID từ Razor: <script>window.CURRENT_USER_ID=...</script>
-        const currentUserId = window.CURRENT_USER_ID ?? 1;
+async function loadMessages(conversationId) {
+    const scroller = document.getElementById("messageScroller");
+    if (!scroller) return;
 
-        (messages || []).forEach((m) => {
-            // tuỳ DTO của bạn, sửa field nếu khác
-            const senderId = m.senderId ?? m.SenderId;
-            const content = m.content ?? m.Content ?? "";
-            const sentAt = m.sentAt ?? m.SentAt;
+    scroller.innerHTML = `<div class="loading">Đang tải...</div>`;
 
-            const side = senderId === currentUserId ? "right" : "left";
+    try {
+        const res = await chatService.getConversationView(conversationId);
+        const html = res.data;
 
-            const wrap = document.createElement("div");
-            wrap.className = "bubble-group";
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
 
-            const msgEl = document.createElement("div");
-            msgEl.className = "msg " + side;
-            msgEl.textContent = content;
-
-            // tooltip thời gian
-            const tip = document.createElement("div");
-            tip.className = "message-time-tooltip";
-            tip.textContent = formatTime(sentAt);
-            msgEl.appendChild(tip);
-
-            wrap.appendChild(msgEl);
-            scroller.appendChild(wrap);
-        });
+        const newSection = temp.querySelector("#messageScroller");
+        scroller.innerHTML = newSection ? newSection.innerHTML : html;
 
         scroller.scrollTop = scroller.scrollHeight;
+    } catch (err) {
+        console.error(err);
+        scroller.innerHTML = `<div class="error">Không tải được tin nhắn.</div>`;
     }
+}
 
-    function formatTime(value) {
-        if (!value) return "";
-        const d = new Date(value);
-        if (Number.isNaN(d.getTime())) return "";
-        const hh = d.getHours();
-        const mm = String(d.getMinutes()).padStart(2, "0");
-        return `${hh}:${mm}`;
-    }
-})();
+/**
+ * ✅ Auto click/open item đầu tiên sau khi threads thật sự xuất hiện
+ * - vì DOMContentLoaded có thể chạy trước khi partial HTML được gắn vào DOM
+ */
+function autoOpenFirstThreadWhenReady() {
+    const maxWaitMs = 5000;
+    const intervalMs = 50;
+    const start = Date.now();
+
+    const timer = setInterval(async () => {
+        // threadList có thể tồn tại nhưng chưa có item (do render async)
+        const firstItem = threadList?.querySelector(".thread-item");
+        if (firstItem) {
+            clearInterval(timer);
+
+            // nếu đã có active sẵn thì thôi
+            const alreadyActive = threadList.querySelector(".thread-item.active");
+            if (alreadyActive) return;
+
+            // ✅ “giống click thật”: gọi openThread (ổn định hơn dispatch click)
+            await openThread(firstItem);
+
+            // Nếu bạn thật sự muốn trigger event click:
+            // firstItem.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+            return;
+        }
+
+        if (Date.now() - start > maxWaitMs) {
+            clearInterval(timer);
+            console.warn("autoOpenFirstThreadWhenReady: timeout - no thread items found");
+        }
+    }, intervalMs);
+}

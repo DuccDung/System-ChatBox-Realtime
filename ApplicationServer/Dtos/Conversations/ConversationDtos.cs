@@ -44,4 +44,10 @@
         public string? Email { get; set; }
         public string? PhotoPath { get; set; }  // avatar
     }
+    public class SendMessageRequest
+    {
+        public int SenderId { get; set; }
+        public string? Content { get; set; }
+        public int? ParentMessageId { get; set; } // optional (reply)
+    }
 }

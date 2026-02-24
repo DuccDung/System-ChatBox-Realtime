@@ -17,5 +17,17 @@ export const chatService = {
     },
     async getThreadsView() {
         return await api_origin.get("/chat/threads"); // HTML partial
+    },
+    async getConversationView(conversationId) {
+        return await api_origin.get("/chat/conversation", {
+            params: { conversationId }
+        });
+    },
+    async sendTextMessage(conversationId, content, parentMessageId = null) {
+        return await api_origin.post("/chat/send_message", {
+            conversationId,
+            content,
+            parentMessageId
+        });
     }
 };

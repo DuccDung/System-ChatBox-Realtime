@@ -37,6 +37,8 @@ builder.Services.AddHttpClient<IUserService, UserService>(
     });
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(opt => { opt.LoginPath = "/Auth/Login"; opt.LogoutPath = "/Auth/Logout"; opt.ExpireTimeSpan = TimeSpan.FromHours(8); opt.SlidingExpiration = true; });
+builder.Services.AddSingleton<WebServer.Services.RealtimeHub>();
+builder.Services.AddSingleton<WebServer.Services.WebSocketHandler>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,6 +53,35 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseWebSockets();
+app.Map("/ws", async httpContext =>
+{
+    if (!httpContext.WebSockets.IsWebSocketRequest)
+    {
+        httpContext.Response.StatusCode = 400;
+        await httpContext.Response.WriteAsync("WebSocket request required");
+        return;
+    }
+
+    // lấy userId từ claims (cookie auth)
+    string? userId = httpContext.User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+    // fallback: query userId (nếu bạn vẫn muốn)
+    if (string.IsNullOrWhiteSpace(userId))
+        userId = httpContext.Request.Query["userId"].ToString();
+
+    if (string.IsNullOrWhiteSpace(userId))
+    {
+        httpContext.Response.StatusCode = 401;
+        await httpContext.Response.WriteAsync("Missing userId");
+        return;
+    }
+
+    var ws = await httpContext.WebSockets.AcceptWebSocketAsync();
+    var handler = httpContext.RequestServices.GetRequiredService<WebServer.Services.WebSocketHandler>();
+
+    await handler.HandleAsync(ws, userId, httpContext.RequestAborted);
+});
 
 app.MapStaticAssets();
 app.MapControllerRoute(

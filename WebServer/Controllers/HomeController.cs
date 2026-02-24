@@ -1,19 +1,26 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using WebServer.Interfaces;
 using System.Security.Claims;
+using System.Threading.Tasks;
+using WebServer.Dtos;
 using WebServer.Interfaces;
+using WebServer.Interfaces;
+using WebServer.Services;
+using WebServer.ViewModels.WebServer.ViewModels;
 namespace WebServer.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
         private readonly IUserService _userService;
-        public HomeController(IUserService userService)
+        private readonly IConversationService _conversationService;
+        private readonly RealtimeHub realtime;
+        public HomeController(IUserService userService, IConversationService conversationService , RealtimeHub realtime)
         {
             _userService = userService;
+            _conversationService = conversationService;
+            this.realtime = realtime;
         }
 
         public IActionResult Index() => View();
@@ -83,6 +90,78 @@ namespace WebServer.Controllers
             {
                 Response.StatusCode = 500;
                 return Content("<div class='threads-empty'>Không tải được danh sách cuộc trò chuyện.</div>", "text/html");
+            }
+        }
+        [HttpGet("/chat/conversation")]
+        public async Task<IActionResult> ConversationView(
+            int conversationId,
+            [FromServices] IConversationService conversationService)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userIdStr))
+                return Content("<div class='threads-empty'>Bạn chưa đăng nhập.</div>", "text/html");
+
+            var meId = int.Parse(userIdStr);
+
+            try
+            {
+                var messages = await conversationService.GetMessagesAsync(conversationId, meId, limit: 50);
+
+                var vm = new ConversationMessagesVm
+                {
+                    ConversationId = conversationId,
+                    MeAccountId = meId,
+                    Messages = messages
+                        .Where(x => !x.IsRemove) // nếu muốn ẩn message đã remove
+                        .OrderBy(x => x.CreatedAt)
+                        .ToList()
+                };
+
+                return PartialView("Partials/_ConversationMessages", vm);
+            }
+            catch
+            {
+                Response.StatusCode = 500;
+                return Content("<div class='threads-empty'>Không tải được tin nhắn cuộc trò chuyện.</div>", "text/html");
+            }
+        }
+
+        // POST /chat/send_message
+        [HttpPost("/chat/send_message")]
+        public async Task<IActionResult> SendMessage([FromBody] SendMessageRequest req)
+        {
+            if (req == null) return BadRequest(new { message = "Body is required." });
+            if (req.ConversationId <= 0) return BadRequest(new { message = "ConversationId is required." });
+            if (string.IsNullOrWhiteSpace(req.Content)) return BadRequest(new { message = "Content is required." });
+
+            // senderId lấy từ auth cookie (claims)
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userIdStr))
+                return Unauthorized(new { message = "Not logged in." });
+
+            var senderId = int.Parse(userIdStr);
+
+            try
+            {
+                var created = await _conversationService.SendTextMessageAsync(
+                    req.ConversationId,
+                    senderId,
+                    req.Content.Trim(),
+                    req.ParentMessageId
+                );
+                // Broadcast realtime cho những socket đang subscribe conversation này (trừ sender)
+                await realtime.BroadcastToConversationAsync(
+                    req.ConversationId,
+                    new { type = "message", conversationId = req.ConversationId, payload = created },
+                    excludeUserId: userIdStr
+                );
+                // trả về message dto (hoặc ok=true cũng được)
+                return Ok(created);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

@@ -257,5 +257,80 @@ namespace ApplicationServer.Controllers
             // Tạm thời: nếu bạn đang dùng Message.IsRead (bool) global thì không đủ cho group.
             return Ok(new { ok = true });
         }
+
+        // POST: /api/conversations/{conversationId}/messages
+        [HttpPost("{conversationId:int}/messages")]
+        public async Task<IActionResult> SendTextMessage(
+            int conversationId,
+            [FromBody] SendMessageRequest req)
+        {
+            if (req == null) return BadRequest("Body is required.");
+            if (req.SenderId <= 0) return BadRequest("SenderId is required.");
+            if (string.IsNullOrWhiteSpace(req.Content)) return BadRequest("Content is required.");
+
+            // check conversation exists
+            var convExists = await _context.Conversations
+                .AnyAsync(c => c.ConversationId == conversationId);
+            if (!convExists) return NotFound("Conversation not found.");
+
+            // check sender exists
+            var sender = await _context.Accounts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.AccountId == req.SenderId);
+            if (sender == null) return NotFound("Sender not found.");
+
+            // check sender is a member of the conversation
+            var isMember = await _context.ConversationMembers
+                .AnyAsync(cm => cm.ConversationId == conversationId && cm.AccountId == req.SenderId);
+            if (!isMember) return Forbid();
+
+            // optional: validate parent message belongs to same conversation
+            if (req.ParentMessageId.HasValue)
+            {
+                var parentOk = await _context.Messages.AnyAsync(m =>
+                    m.MessageId == req.ParentMessageId.Value &&
+                    m.ConversationId == conversationId);
+                if (!parentOk) return BadRequest("ParentMessageId is invalid.");
+            }
+
+            var now = DateTime.UtcNow;
+
+            var message = new Message
+            {
+                ConversationId = conversationId,
+                SenderId = req.SenderId,
+                Content = req.Content.Trim(),
+                MessageType = "text",
+                CreatedAt = now,
+                ParentMessageId = req.ParentMessageId,
+                IsRead = false,
+                IsRemove = false
+            };
+
+            _context.Messages.Add(message);
+            await _context.SaveChangesAsync();
+
+            // trả về data giống GetMessages đang map
+            var result = new MessageDto
+            {
+                MessageId = message.MessageId,
+                ConversationId = message.ConversationId,
+                Content = message.Content,
+                MessageType = message.MessageType,
+                CreatedAt = message.CreatedAt,
+                IsRead = message.IsRead,
+                IsRemove = message.IsRemove,
+                ParentMessageId = message.ParentMessageId,
+                Sender = new SenderDto
+                {
+                    AccountId = sender.AccountId,
+                    AccountName = sender.AccountName,
+                    Email = sender.Email,
+                    PhotoPath = sender.PhotoPath
+                }
+            };
+
+            return Ok(result);
+        }
     }
 }

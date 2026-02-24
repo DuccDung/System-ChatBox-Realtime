@@ -5,5 +5,12 @@ namespace WebServer.Interfaces
     public interface IConversationService
     {
         Task<List<ConversationThreadDto>> GetThreadsAsync(int accountId);
+        Task<List<ConversationMessageDto>> GetMessagesAsync(int conversationId, int meAccountId, int limit = 50);
+        Task<ConversationMessageDto> SendTextMessageAsync(
+            int conversationId,
+            int senderId,
+            string content,
+            int? parentMessageId = null
+        );
     }
 }

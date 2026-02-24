@@ -111,6 +111,27 @@
   },
   {
     "ContainingType": "ApplicationServer.Controllers.ConversationsController",
+    "Method": "SendTextMessage",
+    "RelativePath": "api/conversations/{conversationId}/messages",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "ApplicationServer.Dtos.Conversations.SendMessageRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApplicationServer.Controllers.ConversationsController",
     "Method": "GetThreads",
     "RelativePath": "api/conversations/threads",
     "HttpMethod": "GET",
