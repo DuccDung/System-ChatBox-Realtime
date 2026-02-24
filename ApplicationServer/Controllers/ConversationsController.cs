@@ -332,5 +332,81 @@ namespace ApplicationServer.Controllers
 
             return Ok(result);
         }
+        // POST: /api/conversations/{conversationId}/messages/image
+        [HttpPost("{conversationId:int}/messages/image")]
+        public async Task<IActionResult> SendImageMessage(
+            int conversationId,
+            [FromBody] SendImageMessageRequest req)
+        {
+            if (req == null) return BadRequest("Body is required.");
+            if (req.SenderId <= 0) return BadRequest("SenderId is required.");
+            if (string.IsNullOrWhiteSpace(req.ImageUrl))
+                return BadRequest("ImageUrl is required.");
+
+            // check conversation exists
+            var convExists = await _context.Conversations
+                .AnyAsync(c => c.ConversationId == conversationId);
+            if (!convExists) return NotFound("Conversation not found.");
+
+            // check sender exists
+            var sender = await _context.Accounts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.AccountId == req.SenderId);
+            if (sender == null) return NotFound("Sender not found.");
+
+            // check sender is member
+            var isMember = await _context.ConversationMembers
+                .AnyAsync(cm => cm.ConversationId == conversationId && cm.AccountId == req.SenderId);
+            if (!isMember) return Forbid();
+
+            // validate parent message
+            if (req.ParentMessageId.HasValue)
+            {
+                var parentOk = await _context.Messages.AnyAsync(m =>
+                    m.MessageId == req.ParentMessageId.Value &&
+                    m.ConversationId == conversationId);
+
+                if (!parentOk)
+                    return BadRequest("ParentMessageId is invalid.");
+            }
+
+            var now = DateTime.UtcNow;
+
+            var message = new Message
+            {
+                ConversationId = conversationId,
+                SenderId = req.SenderId,
+                Content = req.ImageUrl.Trim(), // lưu URL vào Content
+                MessageType = "image",         // 🔥 quan trọng
+                CreatedAt = now,
+                ParentMessageId = req.ParentMessageId,
+                IsRead = false,
+                IsRemove = false
+            };
+
+            _context.Messages.Add(message);
+            await _context.SaveChangesAsync();
+
+            var result = new MessageDto
+            {
+                MessageId = message.MessageId,
+                ConversationId = message.ConversationId,
+                Content = message.Content,
+                MessageType = message.MessageType,
+                CreatedAt = message.CreatedAt,
+                IsRead = message.IsRead,
+                IsRemove = message.IsRemove,
+                ParentMessageId = message.ParentMessageId,
+                Sender = new SenderDto
+                {
+                    AccountId = sender.AccountId,
+                    AccountName = sender.AccountName,
+                    Email = sender.Email,
+                    PhotoPath = sender.PhotoPath
+                }
+            };
+
+            return Ok(result);
+        }
     }
 }

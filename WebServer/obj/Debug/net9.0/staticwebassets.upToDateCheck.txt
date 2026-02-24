@@ -132,3 +132,6 @@ wwwroot\js\services\chatService.js
 wwwroot\js\services\ws-client.js
 wwwroot\js\utils\helper.js
 wwwroot\js\utils\modal.js
+wwwroot\uploads\chat\43a1455e14a94751b75ba8251663af96.gif
+wwwroot\uploads\chat\99928a3b4ffd45c8a8f9f18f8d0fb2d7.gif
+wwwroot\uploads\chat\a2d210b077a34dd28648b353727cce5f.gif

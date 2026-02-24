@@ -90,10 +90,10 @@
                 <button class="icon-btn" title="Ghi âm">
                     <img src="~/assets/icons/mic-fill.svg" alt="" />
                 </button>
-                <button class="icon-btn" title="Ảnh/Video">
+                <button class="icon-btn" id="btn-select-img-sender" title="Ảnh/Video">
                     <img src="~/assets/icons/images.svg" alt="" />
                 </button>
-                <button class="icon-btn" title="GIF">
+                <button class="icon-btn" id="btn-select-gif-sender" title="GIF">
                     <img src="~/assets/icons/stickies.svg" alt="" />
                 </button>
             </div>
@@ -114,3 +114,35 @@
         </footer>
     </main>
 </div>
+<style>
+    .image-preview-container {
+        width: 100%;
+    }
+
+    .image-preview {
+        position: relative;
+        display: inline-block;
+    }
+
+        .image-preview img {
+            max-height: 80px;
+            max-width: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+    .remove-image-btn {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 20px;
+    }
+</style>

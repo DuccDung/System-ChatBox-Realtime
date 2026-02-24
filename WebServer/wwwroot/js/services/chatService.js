@@ -29,5 +29,20 @@ export const chatService = {
             content,
             parentMessageId
         });
+    },
+    async sendImageMessage(conversationId, file, parentMessageId = null) {
+        const formData = new FormData();
+        formData.append("conversationId", conversationId);
+        formData.append("file", file);
+
+        if (parentMessageId !== null) {
+            formData.append("parentMessageId", parentMessageId);
+        }
+
+        return await api_origin.post("/chat/send_image", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
     }
 };

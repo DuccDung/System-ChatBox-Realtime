@@ -345,6 +345,18 @@
       "PackagePath": "staticwebassets\\js\\utils\\modal.js"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\chat\\43a1455e14a94751b75ba8251663af96.gif",
+      "PackagePath": "staticwebassets\\uploads\\chat\\43a1455e14a94751b75ba8251663af96.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\chat\\99928a3b4ffd45c8a8f9f18f8d0fb2d7.gif",
+      "PackagePath": "staticwebassets\\uploads\\chat\\99928a3b4ffd45c8a8f9f18f8d0fb2d7.gif"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\chat\\a2d210b077a34dd28648b353727cce5f.gif",
+      "PackagePath": "staticwebassets\\uploads\\chat\\a2d210b077a34dd28648b353727cce5f.gif"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebServer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

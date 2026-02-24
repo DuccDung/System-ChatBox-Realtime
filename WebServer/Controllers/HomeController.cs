@@ -164,5 +164,51 @@ namespace WebServer.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpPost("/chat/send_image")]
+        [RequestSizeLimit(20_000_000)] // 20MB
+        public async Task<IActionResult> SendImage(
+    [FromForm] SendImageUploadRequest req)
+        {
+            if (req == null || req.File == null)
+                return BadRequest(new { message = "File is required." });
+
+            if (req.ConversationId <= 0)
+                return BadRequest(new { message = "ConversationId is required." });
+
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userIdStr))
+                return Unauthorized();
+
+            var senderId = int.Parse(userIdStr);
+
+            try
+            {
+                var created = await _conversationService.SendImageMessageAsync(
+                    req.ConversationId,
+                    senderId,
+                    req.File,
+                    req.ParentMessageId);
+
+                // Realtime broadcast giống text
+                await realtime.BroadcastToConversationAsync(
+                    req.ConversationId,
+                    new
+                    {
+                        type = "message",
+                        conversationId = req.ConversationId,
+                        payload = created
+                    },
+                    excludeUserId: userIdStr
+                );
+
+                return Ok(created);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }

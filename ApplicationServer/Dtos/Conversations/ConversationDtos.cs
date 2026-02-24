@@ -50,4 +50,10 @@
         public string? Content { get; set; }
         public int? ParentMessageId { get; set; } // optional (reply)
     }
+    public class SendImageMessageRequest
+    {
+        public int SenderId { get; set; }
+        public string? ImageUrl { get; set; }
+        public int? ParentMessageId { get; set; }
+    }
 }

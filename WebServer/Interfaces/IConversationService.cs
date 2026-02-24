@@ -12,5 +12,11 @@ namespace WebServer.Interfaces
             string content,
             int? parentMessageId = null
         );
+        Task<ConversationMessageDto> SendImageMessageAsync(
+    int conversationId,
+    int senderId,
+    IFormFile file,
+    int? parentMessageId);
     }
+
 }

@@ -7,7 +7,6 @@
 
     static string DividerLabel(DateTime dt, DateTime now)
     {
-        // bạn có thể tuỳ biến text giống "3 ngày trước, 21:30"
         var dayDiff = (now.Date - dt.Date).Days;
         if (dayDiff == 0) return dt.ToString("HH:mm");
         if (dayDiff == 1) return "Hôm qua, " + dt.ToString("HH:mm");
@@ -17,13 +16,9 @@
 
     static string SpacingClass(DateTime? prevTime, DateTime curTime)
     {
-        if (prevTime == null) return ""; // message đầu
+        if (prevTime == null) return "";
         var diff = curTime - prevTime.Value;
-
-        // < 1 phút => tight
         if (diff.TotalSeconds < 60) return "spacing-tight";
-
-        // >= 1 phút và < 15 phút => spaced (bạn có thể đổi rule)
         return "spacing-spaced";
     }
 
@@ -34,7 +29,6 @@
     }
 }
 
-<!-- ========== MESSAGE SCROLLER ========== -->
 <section id="messageScroller"
          class="scroller"
          data-conversation-id="@Model.ConversationId"
@@ -56,21 +50,39 @@
 
             if (NeedDivider(prevTime, m.CreatedAt))
             {
-                <div class="message-timestamp-divider">@DividerLabel(m.CreatedAt, now)</div>
+                <div class="message-timestamp-divider">
+                    @DividerLabel(m.CreatedAt, now)
+                </div>
             }
 
             var spacing = SpacingClass(prevTime, m.CreatedAt);
 
             <div class="bubble-group @spacing">
-                <div class="msg @sideClass">
-                    @m.Content
-                    <div class="message-time-tooltip">@TooltipTime(m.CreatedAt)</div>
-                </div>
+
+                @if (string.Equals(m.MessageType, "image", StringComparison.OrdinalIgnoreCase))
+                {
+                    <div class="image-wrapper @sideClass">
+                        <img src="@m.Content"
+                             alt="image"
+                             class="chat-image-modern" />
+
+                        <div class="image-time">@TooltipTime(m.CreatedAt)</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="msg @sideClass">
+                        @m.Content
+                        <div class="message-time-tooltip">
+                            @TooltipTime(m.CreatedAt)
+                        </div>
+                    </div>
+                }
+
             </div>
 
             prevTime = m.CreatedAt;
         }
     }
-
 </section>
-<!-- ========== /MESSAGE SCROLLER ========== -->
+

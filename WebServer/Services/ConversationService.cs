@@ -46,6 +46,55 @@ namespace WebServer.Services
             return data ?? new List<ConversationThreadDto>();
         }
 
+        public async Task<ConversationMessageDto> SendImageMessageAsync(
+    int conversationId,
+    int senderId,
+    IFormFile file,
+    int? parentMessageId)
+        {
+            if (file == null || file.Length == 0)
+                throw new Exception("File is empty.");
+
+            var uploadsRoot = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "chat");
+
+            if (!Directory.Exists(uploadsRoot))
+                Directory.CreateDirectory(uploadsRoot);
+
+            // Tạo tên file unique
+            var ext = Path.GetExtension(file.FileName);
+            var fileName = $"{Guid.NewGuid():N}{ext}";
+            var fullPath = Path.Combine(uploadsRoot, fileName);
+
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // URL tương đối
+            var relativeUrl = $"/uploads/chat/{fileName}";
+
+            // Gọi AppServer
+            var body = new
+            {
+                senderId = senderId,
+                imageUrl = relativeUrl,
+                parentMessageId = parentMessageId
+            };
+
+            var res = await _http.PostAsJsonAsync(
+                $"api/conversations/{conversationId}/messages/image",
+                body);
+
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Send image failed: {err}");
+            }
+
+            var data = await res.Content.ReadFromJsonAsync<ConversationMessageDto>();
+            return data!;
+        }
+
         /// NEW: POST gửi text lên AppServer
         public async Task<ConversationMessageDto> SendTextMessageAsync(
             int conversationId,

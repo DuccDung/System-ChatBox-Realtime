@@ -43,4 +43,10 @@ namespace WebServer.Dtos
         public string? Content { get; set; }
         public int? ParentMessageId { get; set; }
     }
+    public class SendImageUploadRequest
+    {
+        public int ConversationId { get; set; }
+        public IFormFile File { get; set; } = default!;
+        public int? ParentMessageId { get; set; }
+    }
 }
