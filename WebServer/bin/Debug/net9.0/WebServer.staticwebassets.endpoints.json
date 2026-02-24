@@ -15471,6 +15471,304 @@
       ]
     },
     {
+      "Route": "js/pages/chat/mobile_sidebar.js",
+      "AssetFile": "js/pages/chat/mobile_sidebar.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001019367992"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.js",
+      "AssetFile": "js/pages/chat/mobile_sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2513"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.js.gz",
+      "AssetFile": "js/pages/chat/mobile_sidebar.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.o244n82ka9.js",
+      "AssetFile": "js/pages/chat/mobile_sidebar.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001019367992"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o244n82ka9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/mobile_sidebar.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.o244n82ka9.js",
+      "AssetFile": "js/pages/chat/mobile_sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2513"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o244n82ka9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/mobile_sidebar.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.o244n82ka9.js.gz",
+      "AssetFile": "js/pages/chat/mobile_sidebar.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o244n82ka9"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI="
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/mobile_sidebar.js.gz"
+        }
+      ]
+    },
+    {
       "Route": "js/pages/chat/threads.js",
       "AssetFile": "js/pages/chat/threads.js.gz",
       "Selectors": [

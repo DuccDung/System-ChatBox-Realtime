@@ -924,6 +924,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-FydDuzhjNBkC65\u002BTCoeAx99k3Q9t4WnHNEeV1gEc2PU="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"4016"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022FydDuzhjNBkC65\u002BTCoeAx99k3Q9t4WnHNEeV1gEc2PU=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Feb 2026 08:10:10 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/mobile_sidebar.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\mobile_sidebar.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN\u002BymdW8LRbjM44="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2513"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022YFvR2YAXOqzGeRKb8sp55gK1qsJOlN\u002BymdW8LRbjM44=\u0022"},{"Name":"Last-Modified","Value":"Tue, 24 Feb 2026 08:32:55 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/mobile_sidebar.o244n82ka9.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\mobile_sidebar.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"o244n82ka9"},{"Name":"integrity","Value":"sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN\u002BymdW8LRbjM44="},{"Name":"label","Value":"_content/WebServer/js/pages/chat/mobile_sidebar.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2513"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022YFvR2YAXOqzGeRKb8sp55gK1qsJOlN\u002BymdW8LRbjM44=\u0022"},{"Name":"Last-Modified","Value":"Tue, 24 Feb 2026 08:32:55 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/threads.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\threads.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

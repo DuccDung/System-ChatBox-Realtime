@@ -33,6 +33,7 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\emoji.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\auth\login.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\arrow-left.svg
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\chat\mobile_sidebar.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\grid.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\options.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\chat\chat_composer.js
@@ -123,6 +124,7 @@ wwwroot\js\pages\chat\chat_composer.js
 wwwroot\js\pages\chat\chat_realtime.js
 wwwroot\js\pages\chat\handle_choice_item_threads.js
 wwwroot\js\pages\chat\main.js
+wwwroot\js\pages\chat\mobile_sidebar.js
 wwwroot\js\pages\chat\threads.js
 wwwroot\js\pages\register\main.js
 wwwroot\js\services\authService.js

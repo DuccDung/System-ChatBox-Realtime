@@ -313,6 +313,10 @@
       "PackagePath": "staticwebassets\\js\\pages\\chat\\main.js"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\mobile_sidebar.js",
+      "PackagePath": "staticwebassets\\js\\pages\\chat\\mobile_sidebar.js"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\threads.js",
       "PackagePath": "staticwebassets\\js\\pages\\chat\\threads.js"
     },

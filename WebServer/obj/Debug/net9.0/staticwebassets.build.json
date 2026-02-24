@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gizlr6x1NkRX3E33nmRbz0xwtUsw62VrFRtycLsnDbk=",
+  "Hash": "E1vTl3Cb8N21/324zpqcCmrBPPUJJ34PPHzR6qs8irc=",
   "Source": "WebServer",
   "BasePath": "_content/WebServer",
   "Mode": "Default",
@@ -771,6 +771,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\arrow-left.svg"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\rktyk3iz68-o244n82ka9.gz",
+      "SourceId": "WebServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/WebServer",
+      "RelativePath": "js/pages/chat/mobile_sidebar#[.{fingerprint=o244n82ka9}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\mobile_sidebar.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "5dxcyd57rl",
+      "Integrity": "Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\mobile_sidebar.js"
     },
     {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\rslwggycl1-y3e92o8nah.gz",
@@ -2724,6 +2745,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\pages\\chat\\main.js"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\mobile_sidebar.js",
+      "SourceId": "WebServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\",
+      "BasePath": "_content/WebServer",
+      "RelativePath": "js/pages/chat/mobile_sidebar#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "o244n82ka9",
+      "Integrity": "YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\pages\\chat\\mobile_sidebar.js"
     },
     {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\threads.js",
@@ -18041,6 +18083,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-QDObE72umkRoowzaovK3UeI4vcNZ77SjSMtgVEMqV/k="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\rktyk3iz68-o244n82ka9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001019367992"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\mobile_sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2513"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\rktyk3iz68-o244n82ka9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.o244n82ka9.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\rktyk3iz68-o244n82ka9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001019367992"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o244n82ka9"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/mobile_sidebar.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.o244n82ka9.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\mobile_sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2513"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o244n82ka9"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/mobile_sidebar.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YFvR2YAXOqzGeRKb8sp55gK1qsJOlN+ymdW8LRbjM44="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/mobile_sidebar.o244n82ka9.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\rktyk3iz68-o244n82ka9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 24 Feb 2026 08:32:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o244n82ka9"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/mobile_sidebar.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fwa3eShWbWDKuehORayJySEURLpcINQyXeBLL6/ZrBI="
         }
       ]
     },
