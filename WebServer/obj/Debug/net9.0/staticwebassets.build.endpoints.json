@@ -16365,13 +16365,174 @@
       ]
     },
     {
+      "Route": "js/pages/chat/video-call-ui.2jg9j1shst.js",
+      "AssetFile": "js/pages/chat/video-call-ui.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000439560440"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2jg9j1shst"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/video-call-ui.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/video-call-ui.2jg9j1shst.js",
+      "AssetFile": "js/pages/chat/video-call-ui.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9410"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2jg9j1shst"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/video-call-ui.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/video-call-ui.2jg9j1shst.js.gz",
+      "AssetFile": "js/pages/chat/video-call-ui.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2jg9j1shst"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo="
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/video-call-ui.js.gz"
+        }
+      ]
+    },
+    {
       "Route": "js/pages/chat/video-call-ui.js",
       "AssetFile": "js/pages/chat/video-call-ui.js.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000555555556"
+          "Quality": "0.000439560440"
         }
       ],
       "ResponseHeaders": [
@@ -16389,7 +16550,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1799"
+          "Value": "2274"
         },
         {
           "Name": "Content-Type",
@@ -16397,15 +16558,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "W/\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
         },
         {
           "Name": "Vary",
@@ -16415,7 +16576,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
         }
       ]
     },
@@ -16434,7 +16595,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6794"
+          "Value": "9410"
         },
         {
           "Name": "Content-Type",
@@ -16442,17 +16603,17 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
         }
       ]
     },
@@ -16475,7 +16636,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1799"
+          "Value": "2274"
         },
         {
           "Name": "Content-Type",
@@ -16483,11 +16644,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
         },
         {
           "Name": "Vary",
@@ -16497,18 +16658,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI="
+          "Value": "sha256-v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo="
         }
       ]
     },
     {
-      "Route": "js/pages/chat/video-call-ui.k03ucfxljs.js",
-      "AssetFile": "js/pages/chat/video-call-ui.js.gz",
+      "Route": "js/pages/chat/webrtc-service.495ztfu6u7.js",
+      "AssetFile": "js/pages/chat/webrtc-service.js.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000555555556"
+          "Quality": "0.000523286238"
         }
       ],
       "ResponseHeaders": [
@@ -16526,7 +16687,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1799"
+          "Value": "1910"
         },
         {
           "Name": "Content-Type",
@@ -16534,15 +16695,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "W/\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16552,21 +16713,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k03ucfxljs"
+          "Value": "495ztfu6u7"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
         },
         {
           "Name": "label",
-          "Value": "js/pages/chat/video-call-ui.js"
+          "Value": "js/pages/chat/webrtc-service.js"
         }
       ]
     },
     {
-      "Route": "js/pages/chat/video-call-ui.k03ucfxljs.js",
-      "AssetFile": "js/pages/chat/video-call-ui.js",
+      "Route": "js/pages/chat/webrtc-service.495ztfu6u7.js",
+      "AssetFile": "js/pages/chat/webrtc-service.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16579,7 +16740,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6794"
+          "Value": "7378"
         },
         {
           "Name": "Content-Type",
@@ -16587,31 +16748,31 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k03ucfxljs"
+          "Value": "495ztfu6u7"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
         },
         {
           "Name": "label",
-          "Value": "js/pages/chat/video-call-ui.js"
+          "Value": "js/pages/chat/webrtc-service.js"
         }
       ]
     },
     {
-      "Route": "js/pages/chat/video-call-ui.k03ucfxljs.js.gz",
-      "AssetFile": "js/pages/chat/video-call-ui.js.gz",
+      "Route": "js/pages/chat/webrtc-service.495ztfu6u7.js.gz",
+      "AssetFile": "js/pages/chat/webrtc-service.js.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16628,7 +16789,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1799"
+          "Value": "1910"
         },
         {
           "Name": "Content-Type",
@@ -16636,11 +16797,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
         },
         {
           "Name": "Vary",
@@ -16650,15 +16811,152 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k03ucfxljs"
+          "Value": "495ztfu6u7"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI="
+          "Value": "sha256-ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0="
         },
         {
           "Name": "label",
-          "Value": "js/pages/chat/video-call-ui.js.gz"
+          "Value": "js/pages/chat/webrtc-service.js.gz"
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.js",
+      "AssetFile": "js/pages/chat/webrtc-service.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000523286238"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.js",
+      "AssetFile": "js/pages/chat/webrtc-service.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7378"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.js.gz",
+      "AssetFile": "js/pages/chat/webrtc-service.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0="
         }
       ]
     },

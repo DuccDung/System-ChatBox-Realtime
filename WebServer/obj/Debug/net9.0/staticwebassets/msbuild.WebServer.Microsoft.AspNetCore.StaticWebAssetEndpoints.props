@@ -960,17 +960,29 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rsdce2b2y8"},{"Name":"integrity","Value":"sha256-2xaZbTS7NVFCkphGhelA8fwUJrr57vDGy/o9jQDfuUw="},{"Name":"label","Value":"_content/WebServer/js/pages/chat/threads.js"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3189"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00222xaZbTS7NVFCkphGhelA8fwUJrr57vDGy/o9jQDfuUw=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Feb 2026 08:42:31 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/video-call-ui.2jg9j1shst.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\video-call-ui.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2jg9j1shst"},{"Name":"integrity","Value":"sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="},{"Name":"label","Value":"_content/WebServer/js/pages/chat/video-call-ui.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"9410"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00227lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\u0022"},{"Name":"Last-Modified","Value":"Thu, 26 Feb 2026 15:38:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/video-call-ui.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\video-call-ui.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"6794"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 26 Feb 2026 12:17:54 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"9410"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00227lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\u0022"},{"Name":"Last-Modified","Value":"Thu, 26 Feb 2026 15:38:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/video-call-ui.k03ucfxljs.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\video-call-ui.js'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/webrtc-service.495ztfu6u7.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\webrtc-service.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"k03ucfxljs"},{"Name":"integrity","Value":"sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="},{"Name":"label","Value":"_content/WebServer/js/pages/chat/video-call-ui.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"6794"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\u0022"},{"Name":"Last-Modified","Value":"Thu, 26 Feb 2026 12:17:54 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"495ztfu6u7"},{"Name":"integrity","Value":"sha256-WD7TrV\u002BaFKNn\u002BR8pi5K0\u002BDXKQWDeOZl3o8AMRzgqLj8="},{"Name":"label","Value":"_content/WebServer/js/pages/chat/webrtc-service.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7378"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022WD7TrV\u002BaFKNn\u002BR8pi5K0\u002BDXKQWDeOZl3o8AMRzgqLj8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 26 Feb 2026 15:34:04 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/chat/webrtc-service.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\webrtc-service.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-WD7TrV\u002BaFKNn\u002BR8pi5K0\u002BDXKQWDeOZl3o8AMRzgqLj8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"7378"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022WD7TrV\u002BaFKNn\u002BR8pi5K0\u002BDXKQWDeOZl3o8AMRzgqLj8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 26 Feb 2026 15:34:04 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/WebServer/js/pages/register/main.bq91cjqmqe.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\register\main.js'))</AssetFile>

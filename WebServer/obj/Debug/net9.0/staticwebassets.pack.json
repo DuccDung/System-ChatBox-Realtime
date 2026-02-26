@@ -329,6 +329,10 @@
       "PackagePath": "staticwebassets\\js\\pages\\chat\\video-call-ui.js"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\webrtc-service.js",
+      "PackagePath": "staticwebassets\\js\\pages\\chat\\webrtc-service.js"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\register\\main.js",
       "PackagePath": "staticwebassets\\js\\pages\\register\\main.js"
     },

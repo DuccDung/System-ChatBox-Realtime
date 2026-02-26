@@ -89,4 +89,5 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\lg2lje3xr0-p52nbzev66.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\isw60h48hc-pwgft2jjfl.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\ymr8gksevy-5j114bglsi.gz
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\cat01gw088-k03ucfxljs.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\qpv4946yqc-495ztfu6u7.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\cat01gw088-2jg9j1shst.gz

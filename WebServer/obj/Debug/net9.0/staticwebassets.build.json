@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fC7bj9TRWWyPQ9ULnuBxVJ9FCxLMb++D4B3OM1Yzoe8=",
+  "Hash": "8C8E1VBDPR51XsYtnsdYFDoIxZwH2C2pFgq4i4+PhIo=",
   "Source": "WebServer",
   "BasePath": "_content/WebServer",
   "Mode": "Default",
@@ -227,12 +227,12 @@
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\assets\\icons\\send.svg"
     },
     {
-      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-k03ucfxljs.gz",
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-2jg9j1shst.gz",
       "SourceId": "WebServer",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/WebServer",
-      "RelativePath": "js/pages/chat/video-call-ui#[.{fingerprint=k03ucfxljs}]?.js.gz",
+      "RelativePath": "js/pages/chat/video-call-ui#[.{fingerprint=2jg9j1shst}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -241,8 +241,8 @@
       "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\video-call-ui.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "5gmuy4hpn5",
-      "Integrity": "2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=",
+      "Fingerprint": "37cw1sgdg1",
+      "Integrity": "v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\video-call-ui.js"
@@ -792,6 +792,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\auth\\login.js"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qpv4946yqc-495ztfu6u7.gz",
+      "SourceId": "WebServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/WebServer",
+      "RelativePath": "js/pages/chat/webrtc-service#[.{fingerprint=495ztfu6u7}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\webrtc-service.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "abnh9cyjof",
+      "Integrity": "ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\webrtc-service.js"
     },
     {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qqmk64zek2-bpt50w6tvp.gz",
@@ -2866,11 +2887,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "k03ucfxljs",
-      "Integrity": "xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=",
+      "Fingerprint": "2jg9j1shst",
+      "Integrity": "7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\pages\\chat\\video-call-ui.js"
+    },
+    {
+      "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\webrtc-service.js",
+      "SourceId": "WebServer",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\",
+      "BasePath": "_content/WebServer",
+      "RelativePath": "js/pages/chat/webrtc-service#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "495ztfu6u7",
+      "Integrity": "WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\pages\\chat\\webrtc-service.js"
     },
     {
       "Identity": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\register\\main.js",
@@ -19317,13 +19359,13 @@
       ]
     },
     {
-      "Route": "js/pages/chat/video-call-ui.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-k03ucfxljs.gz",
+      "Route": "js/pages/chat/video-call-ui.2jg9j1shst.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-2jg9j1shst.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000555555556"
+          "Quality": "0.000439560440"
         }
       ],
       "ResponseHeaders": [
@@ -19333,19 +19375,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1799"
+          "Value": "2274"
         },
         {
           "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -19361,18 +19403,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "W/\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "2jg9j1shst"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/video-call-ui.js"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
         }
       ]
     },
     {
-      "Route": "js/pages/chat/video-call-ui.js",
+      "Route": "js/pages/chat/video-call-ui.2jg9j1shst.js",
       "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\video-call-ui.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -19382,7 +19432,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6794"
+          "Value": "9410"
         },
         {
           "Name": "Content-Type",
@@ -19390,121 +19440,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
-        }
-      ]
-    },
-    {
-      "Route": "js/pages/chat/video-call-ui.js.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-k03ucfxljs.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1799"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI="
-        }
-      ]
-    },
-    {
-      "Route": "js/pages/chat/video-call-ui.k03ucfxljs.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-k03ucfxljs.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000555555556"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1799"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k03ucfxljs"
+          "Value": "2jg9j1shst"
         },
         {
           "Name": "label",
@@ -19512,13 +19462,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
         }
       ]
     },
     {
-      "Route": "js/pages/chat/video-call-ui.k03ucfxljs.js",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\video-call-ui.js",
+      "Route": "js/pages/chat/video-call-ui.2jg9j1shst.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-2jg9j1shst.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -19527,7 +19477,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6794"
+          "Value": "2274"
         },
         {
           "Name": "Content-Type",
@@ -19535,56 +19485,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=\""
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "k03ucfxljs"
-        },
-        {
-          "Name": "label",
-          "Value": "js/pages/chat/video-call-ui.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE="
-        }
-      ]
-    },
-    {
-      "Route": "js/pages/chat/video-call-ui.k03ucfxljs.js.gz",
-      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-k03ucfxljs.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1799"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 26 Feb 2026 12:17:54 GMT"
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -19602,7 +19507,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k03ucfxljs"
+          "Value": "2jg9j1shst"
         },
         {
           "Name": "label",
@@ -19610,7 +19515,442 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-2/AI97Nab3jViuxT+Br6whZHho48O3bHTU0qszr6UmI="
+          "Value": "sha256-v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/video-call-ui.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-2jg9j1shst.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000439560440"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2274"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/video-call-ui.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\video-call-ui.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9410"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7lJQe0/AMTwy/qW06aCjJhiDLucKtDeMcmnIKVwpaOg="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/video-call-ui.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\cat01gw088-2jg9j1shst.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:38:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v9YoS4aqSNxRZex558jSu2MRRIFxZ2uQamrLKnDrkKo="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.495ztfu6u7.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qpv4946yqc-495ztfu6u7.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000523286238"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "495ztfu6u7"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/webrtc-service.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.495ztfu6u7.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\webrtc-service.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7378"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "495ztfu6u7"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/webrtc-service.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.495ztfu6u7.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qpv4946yqc-495ztfu6u7.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "495ztfu6u7"
+        },
+        {
+          "Name": "label",
+          "Value": "js/pages/chat/webrtc-service.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qpv4946yqc-495ztfu6u7.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000523286238"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.js",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\chat\\webrtc-service.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7378"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WD7TrV+aFKNn+R8pi5K0+DXKQWDeOZl3o8AMRzgqLj8="
+        }
+      ]
+    },
+    {
+      "Route": "js/pages/chat/webrtc-service.js.gz",
+      "AssetFile": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\obj\\Debug\\net9.0\\compressed\\qpv4946yqc-495ztfu6u7.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1910"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 26 Feb 2026 15:34:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ujbKlhCT1ESKnyvaapKHFITMg7j53GY6k5qcSBbLlr0="
         }
       ]
     },

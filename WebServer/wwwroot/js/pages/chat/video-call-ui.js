@@ -22,7 +22,11 @@ async function openCallPopup({ conversationId, callType = "video" }) {
     if (!host) return;
 
     const res = await callService.getCallPopup(conversationId, callType);
-    host.innerHTML = res.data; // partial html
+    host.innerHTML = res.data;
+
+    const localVideo = host.querySelector("#localVideo");
+    const remoteVideo = host.querySelector("#remoteVideo");
+    setVideoElements(localVideo, remoteVideo);
 }
 
 function getActiveThreadItem() {
@@ -60,7 +64,7 @@ async function showIncomingCallPopup(p) { // người nhận cuộc gọi
         fromUserName: p.fromUserName,
         fromUserPhoto: p.fromUserPhoto,
 
-        toUserId: p.toUserId ?? 0,      
+        toUserId: p.toUserId ?? 0,
         toUserName: p.toUserName ?? "",
         toUserPhoto: p.toUserPhoto ?? ""
     });
@@ -120,80 +124,155 @@ window.addEventListener("ws:message", async (e) => {
     }
     else if (msg.payload?.kind === "accept") {
         // TODO: xử lý accept
-        alert("người nghe đồng ý gọi!");
+        //alert("người nghe đồng ý gọi!");
+        const p = msg.payload;
+
+        // msg.fromUserId = người accept (peer)
+        const peerId = Number(msg.fromUserId);
+        const conversationId = Number(p.conversationId);
+        const callType = p.callType || "video";
+
+        // me info: bạn có thể lấy từ UI call popup (data-me-id)
+        const callPopup = document.querySelector('[data-call-popup="1"]');
+        const meId = callPopup ? Number(callPopup.dataset.meId) : null;
+
+        // CALLER tạo offer sau khi nhận accept
+        await startCallerOffer({
+            meId,
+            peerId,
+            conversationId,
+            callType
+        });
+
     }
+
     else if (msg.payload?.kind === "decline") {
         alert("người nghe từ chối cuộc gọi!");
+        const host = document.getElementById("form_modal-main");
+        if (host) host.innerHTML = "";
+    }
+    else if (msg.payload?.kind === "offer") { // callee consummer offer
+        const p = msg.payload;
+        const callPopup = document.querySelector('[data-call-popup="1"]');
+        const meId = callPopup ? Number(callPopup.dataset.meId) : null;
+
+        await handleIncomingOffer({
+            meId,
+            fromUserId: Number(msg.fromUserId),
+            conversationId: Number(p.conversationId),
+            callType: p.callType || "video",
+            sdp: p.sdp
+        });
+    }
+    else if (msg.payload?.kind === "answer") {
+        await handleIncomingAnswer({ sdp: msg.payload.sdp });
+    }
+    else if (msg.payload?.kind === "ice") {
+        await handleIncomingIce({ candidate: msg.payload.candidate });
     }
 });
 //================================== UI ==========================
 // Bind 1 lần: đóng popup khi bấm nút X (hoặc click backdrop)
-    (function bindIncomingCallPopupEvents() {
-        document.addEventListener("click", (e) => {
-            const closeBtn = e.target.closest(".vdcall_consumer_close-btn");
-            if (closeBtn) {
-                const host = document.getElementById("form_modal-main");
-                if (host) host.innerHTML = "";
-                return;
-            }
+(function bindIncomingCallPopupEvents() {
+    document.addEventListener("click", (e) => {
+        const closeBtn = e.target.closest(".vdcall_consumer_close-btn");
+        if (closeBtn) {
+            const host = document.getElementById("form_modal-main");
+            if (host) host.innerHTML = "";
+            return;
+        }
 
-            const backdrop = e.target.closest(".vdcall_consumer_call-modal-backdrop");
-            if (backdrop && e.target === backdrop) {
-                const host = document.getElementById("form_modal-main");
-                if (host) host.innerHTML = "";
-            }
-        });
+        const backdrop = e.target.closest(".vdcall_consumer_call-modal-backdrop");
+        if (backdrop && e.target === backdrop) {
+            const host = document.getElementById("form_modal-main");
+            if (host) host.innerHTML = "";
+        }
+    });
 
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") {
-                const host = document.getElementById("form_modal-main");
-                if (host) host.innerHTML = "";
-            }
-        });
-        document.addEventListener("click", async (e) => {
-            const btn = e.target.closest(".vdcall_consumer_action-btn");
-            if (!btn) return;
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            const host = document.getElementById("form_modal-main");
+            if (host) host.innerHTML = "";
+        }
+    });
+    document.addEventListener("click", async (e) => {
+        const btn = e.target.closest(".vdcall_consumer_action-btn");
+        if (!btn) return;
 
-            const action = btn.dataset.action; // accept | decline
-            const popup = btn.closest('[data-vdcall-popup="1"]')
-                || document.querySelector('[data-vdcall-popup="1"]');
-            if (!popup) return;
+        const action = btn.dataset.action; // accept | decline
+        const popup = btn.closest('[data-vdcall-popup="1"]')
+            || document.querySelector('[data-vdcall-popup="1"]');
+        if (!popup) return;
 
-            const payload = {
-                conversationId: Number(popup.dataset.conversationId),
-                callType: popup.dataset.callType,
+        const payload = {
+            conversationId: Number(popup.dataset.conversationId),
+            callType: popup.dataset.callType,
 
-                meId: Number(popup.dataset.meId),
-                meName: popup.dataset.meName,
-                mePhoto: popup.dataset.mePhoto,
+            meId: Number(popup.dataset.meId),
+            meName: popup.dataset.meName,
+            mePhoto: popup.dataset.mePhoto,
 
-                peerId: Number(popup.dataset.peerId),
-                peerName: popup.dataset.peerName,
-                peerPhoto: popup.dataset.peerPhoto
-            };
+            peerId: Number(popup.dataset.peerId),
+            peerName: popup.dataset.peerName,
+            peerPhoto: popup.dataset.peerPhoto
+        };
 
-            if (action === "accept") {
-                sendCall(payload.peerId, {
-                    kind: "accept",
-                    conversationId: payload.conversationId,
-                    callType: payload.callType,
+        if (action === "accept") {
+            sendCall(payload.peerId, {
+                kind: "accept",
+                conversationId: payload.conversationId,
+                callType: payload.callType,
 
-                    fromUserName: payload.meName,
-                    fromUserPhoto: payload.mePhoto,
+                fromUserName: payload.meName,
+                fromUserPhoto: payload.mePhoto,
 
-                    toUserName: payload.peerName,
-                    toUserPhoto: payload.peerPhoto
-                });
-                const cv_id = payload.conversationId;
-                await openCallPopup({ conversationId: payload.conversationId, callType: "video" });
-            } else if (action === "decline") {
-                sendCall(payload.peerId, {
-                    kind: "decline",
-                    conversationId: payload.conversationId,
-                    callType: payload.callType
-                });
-                const host = document.getElementById("form_modal-main");
-                if (host) host.innerHTML = "";
-            }
-        });
-    })();
+                toUserName: payload.peerName,
+                toUserPhoto: payload.peerPhoto
+            });
+            const cv_id = payload.conversationId;
+            await openCallPopup({ conversationId: payload.conversationId, callType: "video" });
+        } else if (action === "decline") {
+            sendCall(payload.peerId, {
+                kind: "decline",
+                conversationId: payload.conversationId,
+                callType: payload.callType
+            });
+            const host = document.getElementById("form_modal-main");
+            if (host) host.innerHTML = "";
+        }
+    });
+})();
+(function bindCallPopupControls() {
+    document.addEventListener("click", (e) => {
+        const root = e.target.closest('[data-call-popup="1"]');
+        if (!root) return;
+
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+
+        const action = btn.dataset.action;
+
+        if (action === "end") {
+            hangup();
+            const host = getHost();
+            if (host) host.innerHTML = "";
+            return;
+        }
+
+        if (action === "toggle-mic") {
+            const on = btn.dataset.on === "1";
+            const next = !on;
+            btn.dataset.on = next ? "1" : "0";
+            toggleMic(next);
+            return;
+        }
+
+        if (action === "toggle-camera") {
+            const on = btn.dataset.on === "1";
+            const next = !on;
+            btn.dataset.on = next ? "1" : "0";
+            toggleCamera(next);
+            return;
+        }
+    });
+})();
