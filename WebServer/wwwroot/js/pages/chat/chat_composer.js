@@ -21,11 +21,17 @@ if (sendBtn && msgInput) {
     sendBtn.addEventListener("click", async (e) => {
         e.preventDefault();
 
-        if (selectedImageFile) {
-            handleSendImage();
-        } else {
-            await handleSendText();
+        if (recordedBlob) {
+            await handleSendAudio();
+            return;
         }
+
+        if (selectedImageFile) {
+            await handleSendImage();
+            return;
+        }
+
+        await handleSendText();
     });
 
     msgInput.addEventListener("keydown", async (e) => {
@@ -201,5 +207,113 @@ async function reloadMessages(conversationId) {
     } catch (err) {
         console.error(err);
         scroller.innerHTML = `<div class="error">Không tải được tin nhắn.</div>`;
+    }
+}
+
+let mediaRecorder = null;
+let audioChunks = [];
+let recordedBlob = null;
+
+const recordBtn = document.getElementById("btn-record-voice");
+
+// ==============================
+// BẮT ĐẦU / DỪNG GHI ÂM
+// ==============================
+if (recordBtn) {
+    recordBtn.addEventListener("click", async () => {
+        if (!mediaRecorder || mediaRecorder.state === "inactive") {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+    });
+}
+
+async function startRecording() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = e => {
+            audioChunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            recordedBlob = new Blob(audioChunks, { type: "audio/webm" });
+            showAudioPreview(recordedBlob);
+        };
+
+        mediaRecorder.start();
+        recordBtn.classList.add("recording");
+    } catch (err) {
+        alert("Không thể truy cập micro.");
+    }
+}
+
+function stopRecording() {
+    if (mediaRecorder) {
+        mediaRecorder.stop();
+        recordBtn.classList.remove("recording");
+    }
+}
+
+// ==============================
+// PREVIEW AUDIO
+// ==============================
+
+function showAudioPreview(blob) {
+    const inputWrap = document.querySelector(".input-wrap");
+
+    msgInput.style.display = "none";
+    msgInput.disabled = true;
+
+    const old = inputWrap.querySelector(".audio-preview");
+    if (old) old.remove();
+
+    const audioUrl = URL.createObjectURL(blob);
+
+    const container = document.createElement("div");
+    container.className = "audio-preview";
+
+    container.innerHTML = `
+        <audio controls src="${audioUrl}"></audio>
+        <button class="remove-audio">×</button>
+    `;
+
+    inputWrap.appendChild(container);
+
+    container.querySelector(".remove-audio").addEventListener("click", clearAudioPreview);
+}
+
+function clearAudioPreview() {
+    recordedBlob = null;
+
+    const preview = document.querySelector(".audio-preview");
+    if (preview) preview.remove();
+
+    msgInput.style.display = "block";
+    msgInput.disabled = false;
+}
+
+// ==============================
+// GỬI AUDIO
+// ==============================
+
+async function handleSendAudio() {
+    const conversationId = getActiveConversationId();
+    if (!conversationId || !recordedBlob) return;
+
+    const file = new File([recordedBlob], "voice.webm", {
+        type: "audio/webm"
+    });
+
+    try {
+        await chatService.sendAudioMessage(conversationId, file);
+        clearAudioPreview();
+        await reloadMessages(conversationId);
+    } catch (err) {
+        alert("Gửi ghi âm thất bại.");
     }
 }

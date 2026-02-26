@@ -2159,3 +2159,41 @@ body.light .chat-action-btn {
         max-height: 320px;
     }
 }
+.audio-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .audio-preview audio {
+        height: 36px;
+    }
+
+.remove-audio {
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.recording {
+    background: red !important;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

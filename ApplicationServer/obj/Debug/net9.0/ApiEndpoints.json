@@ -132,6 +132,27 @@
   },
   {
     "ContainingType": "ApplicationServer.Controllers.ConversationsController",
+    "Method": "SendAudioMessage",
+    "RelativePath": "api/conversations/{conversationId}/messages/audio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "conversationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "ApplicationServer.Dtos.Conversations.SendAudioMessageRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ApplicationServer.Controllers.ConversationsController",
     "Method": "SendImageMessage",
     "RelativePath": "api/conversations/{conversationId}/messages/image",
     "HttpMethod": "POST",

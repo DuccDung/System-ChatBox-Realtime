@@ -17,6 +17,12 @@ namespace WebServer.Interfaces
     int senderId,
     IFormFile file,
     int? parentMessageId);
+
+        Task<ConversationMessageDto> SendAudioMessageAsync(
+      int conversationId,
+      int senderId,
+      IFormFile file,
+      int? parentMessageId);
     }
 
 }

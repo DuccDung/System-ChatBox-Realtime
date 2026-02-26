@@ -127,5 +127,39 @@ namespace WebServer.Services
             if (created == null) throw new Exception("Send message succeeded but response body is empty.");
             return created;
         }
+        public async Task<ConversationMessageDto> SendAudioMessageAsync(
+    int conversationId,
+    int senderId,
+    IFormFile file,
+    int? parentMessageId)
+        {
+            var uploadsRoot = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "voice");
+
+            if (!Directory.Exists(uploadsRoot))
+                Directory.CreateDirectory(uploadsRoot);
+
+            var ext = Path.GetExtension(file.FileName);
+            var fileName = $"{Guid.NewGuid():N}{ext}";
+            var fullPath = Path.Combine(uploadsRoot, fileName);
+
+            using var stream = new FileStream(fullPath, FileMode.Create);
+            await file.CopyToAsync(stream);
+
+            var relativeUrl = $"/uploads/voice/{fileName}";
+
+            var body = new
+            {
+                senderId = senderId,
+                audioUrl = relativeUrl,
+                parentMessageId = parentMessageId
+            };
+
+            var res = await _http.PostAsJsonAsync(
+                $"api/conversations/{conversationId}/messages/audio",
+                body);
+
+            var data = await res.Content.ReadFromJsonAsync<ConversationMessageDto>();
+            return data!;
+        }
     }
 }

@@ -44,5 +44,21 @@ export const chatService = {
                 "Content-Type": "multipart/form-data"
             }
         });
+    },
+    async sendAudioMessage(conversationId, file, parentMessageId = null) {
+        const formData = new FormData();
+
+        // KEY PHẢI ĐÚNG TÊN PROPERTY: ConversationId / File / ParentMessageId
+        // Nhưng ASP.NET Core binder thường accept camelCase cũng OK.
+        // Để chắc chắn tuyệt đối: dùng đúng PascalCase theo model.
+        formData.append("ConversationId", String(conversationId));
+        formData.append("File", file);
+
+        if (parentMessageId !== null && parentMessageId !== undefined) {
+            formData.append("ParentMessageId", String(parentMessageId));
+        }
+
+        // KHÔNG set Content-Type thủ công để axios tự set boundary
+        return await api_origin.post("/chat/send_audio", formData);
     }
 };

@@ -56,4 +56,10 @@
         public string? ImageUrl { get; set; }
         public int? ParentMessageId { get; set; }
     }
+    public class SendAudioMessageRequest
+    {
+        public int SenderId { get; set; }
+        public string AudioUrl { get; set; } = "";
+        public int? ParentMessageId { get; set; }
+    }
 }

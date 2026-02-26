@@ -357,6 +357,18 @@
       "PackagePath": "staticwebassets\\uploads\\chat\\a2d210b077a34dd28648b353727cce5f.gif"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\chat\\c5de9ea059f348c5aa1f034392534ca9.webp",
+      "PackagePath": "staticwebassets\\uploads\\chat\\c5de9ea059f348c5aa1f034392534ca9.webp"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\voice\\02ed4f8d887b4ff688cc507ff69bde62.webm",
+      "PackagePath": "staticwebassets\\uploads\\voice\\02ed4f8d887b4ff688cc507ff69bde62.webm"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\voice\\2c72807efbaf4c578ca12a9a28607b1c.webm",
+      "PackagePath": "staticwebassets\\uploads\\voice\\2c72807efbaf4c578ca12a9a28607b1c.webm"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebServer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

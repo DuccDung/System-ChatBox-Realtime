@@ -69,6 +69,17 @@
                         <div class="image-time">@TooltipTime(m.CreatedAt)</div>
                     </div>
                 }
+                else if (string.Equals(m.MessageType, "audio", StringComparison.OrdinalIgnoreCase))
+                {
+                    <div class="msg @sideClass">
+                        <audio class="chat-audio" controls preload="metadata">
+                            <source src="@m.Content" type="audio/webm" />
+                            Trình duyệt của bạn không hỗ trợ audio.
+                        </audio>
+
+                        <div class="audio-time">@TooltipTime(m.CreatedAt)</div>
+                    </div>
+                }
                 else
                 {
                     <div class="msg @sideClass">
@@ -86,3 +97,40 @@
     }
 </section>
 
+<style>
+    .audio-wrapper {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        margin: 4px 0;
+        max-width: 75%;
+    }
+
+        .audio-wrapper.left {
+            justify-content: flex-start;
+        }
+
+        .audio-wrapper.right {
+            justify-content: flex-end;
+            margin-left: auto;
+        }
+
+    .chat-audio {
+        width: 260px;
+        max-width: 100%;
+        height: 38px;
+        border-radius: 16px;
+        background: #f1f1f1;
+        padding: 6px 10px;
+    }
+
+    .audio-wrapper.right .chat-audio {
+        background: #dbeafe; /* xanh nhạt cho tin nhắn của mình */
+    }
+
+    .audio-time {
+        font-size: 12px;
+        opacity: 0.7;
+        white-space: nowrap;
+    }
+</style>

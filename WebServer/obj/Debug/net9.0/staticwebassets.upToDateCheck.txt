@@ -135,3 +135,6 @@ wwwroot\js\utils\modal.js
 wwwroot\uploads\chat\43a1455e14a94751b75ba8251663af96.gif
 wwwroot\uploads\chat\99928a3b4ffd45c8a8f9f18f8d0fb2d7.gif
 wwwroot\uploads\chat\a2d210b077a34dd28648b353727cce5f.gif
+wwwroot\uploads\chat\c5de9ea059f348c5aa1f034392534ca9.webp
+wwwroot\uploads\voice\02ed4f8d887b4ff688cc507ff69bde62.webm
+wwwroot\uploads\voice\2c72807efbaf4c578ca12a9a28607b1c.webm

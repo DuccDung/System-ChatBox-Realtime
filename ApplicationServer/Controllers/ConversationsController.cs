@@ -408,5 +408,89 @@ namespace ApplicationServer.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("{conversationId:int}/messages/audio")]
+        public async Task<IActionResult> SendAudioMessage(
+    int conversationId,
+    [FromBody] SendAudioMessageRequest req)
+        {
+            if (req == null)
+                return BadRequest("Body is required.");
+
+            if (req.SenderId <= 0)
+                return BadRequest("SenderId is required.");
+
+            if (string.IsNullOrWhiteSpace(req.AudioUrl))
+                return BadRequest("AudioUrl is required.");
+
+            // Check conversation exists
+            var convExists = await _context.Conversations
+                .AnyAsync(c => c.ConversationId == conversationId);
+            if (!convExists)
+                return NotFound("Conversation not found.");
+
+            // Check sender exists
+            var sender = await _context.Accounts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.AccountId == req.SenderId);
+            if (sender == null)
+                return NotFound("Sender not found.");
+
+            // Check membership
+            var isMember = await _context.ConversationMembers
+                .AnyAsync(cm =>
+                    cm.ConversationId == conversationId &&
+                    cm.AccountId == req.SenderId);
+
+            if (!isMember)
+                return Forbid();
+
+            // Validate parent message
+            if (req.ParentMessageId.HasValue)
+            {
+                var parentOk = await _context.Messages.AnyAsync(m =>
+                    m.MessageId == req.ParentMessageId.Value &&
+                    m.ConversationId == conversationId);
+
+                if (!parentOk)
+                    return BadRequest("ParentMessageId is invalid.");
+            }
+
+            var message = new Message
+            {
+                ConversationId = conversationId,
+                SenderId = req.SenderId,
+                Content = req.AudioUrl,
+                MessageType = "audio",
+                CreatedAt = DateTime.UtcNow,
+                ParentMessageId = req.ParentMessageId,
+                IsRead = false,
+                IsRemove = false
+            };
+
+            _context.Messages.Add(message);
+            await _context.SaveChangesAsync();
+
+            var result = new MessageDto
+            {
+                MessageId = message.MessageId,
+                ConversationId = message.ConversationId,
+                Content = message.Content,
+                MessageType = message.MessageType,
+                CreatedAt = message.CreatedAt,
+                IsRead = message.IsRead,
+                IsRemove = message.IsRemove,
+                ParentMessageId = message.ParentMessageId,
+                Sender = new SenderDto
+                {
+                    AccountId = sender.AccountId,
+                    AccountName = sender.AccountName,
+                    Email = sender.Email,
+                    PhotoPath = sender.PhotoPath
+                }
+            };
+
+            return Ok(result);
+        }
     }
 }

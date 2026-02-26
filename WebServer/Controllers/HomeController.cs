@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using WebServer.Dtos;
-using WebServer.Interfaces;
 using WebServer.Interfaces;
 using WebServer.Services;
 using WebServer.ViewModels.WebServer.ViewModels;
@@ -207,6 +205,48 @@ namespace WebServer.Controllers
             catch (Exception ex)
             {
                 Response.StatusCode = 500;
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+
+        [HttpPost("/chat/send_audio")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> SendAudio([FromForm] SendAudioUploadRequest req)
+        {
+            if (req == null || req.File == null)
+                return BadRequest(new { message = "File is required." });
+
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userIdStr))
+                return Unauthorized();
+
+            var senderId = int.Parse(userIdStr);
+
+            try
+            {
+                var created = await _conversationService.SendAudioMessageAsync(
+                    req.ConversationId,
+                    senderId,
+                    req.File,
+                    req.ParentMessageId
+                );
+
+                await realtime.BroadcastToConversationAsync(
+                    req.ConversationId,
+                    new
+                    {
+                        type = "message",
+                        conversationId = req.ConversationId,
+                        payload = created
+                    },
+                    excludeUserId: userIdStr
+                );
+
+                return Ok(created);
+            }
+            catch (Exception ex)
+            {
                 return BadRequest(new { message = ex.Message });
             }
         }

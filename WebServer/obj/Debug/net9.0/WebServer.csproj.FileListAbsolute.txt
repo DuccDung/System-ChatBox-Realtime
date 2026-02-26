@@ -45,7 +45,6 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\66ebtzjdw2-5y7oexugvx.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\z9cno03gix-piwtmzy1gg.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\gvxubpmka7-ojfmuzaamq.gz
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\gom932ohkq-h7w31qbw2c.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\63vb69oq54-bq91cjqmqe.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\qqmk64zek2-bpt50w6tvp.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\vwi0plop31-ceifcjw18c.gz
@@ -85,6 +84,7 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\ku4658nmvh-e61qnhg2py.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\l1sqiaxy66-5n8k11ildr.gz
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\rktyk3iz68-o244n82ka9.gz
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\lg2lje3xr0-4tfpt2royc.gz
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\ymr8gksevy-vo0k8tmz0j.gz
-D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\tkoqeb30nn-n2ai0cwhm4.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\lg2lje3xr0-xv1rcbdsif.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\ymr8gksevy-i5o0ug7deg.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\tkoqeb30nn-3e5ony25mk.gz
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\obj\Debug\net9.0\compressed\gom932ohkq-qmemes0opb.gz

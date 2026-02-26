@@ -4,7 +4,16 @@ export const api_origin = axios.create({
     baseURL: window.location.origin,
     withCredentials: true,
     headers: {
-        "Content-Type": "application/json",
         "Accept": "application/json",
+        "Content-Type": "application/json",
     },
+});
+
+api_origin.interceptors.request.use((config) => {
+    // Nếu là FormData thì xoá Content-Type để axios tự set boundary
+    if (config.data instanceof FormData) {
+        delete config.headers["Content-Type"];
+        delete config.headers["content-type"];
+    }
+    return config;
 });

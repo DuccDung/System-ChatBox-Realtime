@@ -49,4 +49,10 @@ namespace WebServer.Dtos
         public IFormFile File { get; set; } = default!;
         public int? ParentMessageId { get; set; }
     }
+    public class SendAudioUploadRequest
+    {
+        public int ConversationId { get; set; }
+        public IFormFile File { get; set; } = default!;
+        public int? ParentMessageId { get; set; }
+    }
 }
