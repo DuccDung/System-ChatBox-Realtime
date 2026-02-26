@@ -44,3 +44,18 @@ export function subscribeConversation(conversationId) {
     else
         ws.addEventListener("open", send, { once: true });
 }
+
+export function sendCall(toUserId, payload) {
+    connectWs();
+    if (!ws) return;
+
+    const msg = {
+        type: "call.send",
+        toUserId: String(toUserId),
+        payload
+    };
+
+    const send = () => ws.send(JSON.stringify(msg));
+    if (ws.readyState === WebSocket.OPEN) send();
+    else ws.addEventListener("open", send, { once: true });
+}

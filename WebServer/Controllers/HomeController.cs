@@ -150,7 +150,7 @@ namespace WebServer.Controllers
                 // Broadcast realtime cho những socket đang subscribe conversation này (trừ sender)
                 await realtime.BroadcastToConversationAsync(
                     req.ConversationId,
-                    new { type = "message", conversationId = req.ConversationId, payload = created },
+                    new { type = "message-text", conversationId = req.ConversationId, payload = created },
                     excludeUserId: userIdStr
                 );
                 // trả về message dto (hoặc ok=true cũng được)
@@ -193,7 +193,7 @@ namespace WebServer.Controllers
                     req.ConversationId,
                     new
                     {
-                        type = "message",
+                        type = "message-image",
                         conversationId = req.ConversationId,
                         payload = created
                     },
@@ -236,7 +236,7 @@ namespace WebServer.Controllers
                     req.ConversationId,
                     new
                     {
-                        type = "message",
+                        type = "message-audio",
                         conversationId = req.ConversationId,
                         payload = created
                     },
@@ -250,5 +250,109 @@ namespace WebServer.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+        private static string WsEventTypeFromMessageType(string? messageType)
+        {
+            if (string.IsNullOrWhiteSpace(messageType)) return "message-text";
+
+            return messageType.Trim().ToLowerInvariant() switch
+            {
+                "image" => "message-image",
+                "audio" => "message-audio",
+                "text" => "message-text",
+                _ => "message-text"
+            };
+        }
+        [HttpGet("/chat/peer")]
+        public async Task<IActionResult> GetPeer([FromQuery] int conversationId)
+        {
+            if (conversationId <= 0)
+                return BadRequest(new { message = "conversationId is required." });
+
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userIdStr))
+                return Unauthorized(new { message = "Not logged in." });
+
+            var meId = int.Parse(userIdStr);
+
+            try
+            {
+                var peer = await _conversationService.GetPeerAsync(conversationId, meId);
+                if (peer == null) return NotFound(new { message = "Peer not found." });
+
+                return Ok(peer); // Me and Peer{ accountId, accountName, email, photoPath }
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 500;
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+        [HttpGet("/call/incoming_popup")]
+        public IActionResult IncomingCallPopup(
+         [FromQuery] int conversationId,
+         [FromQuery] string callType,
+
+         [FromQuery] int fromUserId,
+         [FromQuery] string fromUserName,
+         [FromQuery] string? fromUserPhoto,
+
+         [FromQuery] int toUserId,
+         [FromQuery] string toUserName,
+         [FromQuery] string? toUserPhoto
+ )
+        {
+            var vm = new IncomingCallVm
+            {
+                ConversationId = conversationId,
+                CallType = string.IsNullOrWhiteSpace(callType) ? "video" : callType,
+
+                FromUserId = fromUserId,
+                FromUserName = fromUserName,
+                FromUserPhoto = fromUserPhoto,
+
+                ToUserId = toUserId,
+                ToUserName = toUserName,
+                ToUserPhoto = toUserPhoto
+            };
+
+            return PartialView("Partials/_IncomingCallPopup", vm);
+        }
+        [HttpGet("/call/popup")]
+        public async Task<IActionResult> CallPopup(
+        [FromQuery] int conversationId,
+        [FromQuery] string? callType
+    )
+        {
+            if (conversationId <= 0)
+                return BadRequest(new { message = "conversationId is required." });
+
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userIdStr))
+                return Unauthorized(new { message = "Not logged in." });
+
+            var meId = int.Parse(userIdStr);
+
+            var peerResp = await _conversationService.GetPeerAsync(conversationId, meId);
+            if (peerResp == null)
+                return NotFound(new { message = "Peer not found." });
+
+            // peerResp: ConversationPeerResponseDto { Me, Peer }
+            var vm = new CallPopupVm
+            {
+                ConversationId = conversationId,
+                CallType = string.IsNullOrWhiteSpace(callType) ? "video" : callType.Trim(),
+
+                MeId = peerResp.Me.AccountId,
+                MeName = peerResp.Me.AccountName,
+                MePhoto = peerResp.Me.PhotoPath,
+
+                PeerId = peerResp.Peer.AccountId,
+                PeerName = peerResp.Peer.AccountName,
+                PeerPhoto = peerResp.Peer.PhotoPath
+            };
+
+            return PartialView("Partials/_CallPopup", vm);
+        }
     }
+
 }

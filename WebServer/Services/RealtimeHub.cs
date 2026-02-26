@@ -136,8 +136,20 @@ namespace WebServer.Services
             }
             catch
             {
-                // ignore send errors (client disconnect)
             }
+        }
+
+        public Task SendCallToUserAsync(string toUserId, string fromUserId, object payload)
+        {
+            var envelope = new
+            {
+                type = "call.event",   
+                fromUserId,
+                toUserId,
+                payload
+            };
+
+            return SendToUserAsync(toUserId, envelope);
         }
     }
 }

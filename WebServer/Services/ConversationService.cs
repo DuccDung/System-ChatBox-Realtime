@@ -161,5 +161,20 @@ namespace WebServer.Services
             var data = await res.Content.ReadFromJsonAsync<ConversationMessageDto>();
             return data!;
         }
+
+        public async Task<ConversationPeerResponseDto?> GetPeerAsync(int conversationId, int meAccountId)
+        {
+            if (conversationId <= 0 || meAccountId <= 0) return null;
+
+            var res = await _http.GetAsync($"api/conversations/{conversationId}/peer?meId={meAccountId}");
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Get peer failed. Status: {res.StatusCode}. Body: {err}");
+            }
+
+            var data = await res.Content.ReadFromJsonAsync<ConversationPeerResponseDto>();
+            return data;
+        }
     }
 }

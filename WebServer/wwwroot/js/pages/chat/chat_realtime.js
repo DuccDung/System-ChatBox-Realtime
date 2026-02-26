@@ -3,22 +3,14 @@
 const scroller = document.getElementById("messageScroller");
 
 console.log("chat-realtime loaded");
-
-// đảm bảo websocket được connect
 connectWs();
 
-// ==============================
-// LẤY conversation đang active
-// ==============================
 function getActiveConversationId() {
     const active = document.querySelector(".thread-item.active");
     if (!active) return null;
     return parseInt(active.dataset.id, 10);
 }
 
-// ==============================
-// SUBSCRIBE KHI THREAD ACTIVE ĐỔI
-// ==============================
 export function subscribeActiveConversation() {
     const conversationId = getActiveConversationId();
     if (!conversationId) return;
@@ -27,44 +19,41 @@ export function subscribeActiveConversation() {
     subscribeConversation(conversationId);
 }
 
-// ==============================
-// LẮNG NGHE MESSAGE TỪ WS
-// ==============================
+/* ==============================
+   WS MESSAGE ROUTER
+============================== */
 window.addEventListener("ws:message", (event) => {
     const msg = event.detail;
+    if (!msg) return;
 
-    if (!msg || msg.type !== "message") return;
+    // bạn tách type: message-text | message-image | message-audio
+    const supportedTypes = new Set(["message-text", "message-image", "message-audio"]);
+    if (!supportedTypes.has(msg.type)) return;
 
     const activeConversationId = getActiveConversationId();
     if (!activeConversationId) return;
 
-    // nếu message không thuộc conversation đang mở -> bỏ qua
     if (msg.conversationId !== activeConversationId) return;
 
-    appendMessageToScroller(msg.payload);
+    appendMessageToScroller(msg.payload, msg.type);
 });
 
-// ==============================
-// APPEND MESSAGE VÀO UI
-// ==============================
-function appendMessageToScroller(message) {
+/* ==============================
+   APPEND MESSAGE UI
+============================== */
+function appendMessageToScroller(message, wsType) {
     if (!scroller) return;
 
-    // meId lấy từ data attribute của scroller (đúng với view của bạn)
     const meId = parseInt(scroller.dataset.meId || "0", 10);
-    const senderId = message?.sender?.accountId ?? message?.sender?.AccountId; // phòng trường hợp casing
+    const senderId = message?.sender?.accountId ?? message?.sender?.AccountId ?? message?.senderId ?? message?.SenderId;
     const isMe = senderId === meId;
-
     const sideClass = isMe ? "right" : "left";
 
-    // createdAt có thể là string ISO -> parse về Date
     const curTime = parseDate(message.createdAt || message.CreatedAt);
     const now = new Date();
 
-    // lấy message time của bubble cuối cùng đang render (để quyết định divider/spacing)
     const lastMsgTime = getLastMessageTime();
 
-    // divider nếu cách nhau > 15 phút
     if (lastMsgTime && needDivider(lastMsgTime, curTime)) {
         const divider = document.createElement("div");
         divider.className = "message-timestamp-divider";
@@ -72,46 +61,93 @@ function appendMessageToScroller(message) {
         scroller.appendChild(divider);
     }
 
-    // spacing class
     const spacing = spacingClass(lastMsgTime, curTime);
 
-    // bubble-group
     const group = document.createElement("div");
     group.className = `bubble-group ${spacing}`.trim();
 
-    // msg bubble
+    // messageType lấy từ wsType (ưu tiên) hoặc từ payload.MessageType
+    const payloadTypeRaw = (message.messageType ?? message.MessageType ?? "").toString().toLowerCase();
+    const messageKind = wsType === "message-image" ? "image"
+        : wsType === "message-audio" ? "audio"
+            : wsType === "message-text" ? "text"
+                : payloadTypeRaw || "text";
+
+    if (messageKind === "image") {
+        group.appendChild(renderImageBubble(message, sideClass, curTime));
+    } else if (messageKind === "audio") {
+        group.appendChild(renderAudioBubble(message, sideClass, curTime));
+    } else {
+        group.appendChild(renderTextBubble(message, sideClass, curTime));
+    }
+
+    scroller.appendChild(group);
+    scroller.scrollTop = scroller.scrollHeight;
+}
+
+function renderTextBubble(message, sideClass, curTime) {
     const msgDiv = document.createElement("div");
     msgDiv.className = `msg ${sideClass}`;
 
-    // content (text)
-    // (vì bạn đang render @m.Content trực tiếp, mình escape để tránh XSS)
     msgDiv.appendChild(document.createTextNode(message.content ?? message.Content ?? ""));
 
-    // tooltip time HH:mm
     const tip = document.createElement("div");
     tip.className = "message-time-tooltip";
     tip.textContent = tooltipTime(curTime);
-
     msgDiv.appendChild(tip);
-    group.appendChild(msgDiv);
-    scroller.appendChild(group);
 
-    // auto scroll xuống cuối
-    scroller.scrollTop = scroller.scrollHeight;
+    return msgDiv;
+}
+
+function renderImageBubble(message, sideClass, curTime) {
+    const wrap = document.createElement("div");
+    wrap.className = `image-wrapper ${sideClass}`;
+
+    const img = document.createElement("img");
+    img.className = "chat-image-modern";
+    img.alt = "image";
+    img.src = message.content ?? message.Content ?? "";
+    wrap.appendChild(img);
+
+    const time = document.createElement("div");
+    time.className = "image-time";
+    time.textContent = tooltipTime(curTime);
+    wrap.appendChild(time);
+
+    return wrap;
+}
+
+function renderAudioBubble(message, sideClass, curTime) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `msg ${sideClass}`;
+
+    const audio = document.createElement("audio");
+    audio.className = "chat-audio";
+    audio.controls = true;
+    audio.preload = "metadata";
+
+    const source = document.createElement("source");
+    source.src = message.content ?? message.Content ?? "";
+    source.type = "audio/webm";
+    audio.appendChild(source);
+
+    msgDiv.appendChild(audio);
+
+    const time = document.createElement("div");
+    time.className = "audio-time";
+    time.textContent = tooltipTime(curTime);
+    msgDiv.appendChild(time);
+
+    return msgDiv;
 }
 
 /* ================= Helpers giống Razor ================= */
 
 function parseDate(v) {
     if (!v) return new Date();
-    // nếu là Date rồi
     if (v instanceof Date) return v;
-
-    // ISO string thường parse được luôn
     const d = new Date(v);
     if (!isNaN(d.getTime())) return d;
-
-    // fallback
     return new Date();
 }
 
@@ -142,12 +178,7 @@ function stripTime(d) {
 function spacingClass(prevTime, curTime) {
     if (!prevTime) return "";
     const diffMs = curTime - prevTime;
-
-    // < 60s => tight
-    if (diffMs < 60 * 1000) return "spacing-tight";
-
-    // >= 1 phút => spaced
-    return "spacing-spaced";
+    return diffMs < 60 * 1000 ? "spacing-tight" : "spacing-spaced";
 }
 
 function needDivider(prevTime, curTime) {
@@ -155,36 +186,22 @@ function needDivider(prevTime, curTime) {
     return (curTime - prevTime) > 15 * 60 * 1000;
 }
 
-/**
- * Lấy thời gian của message bubble cuối cùng đã render trong scroller
- * dựa vào tooltip "HH:mm". Nếu không parse được thì return null.
- */
 function getLastMessageTime() {
-    // tìm bubble cuối: .msg .message-time-tooltip
-    const lastTip = scroller.querySelector(".msg:last-of-type .message-time-tooltip")
-        || scroller.querySelector(".bubble-group:last-of-type .message-time-tooltip");
+    const lastTip =
+        scroller.querySelector(".bubble-group:last-of-type .message-time-tooltip") ||
+        scroller.querySelector(".bubble-group:last-of-type .image-time") ||
+        scroller.querySelector(".bubble-group:last-of-type .audio-time");
 
     if (!lastTip) return null;
 
-    const t = (lastTip.textContent || "").trim(); // "HH:mm"
+    const t = (lastTip.textContent || "").trim();
     const m = /^(\d{2}):(\d{2})$/.exec(t);
     if (!m) return null;
 
     const hh = parseInt(m[1], 10);
     const mm = parseInt(m[2], 10);
 
-    // ⚠️ Không có ngày ở tooltip, nên ta gán ngày hôm nay làm gần đúng.
-    // Nếu bạn muốn chuẩn tuyệt đối, mình sẽ lưu lastMessageTime vào biến global khi load messages.
     const base = new Date();
     base.setHours(hh, mm, 0, 0);
     return base;
-}
-
-// ==============================
-// ESCAPE HTML TRÁNH XSS
-// ==============================
-function escapeHtml(text) {
-    const div = document.createElement("div");
-    div.innerText = text;
-    return div.innerHTML;
 }

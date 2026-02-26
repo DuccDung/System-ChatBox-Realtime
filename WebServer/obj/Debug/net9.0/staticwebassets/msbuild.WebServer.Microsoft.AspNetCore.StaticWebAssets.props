@@ -1200,8 +1200,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xv1rcbdsif</Fingerprint>
-      <Integrity>s1XjHW6Oa5LC86wnQiTJteKcvPi0S9yYp+JEyLmjS9Q=</Integrity>
+      <Fingerprint>p52nbzev66</Fingerprint>
+      <Integrity>rWGJvXpn4UkxR6OpQ4xhBvZ26oplGQorpkusZssbbcM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\pages\home\main.css'))</OriginalItemSpec>
@@ -1314,6 +1314,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\auth\login.js'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\call-popup-ui.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>js/pages/chat/call-popup-ui.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>pwgft2jjfl</Fingerprint>
+      <Integrity>p4foTUjUN+i64qHmINlXc8QJTqcFs08W6pbGDZ/C7B4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\call-popup-ui.js'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\chat_composer.js'))">
       <SourceType>Package</SourceType>
       <SourceId>WebServer</SourceId>
@@ -1344,8 +1362,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>e61qnhg2py</Fingerprint>
-      <Integrity>ipzM3oK8ItfXg65nwNuBsZXKA/SF6r7OONoqIHOvO9Q=</Integrity>
+      <Fingerprint>1jqmxhnom4</Fingerprint>
+      <Integrity>M7vmR61/M26PErvBsvcOal0D1xymAEQfjs9RKFGcBuQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\chat_realtime.js'))</OriginalItemSpec>
@@ -1362,8 +1380,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5n8k11ildr</Fingerprint>
-      <Integrity>P/Ip+o83SFz3NGXBEws/gMmK44UaVdI391rpHtgrxPU=</Integrity>
+      <Fingerprint>qsft454nmj</Fingerprint>
+      <Integrity>Oq0m9mFO1Lpgh1xSGMImnEnViO119kY8x2Ojzo+xwKA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\handle_choice_item_threads.js'))</OriginalItemSpec>
@@ -1422,6 +1440,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\threads.js'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\video-call-ui.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>js/pages/chat/video-call-ui.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>k03ucfxljs</Fingerprint>
+      <Integrity>xOJ3Tjen0dw9mILE8W9ihl5ehF5fDcpZ/HNPG6aSKeE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\video-call-ui.js'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\register\main.js'))">
       <SourceType>Package</SourceType>
       <SourceId>WebServer</SourceId>
@@ -1470,8 +1506,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>i5o0ug7deg</Fingerprint>
-      <Integrity>RkiMA0AQ61UaZw+IE7gjj9p4q4LR8APYEgKFdBno3P4=</Integrity>
+      <Fingerprint>5j114bglsi</Fingerprint>
+      <Integrity>AY4MTD6Or7sJwfpYipcrx/LO55wpzHViJEMDxN38JAc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\services\chatService.js'))</OriginalItemSpec>
@@ -1488,8 +1524,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>aebmlzd0hc</Fingerprint>
-      <Integrity>MlRzqZvyjKEl7ftXlekUMG9PZxGByQ7pQSwRPBw05h8=</Integrity>
+      <Fingerprint>ppyk0e5a47</Fingerprint>
+      <Integrity>Q0sSOt8cIkSzVrNHvOpY4L+Dmrp6/6aKlaBrC7A1gXQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\services\ws-client.js'))</OriginalItemSpec>
@@ -1529,6 +1565,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\utils\modal.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\chat\17ef6a94e7e644959f95942a81fced52.gif'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>uploads/chat/17ef6a94e7e644959f95942a81fced52.gif</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>n4r4qqpvjc</Fingerprint>
+      <Integrity>qUtohydizQ7h0L7BVgBuAT/lDQ7dYLlHCmywmO6fy6A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\chat\17ef6a94e7e644959f95942a81fced52.gif'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\chat\43a1455e14a94751b75ba8251663af96.gif'))">
       <SourceType>Package</SourceType>
@@ -1637,6 +1691,96 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\2c72807efbaf4c578ca12a9a28607b1c.webm'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\4d8d00f164ba4bec89450cfaf1208ec3.webm'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>uploads/voice/4d8d00f164ba4bec89450cfaf1208ec3.webm</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>4jc6eggei9</Fingerprint>
+      <Integrity>EO3Lt+GLI0ykbZ4XAXiOLhgmhYbOPmHZwaw0Nh1DSA8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\4d8d00f164ba4bec89450cfaf1208ec3.webm'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\69d24218adae469bb54e02bf6d23f9a6.webm'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>uploads/voice/69d24218adae469bb54e02bf6d23f9a6.webm</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>p0hrm9z2q9</Fingerprint>
+      <Integrity>FydP0QhVImqhOynpwRKHuaX5sD2boIHhPcfVj7JMA68=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\69d24218adae469bb54e02bf6d23f9a6.webm'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\8b01191235024b1fb092a13281a2c9b7.webm'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>uploads/voice/8b01191235024b1fb092a13281a2c9b7.webm</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>8rt2xaw9ts</Fingerprint>
+      <Integrity>3JOmaRZMezSZz5lfa3VuHeCYSS0Evudvgi0oZQojvKY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\8b01191235024b1fb092a13281a2c9b7.webm'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\ba0b5c5fef7743d19ee14179c636274a.webm'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>uploads/voice/ba0b5c5fef7743d19ee14179c636274a.webm</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>wdyfryv8d9</Fingerprint>
+      <Integrity>LPHwUP96/ESAsBuKRWBqZfqGKhHB6QLJNYD/1voRjgE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\ba0b5c5fef7743d19ee14179c636274a.webm'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\ddcff5fe388647c284711b24bb85aa88.webm'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebServer</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebServer</BasePath>
+      <RelativePath>uploads/voice/ddcff5fe388647c284711b24bb85aa88.webm</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dagw0cu0zb</Fingerprint>
+      <Integrity>i1XW+J1xjC+3tF8u2wdzS0j16gqJokeKh80owQKosbc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\voice\ddcff5fe388647c284711b24bb85aa88.webm'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\WebServer.w4h58cchms.bundle.scp.css'))">
       <SourceType>Package</SourceType>

@@ -41,7 +41,7 @@ if (!threadList) {
         }
     });
 
-    // ✅ Auto open first thread (khi list render xong)
+    // Auto open first thread 
     autoOpenFirstThreadWhenReady();
 }
 
@@ -98,30 +98,20 @@ async function loadMessages(conversationId) {
     }
 }
 
-/**
- * ✅ Auto click/open item đầu tiên sau khi threads thật sự xuất hiện
- * - vì DOMContentLoaded có thể chạy trước khi partial HTML được gắn vào DOM
- */
 function autoOpenFirstThreadWhenReady() {
     const maxWaitMs = 5000;
     const intervalMs = 50;
     const start = Date.now();
 
     const timer = setInterval(async () => {
-        // threadList có thể tồn tại nhưng chưa có item (do render async)
         const firstItem = threadList?.querySelector(".thread-item");
         if (firstItem) {
             clearInterval(timer);
 
-            // nếu đã có active sẵn thì thôi
             const alreadyActive = threadList.querySelector(".thread-item.active");
             if (alreadyActive) return;
 
-            // ✅ “giống click thật”: gọi openThread (ổn định hơn dispatch click)
             await openThread(firstItem);
-
-            // Nếu bạn thật sự muốn trigger event click:
-            // firstItem.dispatchEvent(new MouseEvent("click", { bubbles: true }));
             return;
         }
 

@@ -47,10 +47,6 @@ export const chatService = {
     },
     async sendAudioMessage(conversationId, file, parentMessageId = null) {
         const formData = new FormData();
-
-        // KEY PHẢI ĐÚNG TÊN PROPERTY: ConversationId / File / ParentMessageId
-        // Nhưng ASP.NET Core binder thường accept camelCase cũng OK.
-        // Để chắc chắn tuyệt đối: dùng đúng PascalCase theo model.
         formData.append("ConversationId", String(conversationId));
         formData.append("File", file);
 
@@ -58,7 +54,23 @@ export const chatService = {
             formData.append("ParentMessageId", String(parentMessageId));
         }
 
-        // KHÔNG set Content-Type thủ công để axios tự set boundary
         return await api_origin.post("/chat/send_audio", formData);
+    },
+    async getPeer(conversationId) {
+        return await api_origin.get("/chat/peer", {
+            params: { conversationId }
+        });
+    },
+};
+export const callService = {
+    async getIncomingPopup(payload) {
+        return await api_origin.get("/call/incoming_popup", {
+            params: payload
+        });
+    },
+     async getCallPopup(conversationId, callType = "video") {
+        return await api_origin.get("/call/popup", {
+            params: { conversationId, callType }
+        });
     }
 };

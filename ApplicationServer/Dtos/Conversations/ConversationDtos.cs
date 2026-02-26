@@ -62,4 +62,16 @@
         public string AudioUrl { get; set; } = "";
         public int? ParentMessageId { get; set; }
     }
+    public class PeerDto
+    {
+        public int AccountId { get; set; }
+        public string? AccountName { get; set; }
+        public string? Email { get; set; }
+        public string? PhotoPath { get; set; }
+    }
+    public class ConversationPeerResponseDto
+    {
+        public PeerDto Me { get; set; } = default!;
+        public PeerDto Peer { get; set; } = default!;
+    }
 }

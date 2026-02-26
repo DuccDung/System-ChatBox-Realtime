@@ -35,7 +35,8 @@ namespace WebServer.Services
                     var msg = await ReadFullMessageAsync(ws, buffer, result, ct);
                     if (string.IsNullOrWhiteSpace(msg)) continue;
 
-                    await HandleClientMessageAsync(socketId, ws, msg, ct);
+                    //await HandleClientMessageAsync(socketId, ws, msg, ct);
+                    await HandleClientMessageAsync(socketId, userId, ws, msg, ct);
                 }
             }
             catch
@@ -55,7 +56,7 @@ namespace WebServer.Services
             }
         }
 
-        private async Task HandleClientMessageAsync(string socketId, WebSocket ws, string json, CancellationToken ct)
+        private async Task HandleClientMessageAsync(string socketId, string userId, WebSocket ws, string json, CancellationToken ct)
         {
             // message mẫu client:
             // { "type":"subscribe", "conversationId":3 }
@@ -91,6 +92,36 @@ namespace WebServer.Services
                         await SendAsync(ws, new { type = "unsubscribed", conversationId = convId2 }, ct);
                     }
                     break;
+                case "call.send":
+                    {
+                        // client gửi: { type:"call.send", toUserId:"2", payload:{...} }
+
+                        if (!doc.RootElement.TryGetProperty("toUserId", out var toEl))
+                        {
+                            await SendAsync(ws, new { type = "call.error", message = "toUserId is required" }, ct);
+                            break;
+                        }
+
+                        var toUserId = toEl.GetString();
+                        if (string.IsNullOrWhiteSpace(toUserId))
+                        {
+                            await SendAsync(ws, new { type = "call.error", message = "toUserId is invalid" }, ct);
+                            break;
+                        }
+
+                        object? payload = null;
+                        if (doc.RootElement.TryGetProperty("payload", out var p))
+                        {
+                            payload = JsonSerializer.Deserialize<object>(p.GetRawText(), JsonOpts);
+                        }
+
+                        await _hub.SendCallToUserAsync(toUserId, userId, payload ?? new { });
+
+                        // optional ack để debug
+                        await SendAsync(ws, new { type = "call.sent", toUserId }, ct);
+
+                        break;
+                    }
             }
         }
 

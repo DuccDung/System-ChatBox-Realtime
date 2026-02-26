@@ -492,5 +492,48 @@ namespace ApplicationServer.Controllers
 
             return Ok(result);
         }
+        [HttpGet("{conversationId:int}/peer")]
+        public async Task<ActionResult<ConversationPeerResponseDto>> GetPeerInfo( int conversationId,[FromQuery] int meId)
+        {
+            if (meId <= 0) return BadRequest("meId is required.");
+
+            var conv = await _context.Conversations
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ConversationId == conversationId);
+
+            if (conv == null) return NotFound("Conversation not found.");
+            if (conv.IsGroup) return BadRequest("This endpoint only supports 1-1 conversations.");
+
+            var memberIds = await _context.ConversationMembers
+                .Where(cm => cm.ConversationId == conversationId)
+                .Select(cm => cm.AccountId)
+                .ToListAsync();
+
+            if (!memberIds.Contains(meId)) return Forbid();
+
+            var users = await _context.ConversationMembers
+                .Where(cm => cm.ConversationId == conversationId)
+                .Select(cm => new PeerDto
+                {
+                    AccountId = cm.Account.AccountId,
+                    AccountName = cm.Account.AccountName,
+                    Email = cm.Account.Email,
+                    PhotoPath = cm.Account.PhotoPath
+                })
+                .AsNoTracking()
+                .ToListAsync();
+
+            var me = users.FirstOrDefault(x => x.AccountId == meId);
+            var peer = users.FirstOrDefault(x => x.AccountId != meId);
+
+            if (me == null) return NotFound("Me not found.");
+            if (peer == null) return NotFound("Peer not found.");
+
+            return Ok(new ConversationPeerResponseDto
+            {
+                Me = me,
+                Peer = peer
+            });
+        }
     }
 }

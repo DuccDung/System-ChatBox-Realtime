@@ -32,6 +32,10 @@
     --form_personal_line: #e5e7eb;
     --form_personal_blue: #2563eb;
     --form_personal_btn-bg: #eef0f3;
+    --call_pr_bg-overlay: rgba(0,0,0,0.35);
+    --call_pr_control-bg: rgba(36,37,38,0.93);
+    --call_pr_danger: #f02849;
+    --call_pr_control-size: 52px;
 }
 
 * {
@@ -2197,3 +2201,353 @@ body.light .chat-action-btn {
         opacity: 1;
     }
 }
+
+/*call===================================================*/
+.vdcall_consumer_call-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(245, 247, 250, 0.72);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000; /* đảm bảo nổi trên cùng */
+}
+
+.vdcall_consumer_call-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.13), 0 1.5px 6px 0 rgba(0, 0, 0, 0.07);
+    padding: 32px 12px 28px 12px;
+    width: 304px;
+    min-width: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: appear 0.18s cubic-bezier(0.08, 0.52, 0.52, 1);
+    box-sizing: border-box;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(1.06);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.vdcall_consumer_call-card .vdcall_consumer_close-btn {
+    position: absolute;
+    right: 12px;
+    top: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.18s;
+}
+
+    .vdcall_consumer_call-card .vdcall_consumer_close-btn:hover {
+        background: #f0f2f5;
+    }
+
+    .vdcall_consumer_call-card .vdcall_consumer_close-btn svg {
+        display: block;
+        width: 20px;
+        height: 20px;
+        color: #606770;
+    }
+
+.vdcall_consumer_call-card .vdcall_consumer_incoming-label {
+    font-size: 16px;
+    color: #606770;
+    margin-bottom: 18px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-align: center;
+}
+
+.vdcall_consumer_call-card .vdcall_consumer_avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #e4e6eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    object-fit: cover;
+    box-shadow: 0 1.5px 4px 0 rgba(0,0,0,0.07);
+    border: 2px solid #fff;
+    overflow: hidden;
+}
+
+    .vdcall_consumer_call-card .vdcall_consumer_avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.vdcall_consumer_call-card .vdcall_consumer_caller-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: #050505;
+    margin-bottom: 1px;
+    text-align: center;
+    line-height: 1.22;
+}
+
+.vdcall_consumer_call-card .vdcall_consumer_encrypted {
+    font-size: 13px;
+    color: #606770;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 18px;
+    justify-content: center;
+}
+
+    .vdcall_consumer_call-card .vdcall_consumer_encrypted svg {
+        width: 13px;
+        height: 13px;
+        vertical-align: middle;
+        color: #606770;
+    }
+
+.vdcall_consumer_call-card .vdcall_consumer_actions {
+    display: flex;
+    gap: 32px;
+    margin-top: 6px;
+    width: 100%;
+    justify-content: center;
+}
+
+.vdcall_consumer_call-card .vdcall_consumer_action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    margin: 0 2px;
+}
+
+.vdcall_consumer_call-card .vdcall_consumer_action-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    font-size: 22px;
+    border: none;
+}
+
+    .vdcall_consumer_call-card .vdcall_consumer_action-circle.vdcall_consumer_decline {
+        background: #f02849;
+        color: #fff;
+    }
+
+    .vdcall_consumer_call-card .vdcall_consumer_action-circle.vdcall_consumer_accept {
+        background: #31a24c;
+        color: #fff;
+    }
+
+.vdcall_consumer_call-card .vdcall_consumer_action-label {
+    font-size: 15px;
+    color: #606770;
+    font-weight: 400;
+    text-align: center;
+}
+
+@media (max-width: 340px) {
+    .vdcall_consumer_call-card {
+        width: 98vw;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+
+/* Container full-screen inside #form_modal-main */
+.call_pr_modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #000;
+    overflow: hidden;
+}
+
+/* REMOTE VIDEO */
+.call_pr_remote-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+    z-index: 0;
+}
+
+.call_pr_overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--call_pr_bg-overlay);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* LOCAL VIDEO THUMB */
+.call_pr_local-wrap {
+    position: fixed;
+    right: 18px;
+    bottom: 130px;
+    width: 220px;
+    height: calc(220px * 9 / 16);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    border: 2px solid rgba(255,255,255,0.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    z-index: 4;
+}
+
+.call_pr_local-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .call_pr_local-wrap {
+        width: 190px;
+        height: calc(190px * 9/16);
+        right: 14px;
+        bottom: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+    .call_pr_local-wrap {
+        width: 140px;
+        height: calc(140px * 9/16);
+        right: 12px;
+        bottom: 110px;
+    }
+}
+
+/* CENTER CARD */
+.call_pr_center {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    text-align: center;
+    padding: 24px;
+}
+
+.call_pr_center-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: rgba(0,0,0,0.38);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.08);
+    max-width: 80vw;
+}
+
+.call_pr_avatar {
+    width: 92px;
+    height: 92px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.08);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+}
+
+    .call_pr_avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .call_pr_avatar svg {
+        width: 46px;
+        height: 46px;
+        opacity: .85;
+    }
+
+.call_pr_name {
+    font-size: 18px;
+    font-weight: 650;
+    letter-spacing: .2px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.call_pr_status {
+    font-size: 13px;
+    opacity: .85;
+}
+
+/* CONTROLS */
+.call_pr_controls {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 42px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    pointer-events: auto;
+}
+
+.call_pr_btn {
+    width: var(--call_pr_control-size);
+    height: var(--call_pr_control-size);
+    border-radius: 999px;
+    border: none;
+    background: var(--call_pr_control-bg);
+    color: #fff;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    transition: transform .12s ease, background .12s ease, opacity .12s ease;
+}
+
+    .call_pr_btn:active {
+        transform: scale(.96);
+    }
+
+    .call_pr_btn.call_pr_end {
+        background: var(--call_pr_danger);
+    }
+
+    .call_pr_btn i {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    /* UI state (optional) */
+    .call_pr_btn[data-on="0"] {
+        opacity: .75;
+    }
+
