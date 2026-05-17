@@ -5,6 +5,10 @@
       {
         "Path": "ApplicationServer\\ApplicationServer.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "WebServer\\WebServer.csproj",
+        "Action": "Start"
       }
     ]
   }
