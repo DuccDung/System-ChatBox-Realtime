@@ -1,0 +1,204 @@
+@model WebServer.Dtos.ConversationMembersResponseDto
+
+@functions {
+    string SafeAvatar(string? photo)
+    {
+        if (string.IsNullOrWhiteSpace(photo))
+            return Url.Content("~/assets/images/avatar-default.png");
+
+        return photo!;
+    }
+
+    string RoleText(string role)
+        => string.Equals(role, "leader", StringComparison.OrdinalIgnoreCase) ? "Trưởng nhóm" : "Thành viên";
+}
+
+<div class="group_members" data-conversation-id="@Model.ConversationId">
+    <div class="group_members__header">
+        <div>
+            <div class="group_members__eyebrow">Nhóm chat</div>
+            <h2>@(string.IsNullOrWhiteSpace(Model.Title) ? "Nhóm chat" : Model.Title)</h2>
+        </div>
+
+        <button class="group_members__close" type="button" data-modal-close="true" aria-label="Đóng">
+            ×
+        </button>
+    </div>
+
+    <div class="group_members__summary">
+        <span>@Model.Members.Count thành viên</span>
+        @if (Model.CanManageMembers)
+        {
+            <span>Bạn là trưởng nhóm</span>
+        }
+    </div>
+
+    <div class="group_members__list">
+        @foreach (var member in Model.Members)
+        {
+            <div class="group_members__item" data-member-id="@member.AccountId">
+                <img class="group_members__avatar"
+                     src="@SafeAvatar(member.PhotoPath)"
+                     alt="@member.AccountName"
+                     onerror="this.onerror=null;this.src='@Url.Content("~/assets/images/avatar-default.png")';" />
+
+                <div class="group_members__meta">
+                    <div class="group_members__name">@member.AccountName</div>
+                    <div class="group_members__email">@member.Email</div>
+                </div>
+
+                <div class="group_members__role @(member.IsLeader ? "is-leader" : "")">
+                    @RoleText(member.Role)
+                </div>
+
+                @if (Model.CanManageMembers && !member.IsLeader)
+                {
+                    <button class="group_members__remove"
+                            type="button"
+                            data-remove-member="@member.AccountId"
+                            data-member-name="@member.AccountName">
+                        Xóa
+                    </button>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .group_members {
+        width: min(520px, calc(100vw - 32px));
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .group_members__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 20px 12px;
+        border-bottom: 1px solid #edf0f3;
+    }
+
+    .group_members__header h2 {
+        margin: 2px 0 0;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    .group_members__eyebrow {
+        color: #65676b;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .group_members__close {
+        width: 36px;
+        height: 36px;
+        border: 0;
+        border-radius: 999px;
+        background: #f0f2f5;
+        cursor: pointer;
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    .group_members__summary {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 20px;
+        color: #65676b;
+        font-size: 14px;
+        border-bottom: 1px solid #f1f3f5;
+    }
+
+    .group_members__list {
+        max-height: min(560px, 70vh);
+        overflow-y: auto;
+        padding: 8px;
+    }
+
+    .group_members__item {
+        display: grid;
+        grid-template-columns: 44px minmax(0, 1fr) auto auto;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+
+    .group_members__item:hover {
+        background: #f7f8fa;
+    }
+
+    .group_members__avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        object-fit: cover;
+        background: #eef0f3;
+    }
+
+    .group_members__meta {
+        min-width: 0;
+    }
+
+    .group_members__name {
+        font-weight: 700;
+        color: #050505;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .group_members__email {
+        color: #65676b;
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .group_members__role {
+        color: #65676b;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .group_members__role.is-leader {
+        color: #0866ff;
+        font-weight: 700;
+    }
+
+    .group_members__remove {
+        border: 0;
+        border-radius: 8px;
+        background: #fee2e2;
+        color: #b91c1c;
+        cursor: pointer;
+        font-weight: 700;
+        padding: 8px 12px;
+    }
+
+    .group_members__remove:hover {
+        background: #fecaca;
+    }
+
+    .group_members__remove:disabled {
+        cursor: not-allowed;
+        opacity: .65;
+    }
+
+    @@media (max-width: 560px) {
+        .group_members__item {
+            grid-template-columns: 40px minmax(0, 1fr) auto;
+        }
+
+        .group_members__role {
+            display: none;
+        }
+    }
+</style>

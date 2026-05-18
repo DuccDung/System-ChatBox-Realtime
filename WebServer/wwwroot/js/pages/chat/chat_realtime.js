@@ -26,6 +26,11 @@ window.addEventListener("ws:message", (event) => {
     const msg = event.detail;
     if (!msg) return;
 
+    if (msg.type === "group.member.removed") {
+        handleGroupMemberRemoved(msg);
+        return;
+    }
+
     // bạn tách type: message-text | message-image | message-audio
     const supportedTypes = new Set(["message-text", "message-image", "message-audio"]);
     if (!supportedTypes.has(msg.type)) return;
@@ -37,6 +42,55 @@ window.addEventListener("ws:message", (event) => {
 
     appendMessageToScroller(msg.payload, msg.type);
 });
+
+function handleGroupMemberRemoved(msg) {
+    const conversationId = Number.parseInt(String(msg.conversationId || "0"), 10);
+    const removedMemberId = Number.parseInt(String(msg.payload?.removedMemberId || "0"), 10);
+    const meId = getMeId();
+
+    if (!conversationId || !removedMemberId) return;
+
+    const threadItem = document.querySelector(`.thread-item[data-id="${conversationId}"]`);
+    const activeConversationId = getActiveConversationId();
+
+    if (removedMemberId === meId) {
+        threadItem?.remove();
+
+        if (activeConversationId === conversationId && scroller) {
+            scroller.innerHTML = `<div class="threads-empty">Bạn đã bị xóa khỏi nhóm này.</div>`;
+            const peerName = document.getElementById("peerName");
+            const peerStatus = document.getElementById("peerStatus");
+            if (peerName) peerName.textContent = "Đoạn chat";
+            if (peerStatus) peerStatus.textContent = "";
+            const btnGroupMembers = document.getElementById("btnGroupMembers");
+            if (btnGroupMembers) btnGroupMembers.hidden = true;
+        }
+
+        return;
+    }
+
+    if (threadItem?.dataset.memberCount) {
+        const nextCount = Math.max(0, Number.parseInt(threadItem.dataset.memberCount, 10) - 1);
+        threadItem.dataset.memberCount = String(nextCount);
+
+        if (activeConversationId === conversationId) {
+            const peerStatus = document.getElementById("peerStatus");
+            if (peerStatus) peerStatus.textContent = nextCount > 0 ? `${nextCount} thành viên` : "";
+        }
+    }
+}
+
+function getMeId() {
+    const fromScroller = Number.parseInt(scroller?.dataset.meId || "0", 10);
+    if (fromScroller > 0) return fromScroller;
+
+    try {
+        const user = JSON.parse(window.localStorage.getItem("user") || "{}");
+        return Number.parseInt(String(user.accountId || user.AccountId || "0"), 10);
+    } catch {
+        return 0;
+    }
+}
 
 /* ==============================
    APPEND MESSAGE UI

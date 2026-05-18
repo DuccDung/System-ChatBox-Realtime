@@ -277,6 +277,10 @@
       "PackagePath": "staticwebassets\\css\\pages\\login\\main.css"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\profile\\main.css",
+      "PackagePath": "staticwebassets\\css\\pages\\profile\\main.css"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\css\\pages\\register\\main.css",
       "PackagePath": "staticwebassets\\css\\pages\\register\\main.css"
     },
@@ -333,6 +337,14 @@
       "PackagePath": "staticwebassets\\js\\pages\\chat\\webrtc-service.js"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\profile\\edit.js",
+      "PackagePath": "staticwebassets\\js\\pages\\profile\\edit.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\profile\\view.js",
+      "PackagePath": "staticwebassets\\js\\pages\\profile\\view.js"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\pages\\register\\main.js",
       "PackagePath": "staticwebassets\\js\\pages\\register\\main.js"
     },
@@ -343,6 +355,10 @@
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\chatService.js",
       "PackagePath": "staticwebassets\\js\\services\\chatService.js"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\profileService.js",
+      "PackagePath": "staticwebassets\\js\\services\\profileService.js"
     },
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\js\\services\\ws-client.js",
@@ -377,6 +393,10 @@
       "PackagePath": "staticwebassets\\uploads\\chat\\c5de9ea059f348c5aa1f034392534ca9.webp"
     },
     {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\profile\\d0e22d0bc6b641c082a45e4f45fadd2b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\profile\\d0e22d0bc6b641c082a45e4f45fadd2b.jpg"
+    },
+    {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\voice\\02ed4f8d887b4ff688cc507ff69bde62.webm",
       "PackagePath": "staticwebassets\\uploads\\voice\\02ed4f8d887b4ff688cc507ff69bde62.webm"
     },
@@ -387,6 +407,10 @@
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\voice\\4d8d00f164ba4bec89450cfaf1208ec3.webm",
       "PackagePath": "staticwebassets\\uploads\\voice\\4d8d00f164ba4bec89450cfaf1208ec3.webm"
+    },
+    {
+      "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\voice\\5adf5fde78c54f3ab0f89e9769235c94.webm",
+      "PackagePath": "staticwebassets\\uploads\\voice\\5adf5fde78c54f3ab0f89e9769235c94.webm"
     },
     {
       "Id": "D:\\laptrinhweb\\code_outsrc\\SystemChatBoxRealtime\\SystemChatBoxRealtime\\WebServer\\wwwroot\\uploads\\voice\\69d24218adae469bb54e02bf6d23f9a6.webm",

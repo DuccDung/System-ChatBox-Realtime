@@ -1,6 +1,15 @@
 ﻿@using WebServer.Dtos
 @{
-    var user = (UserDto)ViewBag.User;
+    var user = ViewBag.User as UserDto;
+    var defaultAvatarUrl = Url.Content("~/assets/images/avatar-default.png");
+
+    string SafeAssetUrl(string? url, string fallback)
+    {
+        if (string.IsNullOrWhiteSpace(url)) return fallback;
+        return url.StartsWith("~/", StringComparison.Ordinal) ? Url.Content(url) : url;
+    }
+
+    var avatarUrl = SafeAssetUrl(user?.PhotoPath, defaultAvatarUrl);
 }
 <style>
 
@@ -92,11 +101,13 @@
                     id="avatarBtn"
                     aria-haspopup="true"
                     aria-expanded="false">
-                <img src="@user.PhotoPath" alt="" />
+                <img src="@avatarUrl"
+                     alt="Ảnh đại diện"
+                     onerror="this.onerror=null;this.src='@defaultAvatarUrl';" />
             </button>
 
             <div class="avatar-dropdown" id="avatarDropdown" hidden>
-                <a class="avatar-dropdown__item" href="profile.html">Trang cá nhân</a>
+                <a class="avatar-dropdown__item" href="/Profile/Me">Hồ sơ cá nhân</a>
                 <button class="avatar-dropdown__item avatar-dropdown__danger"
                         id="logoutBtn"
                         type="button">

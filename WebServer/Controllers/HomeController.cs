@@ -47,6 +47,85 @@ namespace WebServer.Controllers
             return PartialView("Partials/_FormPersonal", friend);
         }
 
+        [HttpGet("/chat/group/members")]
+        public async Task<IActionResult> GroupMembersView([FromQuery] int conversationId)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out var meId))
+                return Unauthorized(new { message = "Not logged in." });
+
+            try
+            {
+                var vm = await _conversationService.GetMembersAsync(conversationId, meId);
+                return PartialView("Partials/_GroupMembers", vm);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = 400;
+                return Content($"<div class='group_members_error'>{ex.Message}</div>", "text/html");
+            }
+        }
+
+        [HttpPost("/chat/group")]
+        public async Task<IActionResult> CreateGroup([FromBody] CreateGroupConversationRequest req)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out var ownerId))
+                return Unauthorized(new { message = "Not logged in." });
+
+            if (req == null) return BadRequest(new { message = "Body is required." });
+
+            try
+            {
+                var created = await _conversationService.CreateGroupAsync(ownerId, req.Title, req.MemberIds);
+                return Ok(created);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("/chat/group/members")]
+        public async Task<IActionResult> RemoveGroupMember([FromQuery] int conversationId, [FromQuery] int memberId)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out var actorId))
+                return Unauthorized(new { message = "Not logged in." });
+
+            try
+            {
+                await _conversationService.RemoveMemberAsync(conversationId, actorId, memberId);
+                realtime.UnsubscribeUserFromConversation(memberId.ToString(), conversationId);
+
+                var payload = new
+                {
+                    removedMemberId = memberId,
+                    removedBy = actorId
+                };
+
+                await realtime.SendToUserAsync(memberId.ToString(), new
+                {
+                    type = "group.member.removed",
+                    conversationId,
+                    payload
+                });
+
+                await realtime.BroadcastToConversationAsync(conversationId, new
+                {
+                    type = "group.member.removed",
+                    conversationId,
+                    payload
+                });
+
+                return Ok(new { ok = true, conversationId, removedMemberId = memberId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
         [HttpGet("/chat/search_user")]
         public async Task<IActionResult> SearchUser([FromQuery] string email, [FromQuery] int limit = 20)
         {

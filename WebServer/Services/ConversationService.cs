@@ -176,5 +176,57 @@ namespace WebServer.Services
             var data = await res.Content.ReadFromJsonAsync<ConversationPeerResponseDto>();
             return data;
         }
+
+        public async Task<ConversationDto> CreateGroupAsync(int ownerId, string? title, List<int> memberIds)
+        {
+            if (ownerId <= 0) throw new ArgumentException("ownerId is required.");
+
+            var body = new
+            {
+                ownerId,
+                title,
+                memberIds = memberIds.Distinct().Where(id => id > 0 && id != ownerId).ToList()
+            };
+
+            var res = await _http.PostAsJsonAsync("api/conversations/group", body);
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Create group failed. Status: {res.StatusCode}. Body: {err}");
+            }
+
+            var data = await res.Content.ReadFromJsonAsync<ConversationDto>();
+            return data ?? throw new Exception("Create group succeeded but response body is empty.");
+        }
+
+        public async Task<ConversationMembersResponseDto> GetMembersAsync(int conversationId, int meAccountId)
+        {
+            if (conversationId <= 0) throw new ArgumentException("conversationId is required.");
+            if (meAccountId <= 0) throw new ArgumentException("meAccountId is required.");
+
+            var res = await _http.GetAsync($"api/conversations/{conversationId}/members?me={meAccountId}");
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Get group members failed. Status: {res.StatusCode}. Body: {err}");
+            }
+
+            var data = await res.Content.ReadFromJsonAsync<ConversationMembersResponseDto>();
+            return data ?? throw new Exception("Failed to deserialize group members.");
+        }
+
+        public async Task RemoveMemberAsync(int conversationId, int actorId, int memberId)
+        {
+            if (conversationId <= 0) throw new ArgumentException("conversationId is required.");
+            if (actorId <= 0) throw new ArgumentException("actorId is required.");
+            if (memberId <= 0) throw new ArgumentException("memberId is required.");
+
+            var res = await _http.DeleteAsync($"api/conversations/{conversationId}/members/{memberId}?actorId={actorId}");
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Remove group member failed. Status: {res.StatusCode}. Body: {err}");
+            }
+        }
     }
 }

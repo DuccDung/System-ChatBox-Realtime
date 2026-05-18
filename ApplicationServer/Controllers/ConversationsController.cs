@@ -8,6 +8,9 @@ namespace ApplicationServer.Controllers
     [ApiController]
     public class ConversationsController : ControllerBase
     {
+        private const string LeaderRole = "leader";
+        private const string MemberRole = "member";
+
         private readonly SocialNetworkContext _context;
         public ConversationsController(SocialNetworkContext context)
         {
@@ -106,6 +109,87 @@ namespace ApplicationServer.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("group")]
+        public async Task<IActionResult> CreateGroup([FromBody] CreateGroupConversationRequest req)
+        {
+            if (req == null) return BadRequest("Body is required.");
+            if (req.OwnerId <= 0) return BadRequest("OwnerId is required.");
+
+            var memberIds = req.MemberIds
+                .Where(id => id > 0 && id != req.OwnerId)
+                .Distinct()
+                .ToList();
+
+            if (memberIds.Count == 0)
+                return BadRequest("Group must have at least one member besides the leader.");
+
+            var allAccountIds = memberIds.Append(req.OwnerId).Distinct().ToList();
+            var existingAccountIds = await _context.Accounts
+                .Where(a => allAccountIds.Contains(a.AccountId))
+                .Select(a => a.AccountId)
+                .ToListAsync();
+
+            if (existingAccountIds.Count != allAccountIds.Count)
+                return NotFound("One or more users not found.");
+
+            using var tx = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var now = DateTime.UtcNow;
+                var title = string.IsNullOrWhiteSpace(req.Title) ? "Nhóm chat" : req.Title.Trim();
+
+                var conversation = new Conversation
+                {
+                    IsGroup = true,
+                    Title = title,
+                    CreatedAt = now
+                };
+
+                _context.Conversations.Add(conversation);
+                await _context.SaveChangesAsync();
+
+                var members = new List<ConversationMember>
+                {
+                    new()
+                    {
+                        ConversationId = conversation.ConversationId,
+                        AccountId = req.OwnerId,
+                        JoinedAt = now,
+                        CreatedAt = now,
+                        Title = LeaderRole
+                    }
+                };
+
+                members.AddRange(memberIds.Select(memberId => new ConversationMember
+                {
+                    ConversationId = conversation.ConversationId,
+                    AccountId = memberId,
+                    JoinedAt = now,
+                    CreatedAt = now,
+                    Title = MemberRole
+                }));
+
+                _context.ConversationMembers.AddRange(members);
+                await _context.SaveChangesAsync();
+                await tx.CommitAsync();
+
+                return Ok(new ConversationDto
+                {
+                    ConversationId = conversation.ConversationId,
+                    IsGroup = conversation.IsGroup,
+                    Title = conversation.Title,
+                    CreatedAt = conversation.CreatedAt,
+                    LeaderAccountId = req.OwnerId,
+                    MemberCount = members.Count
+                });
+            }
+            catch (Exception ex)
+            {
+                await tx.RollbackAsync();
+                return BadRequest(ex.Message);
+            }
+        }
        
         // GET: /api/conversations/threads?accountId=1
         [HttpGet("threads")]
@@ -134,9 +218,23 @@ namespace ApplicationServer.Controllers
                     OtherMember = c!.ConversationMembers
                         .Where(x => x.AccountId != accountId)
                         .Select(x => x.Account)
+                        .FirstOrDefault(),
+
+                    MemberCount = c!.ConversationMembers.Count(),
+                    CurrentUserRole = c!.ConversationMembers
+                        .Where(x => x.AccountId == accountId)
+                        .Select(x => x.Title)
+                        .FirstOrDefault(),
+                    LeaderAccountId = c!.ConversationMembers
+                        .Where(x => x.Title == LeaderRole)
+                        .Select(x => (int?)x.AccountId)
                         .FirstOrDefault()
+                        ?? c!.ConversationMembers
+                            .OrderBy(x => x.ConversationMemberId)
+                            .Select(x => (int?)x.AccountId)
+                            .FirstOrDefault()
                 })
-                .OrderByDescending(x => x.LastMessage!.CreatedAt) // thread mới lên đầu
+                .OrderByDescending(x => x.LastMessage == null ? x.Conversation.CreatedAt : x.LastMessage.CreatedAt) // thread mới lên đầu
                 .ToListAsync();
 
             // map ra ThreadDto
@@ -151,7 +249,7 @@ namespace ApplicationServer.Controllers
                 if (c.IsGroup)
                 {
                     name = string.IsNullOrWhiteSpace(c.Title) ? "Nhóm chat" : c.Title!;
-                    avatar = Url.Content("~/assets/images/group-default.png"); // bạn có thể đổi
+                    avatar = Url.Content("~/assets/icons/users.svg");
                 }
                 else
                 {
@@ -178,13 +276,21 @@ namespace ApplicationServer.Controllers
                         snippet = "Đã gửi một tệp đính kèm.";
                 }
 
+                var currentUserRole = c.IsGroup && x.LeaderAccountId == accountId
+                    ? LeaderRole
+                    : string.IsNullOrWhiteSpace(x.CurrentUserRole) ? MemberRole : x.CurrentUserRole!;
+
                 return new ThreadDto
                 {
                     ConversationId = c.ConversationId,
                     Name = name,
                     AvatarUrl = avatar,
                     Snippet = snippet,
-                    LastMessageAt = lastAt
+                    LastMessageAt = lastAt,
+                    IsGroup = c.IsGroup,
+                    MemberCount = x.MemberCount,
+                    CurrentUserRole = currentUserRole,
+                    CanManageMembers = c.IsGroup && currentUserRole == LeaderRole
                 };
             }).ToList();
 
@@ -256,6 +362,107 @@ namespace ApplicationServer.Controllers
             // NOTE: hệ thống đọc thật sự cho group/private thường cần bảng MessageReadReceipt (message_id, account_id, read_at)
             // Tạm thời: nếu bạn đang dùng Message.IsRead (bool) global thì không đủ cho group.
             return Ok(new { ok = true });
+        }
+
+        [HttpGet("{conversationId:int}/members")]
+        public async Task<ActionResult<ConversationMembersResponseDto>> GetMembers(
+            int conversationId,
+            [FromQuery] int me)
+        {
+            if (me <= 0) return BadRequest("me is required.");
+
+            var conversation = await _context.Conversations
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ConversationId == conversationId);
+
+            if (conversation == null) return NotFound("Conversation not found.");
+            if (!conversation.IsGroup) return BadRequest("This endpoint only supports group conversations.");
+
+            var isMember = await _context.ConversationMembers
+                .AnyAsync(cm => cm.ConversationId == conversationId && cm.AccountId == me);
+
+            if (!isMember) return Forbid();
+
+            var leaderAccountId = await GetLeaderAccountIdAsync(conversationId);
+            if (leaderAccountId == 0) return NotFound("Conversation has no members.");
+
+            var members = await _context.ConversationMembers
+                .Where(cm => cm.ConversationId == conversationId)
+                .Include(cm => cm.Account)
+                .AsNoTracking()
+                .OrderBy(cm => cm.AccountId == leaderAccountId ? 0 : 1)
+                .ThenBy(cm => cm.Account.AccountName)
+                .ToListAsync();
+
+            var currentUserRole = leaderAccountId == me ? LeaderRole : MemberRole;
+
+            return Ok(new ConversationMembersResponseDto
+            {
+                ConversationId = conversation.ConversationId,
+                IsGroup = conversation.IsGroup,
+                Title = conversation.Title,
+                LeaderAccountId = leaderAccountId,
+                CurrentUserRole = currentUserRole,
+                CanManageMembers = currentUserRole == LeaderRole,
+                Members = members.Select(member => new ConversationMemberDto
+                {
+                    ConversationMemberId = member.ConversationMemberId,
+                    AccountId = member.AccountId,
+                    AccountName = member.Account.AccountName,
+                    Email = member.Account.Email,
+                    PhotoPath = member.Account.PhotoPath,
+                    JoinedAt = member.JoinedAt,
+                    Role = member.AccountId == leaderAccountId ? LeaderRole : MemberRole,
+                    IsLeader = member.AccountId == leaderAccountId
+                }).ToList()
+            });
+        }
+
+        [HttpDelete("{conversationId:int}/members/{memberId:int}")]
+        public async Task<IActionResult> RemoveMember(
+            int conversationId,
+            int memberId,
+            [FromQuery] int actorId)
+        {
+            if (actorId <= 0) return BadRequest("actorId is required.");
+            if (memberId <= 0) return BadRequest("memberId is required.");
+
+            var conversation = await _context.Conversations
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ConversationId == conversationId);
+
+            if (conversation == null) return NotFound("Conversation not found.");
+            if (!conversation.IsGroup) return BadRequest("Only group conversations support member removal.");
+
+            var actorMembership = await _context.ConversationMembers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(cm => cm.ConversationId == conversationId && cm.AccountId == actorId);
+
+            if (actorMembership == null) return Forbid();
+
+            var leaderAccountId = await GetLeaderAccountIdAsync(conversationId);
+            if (leaderAccountId != actorId) return Forbid();
+
+            if (memberId == actorId)
+                return BadRequest("Leader cannot remove themselves with this action.");
+
+            if (memberId == leaderAccountId)
+                return BadRequest("Cannot remove the group leader.");
+
+            var targetMembership = await _context.ConversationMembers
+                .FirstOrDefaultAsync(cm => cm.ConversationId == conversationId && cm.AccountId == memberId);
+
+            if (targetMembership == null) return NotFound("Member not found in this group.");
+
+            _context.ConversationMembers.Remove(targetMembership);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                ok = true,
+                conversationId,
+                removedMemberId = memberId
+            });
         }
 
         // POST: /api/conversations/{conversationId}/messages
@@ -534,6 +741,23 @@ namespace ApplicationServer.Controllers
                 Me = me,
                 Peer = peer
             });
+        }
+
+        private async Task<int> GetLeaderAccountIdAsync(int conversationId)
+        {
+            var explicitLeaderId = await _context.ConversationMembers
+                .Where(cm => cm.ConversationId == conversationId && cm.Title == LeaderRole)
+                .Select(cm => (int?)cm.AccountId)
+                .FirstOrDefaultAsync();
+
+            if (explicitLeaderId.HasValue)
+                return explicitLeaderId.Value;
+
+            return await _context.ConversationMembers
+                .Where(cm => cm.ConversationId == conversationId)
+                .OrderBy(cm => cm.ConversationMemberId)
+                .Select(cm => cm.AccountId)
+                .FirstOrDefaultAsync();
         }
     }
 }

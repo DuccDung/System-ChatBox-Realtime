@@ -66,6 +66,17 @@ namespace WebServer.Services
             set.TryRemove(conversationId, out _);
         }
 
+        public void UnsubscribeUserFromConversation(string userId, int conversationId)
+        {
+            if (!_userSockets.TryGetValue(userId, out var sockets) || sockets.IsEmpty)
+                return;
+
+            foreach (var socketId in sockets.Keys)
+            {
+                Unsubscribe(socketId, conversationId);
+            }
+        }
+
         public async Task SendToUserAsync(string userId, object message)
         {
             if (!_userSockets.TryGetValue(userId, out var sockets) || sockets.IsEmpty)

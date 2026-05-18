@@ -40,7 +40,11 @@ else
         <li class="thread-item"
             data-id="@t.ConversationId"
             data-name="@t.Name"
-            data-avatar="@SafeImg(t.AvatarUrl)">
+            data-avatar="@SafeImg(t.AvatarUrl)"
+            data-is-group="@t.IsGroup.ToString().ToLowerInvariant()"
+            data-member-count="@t.MemberCount"
+            data-role="@t.CurrentUserRole"
+            data-can-manage-members="@t.CanManageMembers.ToString().ToLowerInvariant()">
             <div class="avatar">
                 <img src="@SafeImg(t.AvatarUrl)" alt="@t.Name" />
             </div>
@@ -59,6 +63,10 @@ else
             <ul class="thread-menu" hidden>
                 <li class="js-mark-unread">Đánh dấu là chưa đọc</li>
                 <li class="js-mute">Tắt thông báo</li>
+                @if (t.IsGroup)
+                {
+                    <li class="js-group-members">Thành viên nhóm</li>
+                }
                 <li class="js-view-profile" data-user-name="@t.Name">Xem trang cá nhân</li>
                 <li class="js-call">Gọi thoại</li>
                 <li class="js-video">Chat video</li>

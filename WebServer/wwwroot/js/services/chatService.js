@@ -61,6 +61,22 @@ export const chatService = {
             params: { conversationId }
         });
     },
+    async getGroupMembersView(conversationId) {
+        return await api_origin.get("/chat/group/members", {
+            params: { conversationId }
+        });
+    },
+    async removeGroupMember(conversationId, memberId) {
+        return await api_origin.delete("/chat/group/members", {
+            params: { conversationId, memberId }
+        });
+    },
+    async createGroup(title, memberIds) {
+        return await api_origin.post("/chat/group", {
+            title,
+            memberIds
+        });
+    },
 };
 export const callService = {
     async getIncomingPopup(payload) {

@@ -16,6 +16,14 @@ namespace WebServer.Dtos
         public string Snippet { get; set; } = "";
         [JsonPropertyName("lastMessageAt")]
         public DateTime? LastMessageAt { get; set; }
+        [JsonPropertyName("isGroup")]
+        public bool IsGroup { get; set; }
+        [JsonPropertyName("memberCount")]
+        public int MemberCount { get; set; }
+        [JsonPropertyName("currentUserRole")]
+        public string CurrentUserRole { get; set; } = "member";
+        [JsonPropertyName("canManageMembers")]
+        public bool CanManageMembers { get; set; }
     }
     public class ConversationMessageDto
     {
@@ -66,5 +74,44 @@ namespace WebServer.Dtos
     {
         public PeerDto Me { get; set; } = default!;
         public PeerDto Peer { get; set; } = default!;
+    }
+
+    public class CreateGroupConversationRequest
+    {
+        public string? Title { get; set; }
+        public List<int> MemberIds { get; set; } = new();
+    }
+
+    public class ConversationDto
+    {
+        public int ConversationId { get; set; }
+        public bool IsGroup { get; set; }
+        public string? Title { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public int? LeaderAccountId { get; set; }
+        public int MemberCount { get; set; }
+    }
+
+    public class ConversationMemberDto
+    {
+        public int ConversationMemberId { get; set; }
+        public int AccountId { get; set; }
+        public string AccountName { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string? PhotoPath { get; set; }
+        public DateTime? JoinedAt { get; set; }
+        public string Role { get; set; } = "member";
+        public bool IsLeader { get; set; }
+    }
+
+    public class ConversationMembersResponseDto
+    {
+        public int ConversationId { get; set; }
+        public bool IsGroup { get; set; }
+        public string? Title { get; set; }
+        public int LeaderAccountId { get; set; }
+        public string CurrentUserRole { get; set; } = "member";
+        public bool CanManageMembers { get; set; }
+        public List<ConversationMemberDto> Members { get; set; } = new();
     }
 }

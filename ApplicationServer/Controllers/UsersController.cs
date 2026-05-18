@@ -1,4 +1,5 @@
-﻿using ApplicationServer.Dtos.User;
+using ApplicationServer.Dtos.User;
+using ApplicationServer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,9 +21,9 @@ namespace ApplicationServer.Controllers
             try
             {
                 var user = await _context.Accounts.FindAsync(id);
-                if (user == null) return NotFound("User not found.");
+                if (user == null) return NotFound(new { message = "User not found." });
 
-                var response = new userDto
+                var response = new UserDto
                 {
                     AccountId = user.AccountId,
                     AccountName = user.AccountName,
@@ -37,7 +38,7 @@ namespace ApplicationServer.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -49,7 +50,7 @@ namespace ApplicationServer.Controllers
             try
             {
                 if (string.IsNullOrWhiteSpace(email))
-                    return BadRequest("Email is required.");
+                    return BadRequest(new { message = "Email is required." });
 
                 var normalizedEmail = email.Trim().ToLower();
 
@@ -57,21 +58,25 @@ namespace ApplicationServer.Controllers
                     .AsNoTracking()
                     .FirstOrDefaultAsync(a => a.Email.ToLower() == normalizedEmail);
 
-                if (user == null) return NotFound("User not found.");
+                if (user == null) return NotFound(new { message = "User not found." });
 
-                var response = new userDto
+                var response = new UserDto
                 {
                     AccountId = user.AccountId,
                     AccountName = user.AccountName,
                     Email = user.Email,
-                    PhotoPath = user.PhotoPath ?? string.Empty
+                    PhotoPath = user.PhotoPath ?? string.Empty,
+                    PhotoBackground = user.PhotoBackground ?? string.Empty,
+                    DateOfBirth = user.DateOfBirth,
+                    Gender = user.Gender,
+                    Bio = user.Bio
                 };
 
                 return Ok(response);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

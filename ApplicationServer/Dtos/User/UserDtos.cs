@@ -1,6 +1,6 @@
-﻿namespace ApplicationServer.Dtos.User
+namespace ApplicationServer.Dtos.User
 {
-    public class userDto
+    public class UserDto
     {
         public int AccountId { get; set; }
         public string AccountName { get; set; } = string.Empty;

@@ -1,0 +1,174 @@
+@model WebServer.Dtos.UserDto
+
+@{
+    ViewData["Title"] = "Hồ sơ cá nhân";
+}
+
+@functions {
+    string FormatDateOnly(DateOnly? dob)
+    {
+        if (dob == null) return "Chưa cập nhật";
+        return $"{dob.Value.Day} tháng {dob.Value.Month}, {dob.Value.Year}";
+    }
+
+    string FormatGender(byte? gender)
+    {
+        if (gender == null) return "Chưa cập nhật";
+        return gender.Value switch
+        {
+            0 => "Nữ",
+            1 => "Nam",
+            2 => "Khác",
+            _ => "Chưa cập nhật"
+        };
+    }
+
+    string SafePhoto(string? photo) => string.IsNullOrWhiteSpace(photo) ? Url.Content("~/assets/images/avatar-default.png") : photo!;
+    string SafeCover(string? cover) => string.IsNullOrWhiteSpace(cover) ? Url.Content("~/assets/images/cover_default.jpg") : cover!;
+    string AvatarBackground(string? photo) => $"background-image: url('{SafePhoto(photo)}'), url('{Url.Content("~/assets/images/avatar-default.png")}')";
+    string CoverBackground(string? cover) => $"background-image: url('{SafeCover(cover)}'), url('{Url.Content("~/assets/images/cover_default.jpg")}')";
+    string SafeBio(string? bio) => string.IsNullOrWhiteSpace(bio) ? "Chưa có giới thiệu" : bio!;
+}
+
+<!-- Profile Header với Cover và Avatar -->
+<div class="profile-header"
+     style="@CoverBackground(Model.PhotoBackground)">
+    <div class="profile-header-overlay"></div>
+    <button class="profile-cover-edit-btn" type="button" title="Thay ảnh bìa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+    </button>
+</div>
+
+<div class="profile-container">
+    <!-- Avatar và thông tin cơ bản -->
+    <div class="profile-main-card">
+        <div class="profile-avatar-container">
+            <div class="profile-avatar"
+                 style="@AvatarBackground(Model.PhotoPath)"></div>
+            <button class="profile-avatar-edit-btn" type="button" id="btnEditAvatar" title="Thay ảnh đại diện">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="profile-info">
+            <h1 class="profile-name">@(string.IsNullOrWhiteSpace(Model.AccountName) ? "Người dùng" : Model.AccountName)</h1>
+            <p class="profile-bio">@SafeBio(Model.Bio)</p>
+            <div class="profile-status">
+                <span class="profile-status-indicator online"></span>
+                <span class="profile-status-text">Hoạt động gần đây</span>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="profile-btn profile-btn-primary" type="button" id="btnEditProfile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+                </svg>
+                Chỉnh sửa hồ sơ
+            </button>
+            <button class="profile-btn profile-btn-secondary" type="button" id="btnShareProfile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                Chia sẻ
+            </button>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết -->
+    <div class="profile-section-card">
+        <h2 class="profile-section-title">Giới thiệu</h2>
+        <div class="profile-details">
+            <div class="profile-detail-item">
+                <span class="profile-detail-label">Email</span>
+                <span class="profile-detail-value">@(string.IsNullOrWhiteSpace(Model.Email) ? "Chưa cập nhật" : Model.Email)</span>
+            </div>
+            <div class="profile-detail-item">
+                <span class="profile-detail-label">Ngày sinh</span>
+                <span class="profile-detail-value">@FormatDateOnly(Model.DateOfBirth)</span>
+            </div>
+            <div class="profile-detail-item">
+                <span class="profile-detail-label">Giới tính</span>
+                <span class="profile-detail-value">@FormatGender(Model.Gender)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ảnh bìa và avatar (chỉnh sửa) -->
+    <div class="profile-section-card" id="editPanel" style="display:none;">
+        <h2 class="profile-section-title">Chỉnh sửa hồ sơ</h2>
+
+        <form id="profileEditForm" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="accountId" value="@Model.AccountId" />
+
+            <div class="profile-form-group">
+                <label class="profile-form-label" for="accountName">Tên hiển thị</label>
+                <input type="text" class="profile-form-input" id="accountName" name="accountName"
+                       value="@Model.AccountName" placeholder="Nhập tên hiển thị" />
+            </div>
+
+            <div class="profile-form-group">
+                <label class="profile-form-label" for="bio">Giới thiệu</label>
+                <textarea class="profile-form-textarea" id="bio" name="bio"
+                          placeholder="Giới thiệu về bản thân..." rows="3">@Model.Bio</textarea>
+            </div>
+
+            <div class="profile-form-row">
+                <div class="profile-form-group">
+                    <label class="profile-form-label" for="dateOfBirth">Ngày sinh</label>
+                    @{
+                        var dobValue = Model.DateOfBirth?.ToString("yyyy-MM-dd") ?? "";
+                    }
+                    <input type="date" class="profile-form-input" id="dateOfBirth" name="dateOfBirth" value="@dobValue" />
+                </div>
+
+                <div class="profile-form-group">
+                    <label class="profile-form-label" for="gender">Giới tính</label>
+                    <select class="profile-form-select" id="gender" name="gender">
+                        <option value="">-- Chọn --</option>
+                        @if (Model.Gender == 0) {
+                            <option value="0" selected>Nữ</option>
+                        } else {
+                            <option value="0">Nữ</option>
+                        }
+                        @if (Model.Gender == 1) {
+                            <option value="1" selected>Nam</option>
+                        } else {
+                            <option value="1">Nam</option>
+                        }
+                        @if (Model.Gender == 2) {
+                            <option value="2" selected>Khác</option>
+                        } else {
+                            <option value="2">Khác</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="profile-form-actions">
+                <button type="button" class="profile-btn profile-btn-secondary" id="btnCancelEdit">Hủy</button>
+                <button type="submit" class="profile-btn profile-btn-primary">Lưu thay đổi</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Hidden file inputs cho upload -->
+<input type="file" id="avatarInput" accept="image/*" style="display:none;" />
+<input type="file" id="coverInput" accept="image/*" style="display:none;" />
+
+<link rel="stylesheet" href="~/css/pages/profile/main.css" />
+<script type="module" src="~/js/pages/profile/edit.js"></script>

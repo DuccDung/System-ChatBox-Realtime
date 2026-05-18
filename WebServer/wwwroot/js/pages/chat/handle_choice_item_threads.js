@@ -1,10 +1,14 @@
-﻿import { chatService } from "../../services/chatService.js";
+import { chatService } from "../../services/chatService.js";
 import { subscribeConversation } from "../../services/ws-client.js";
+import { openAppModal } from "../../utils/modal.js";
 
 const threadList = document.getElementById("threadList");
 const peerName = document.getElementById("peerName");
 const peerAvatar = document.getElementById("peerAvatar");
 const peerStatus = document.getElementById("peerStatus");
+const btnGroupMembers = document.getElementById("btnGroupMembers");
+const btnVoiceCall = document.getElementById("btnVoiceCall");
+const btnVideoCall = document.getElementById("btnVideoCall");
 
 console.log("threads-ui loaded", { threadList: !!threadList });
 
@@ -28,6 +32,15 @@ if (!threadList) {
             return;
         }
 
+        const groupMembersAction = e.target.closest(".js-group-members");
+        if (groupMembersAction) {
+            e.stopPropagation();
+            const item = groupMembersAction.closest(".thread-item");
+            closeAllMenusExcept(null);
+            await openGroupMembers(item?.dataset.id);
+            return;
+        }
+
         const item = e.target.closest(".thread-item");
         if (!item || !threadList.contains(item)) return;
 
@@ -41,7 +54,6 @@ if (!threadList) {
         }
     });
 
-    // Auto open first thread 
     autoOpenFirstThreadWhenReady();
 }
 
@@ -56,16 +68,26 @@ function setActiveItem(item) {
     item.classList.add("active");
 }
 
-/** Mở thread giống như click */
 async function openThread(item) {
     const conversationId = item.dataset.id;
     if (!conversationId) return;
+
+    const isGroup = item.dataset.isGroup === "true";
+    const memberCount = Number.parseInt(item.dataset.memberCount || "0", 10);
 
     setActiveItem(item);
 
     if (peerName) peerName.textContent = item.dataset.name || "Người dùng";
     if (peerAvatar) peerAvatar.src = item.dataset.avatar || peerAvatar.src;
-    if (peerStatus) peerStatus.textContent = "";
+    if (peerStatus) peerStatus.textContent = isGroup && memberCount > 0 ? `${memberCount} thành viên` : "";
+
+    if (btnGroupMembers) {
+        btnGroupMembers.hidden = !isGroup;
+        btnGroupMembers.dataset.conversationId = conversationId;
+    }
+
+    if (btnVoiceCall) btnVoiceCall.hidden = isGroup;
+    if (btnVideoCall) btnVideoCall.hidden = isGroup;
 
     item.classList.remove("highlight", "unread");
     const badge = item.querySelector(".unread-badge");
@@ -74,6 +96,55 @@ async function openThread(item) {
     await loadMessages(conversationId);
     subscribeConversation(parseInt(conversationId, 10));
 }
+
+async function openGroupMembers(conversationId) {
+    if (!conversationId) return;
+
+    try {
+        const res = await chatService.getGroupMembersView(conversationId);
+        openAppModal(res.data);
+    } catch (err) {
+        console.error(err);
+        alert("Không thể tải danh sách thành viên nhóm.");
+    }
+}
+
+btnGroupMembers?.addEventListener("click", async () => {
+    await openGroupMembers(btnGroupMembers.dataset.conversationId);
+});
+
+document.addEventListener("click", async (e) => {
+    const removeBtn = e.target.closest(".group_members__remove[data-remove-member]");
+    if (!removeBtn) return;
+
+    const modal = removeBtn.closest(".group_members");
+    const conversationId = modal?.dataset.conversationId;
+    const memberId = removeBtn.dataset.removeMember;
+    const memberName = removeBtn.dataset.memberName || "thành viên này";
+
+    if (!conversationId || !memberId) return;
+    if (!confirm(`Xóa ${memberName} khỏi nhóm?`)) return;
+
+    try {
+        removeBtn.disabled = true;
+        removeBtn.textContent = "Đang xóa...";
+
+        await chatService.removeGroupMember(conversationId, memberId);
+        await openGroupMembers(conversationId);
+
+        const activeItem = document.querySelector(`.thread-item.active[data-id="${conversationId}"]`);
+        if (activeItem?.dataset.memberCount) {
+            const nextCount = Math.max(0, Number.parseInt(activeItem.dataset.memberCount, 10) - 1);
+            activeItem.dataset.memberCount = String(nextCount);
+            if (peerStatus) peerStatus.textContent = nextCount > 0 ? `${nextCount} thành viên` : "";
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Không thể xóa thành viên. Chỉ trưởng nhóm mới có quyền thực hiện.");
+        removeBtn.disabled = false;
+        removeBtn.textContent = "Xóa";
+    }
+});
 
 async function loadMessages(conversationId) {
     const scroller = document.getElementById("messageScroller");
