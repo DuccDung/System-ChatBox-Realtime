@@ -1561,6 +1561,108 @@ body.light .chat-action-btn {
     overflow: auto;
 }
 
+.form_friends__mode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 4px;
+    margin-bottom: 12px;
+    background: #f3f4f6;
+    border-radius: 10px;
+}
+
+.form_friends__mode_btn {
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 12px;
+    background: transparent;
+    color: #4b5563;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.form_friends__mode_btn.is-active {
+    background: #fff;
+    color: #111827;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.form_friends__group_fields {
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid var(--form_friends-line);
+    border-radius: 12px;
+    background: #fbfcfe;
+}
+
+.form_friends__group_input {
+    width: 100%;
+    border: 1px solid var(--form_friends-line);
+    border-radius: 10px;
+    padding: 11px 12px;
+    outline: 0;
+    background: #fff;
+}
+
+.form_friends__group_input:focus {
+    border-color: var(--form_friends-blue);
+    box-shadow: 0 0 0 3px var(--form_friends-blue-weak);
+}
+
+.form_friends__selected_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0 8px;
+    color: var(--form_friends-muted);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form_friends__selected {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 38px;
+}
+
+.form_friends__selected_chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: #e7f3ff;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form_friends__selected_chip img {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    object-fit: cover;
+}
+
+.form_friends__selected_chip span {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form_friends__selected_remove {
+    width: 22px;
+    height: 22px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    line-height: 1;
+}
+
 /* Search row */
 .form_friends__search_row {
     display: flex;
@@ -1653,11 +1755,16 @@ body.light .chat-action-btn {
     gap: 12px;
     padding: 10px 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
     .form_friends__item:hover {
         background: #f9fafb;
     }
+
+.form_friends__item.is-selected {
+    background: var(--form_friends-blue-weak);
+}
 
 .form_friends__avatar {
     width: 44px;

@@ -7,13 +7,43 @@
              aria-labelledby="formFriendsTitle">
 
             <div class="form_friends__header">
-                <h2 class="form_friends__title" id="formFriendsTitle">Thêm bạn</h2>
+                <h2 class="form_friends__title" id="formFriendsTitle">Tạo đoạn chat</h2>
                 <button class="form_friends__icon_btn" aria-label="Đóng" type="button">
                     <span class="form_friends__icon_x" aria-hidden="true"></span>
                 </button>
             </div>
 
             <div class="form_friends__body">
+                <div class="form_friends__mode" role="tablist" aria-label="Chế độ tạo đoạn chat">
+                    <button class="form_friends__mode_btn is-active"
+                            type="button"
+                            data-chat-mode="direct">
+                        Chat riêng
+                    </button>
+                    <button class="form_friends__mode_btn"
+                            type="button"
+                            data-chat-mode="group">
+                        Tạo nhóm
+                    </button>
+                </div>
+
+                <div class="form_friends__group_fields" id="groupFields" hidden>
+                    <label class="form_friends__label" for="groupTitleInput">Tên nhóm</label>
+                    <input id="groupTitleInput"
+                           class="form_friends__group_input"
+                           type="text"
+                           maxlength="120"
+                           placeholder="Nhập tên nhóm" />
+
+                    <div class="form_friends__selected_header">
+                        <span>Thành viên đã chọn</span>
+                        <span id="groupSelectedCount">0</span>
+                    </div>
+                    <div class="form_friends__selected" id="groupSelectedMembers">
+                        <div class="form_friends__empty">Chưa chọn thành viên.</div>
+                    </div>
+                </div>
+
                 <div class="form_friends__search_row">
                     <div class="form_friends__country">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +62,7 @@
                 </div>
 
                 <div class="form_friends__section">
-                    <div class="form_friends__label">Kết quả</div>
+                    <div class="form_friends__label">Tìm người dùng theo email</div>
 
                     @* Khu vực sẽ được inject partial kết quả *@
                     <div id="friendResults">
@@ -47,6 +77,9 @@
                 </button>
                 <button id="friendSearchBtn" class="form_friends__btn form_friends__btn--filled" type="button">
                     Tìm kiếm
+                </button>
+                <button id="groupCreateBtn" class="form_friends__btn form_friends__btn--filled" type="button" hidden>
+                    Tạo nhóm
                 </button>
             </div>
         </div>
