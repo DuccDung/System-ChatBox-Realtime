@@ -11,8 +11,10 @@ namespace WebServer.Interfaces
         Task<ConversationMessageDto> SendImageMessageAsync(int conversationId, int senderId, IFormFile file, int? parentMessageId);
         Task<ConversationMessageDto> SendAudioMessageAsync(int conversationId, int senderId, IFormFile file, int? parentMessageId);
         Task<ConversationPeerResponseDto?> GetPeerAsync(int conversationId, int meAccountId);
+        Task<ConversationDto> CreateDirectAsync(int accountId, int friendId);
         Task<ConversationDto> CreateGroupAsync(int ownerId, string? title, List<int> memberIds);
         Task<ConversationMembersResponseDto> GetMembersAsync(int conversationId, int meAccountId);
         Task RemoveMemberAsync(int conversationId, int actorId, int memberId);
+        Task<ReadReceiptDto> MarkReadAsync(int conversationId, int meAccountId);
     }
 }

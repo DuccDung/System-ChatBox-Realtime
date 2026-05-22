@@ -1,5 +1,6 @@
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\images.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\dots.svg
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\css\pages\posts\main.css
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\video.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\house-door.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\gif.svg
@@ -7,6 +8,7 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\css\pages\profile\main.css
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\register\main.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\services\authService.js
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\notifications\topbar-notifications.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\mic-fill.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\services\profileService.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\send.svg
@@ -36,6 +38,7 @@ D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\settings.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\facebook.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\mic.svg
+D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\services\notificationService.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\assets\icons\emoji.svg
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\auth\login.js
 D:\laptrinhweb\code_outsrc\SystemChatBoxRealtime\SystemChatBoxRealtime\WebServer\wwwroot\js\pages\chat\webrtc-service.js
@@ -122,6 +125,7 @@ wwwroot\assets\images\pphoto8.jpg
 wwwroot\assets\images\pphoto9.jpg
 wwwroot\css\pages\home\main.css
 wwwroot\css\pages\login\main.css
+wwwroot\css\pages\posts\main.css
 wwwroot\css\pages\profile\main.css
 wwwroot\css\pages\register\main.css
 wwwroot\css\site.css
@@ -137,11 +141,13 @@ wwwroot\js\pages\chat\mobile_sidebar.js
 wwwroot\js\pages\chat\threads.js
 wwwroot\js\pages\chat\video-call-ui.js
 wwwroot\js\pages\chat\webrtc-service.js
+wwwroot\js\pages\notifications\topbar-notifications.js
 wwwroot\js\pages\profile\edit.js
 wwwroot\js\pages\profile\view.js
 wwwroot\js\pages\register\main.js
 wwwroot\js\services\authService.js
 wwwroot\js\services\chatService.js
+wwwroot\js\services\notificationService.js
 wwwroot\js\services\profileService.js
 wwwroot\js\services\ws-client.js
 wwwroot\js\utils\helper.js
@@ -151,6 +157,11 @@ wwwroot\uploads\chat\43a1455e14a94751b75ba8251663af96.gif
 wwwroot\uploads\chat\99928a3b4ffd45c8a8f9f18f8d0fb2d7.gif
 wwwroot\uploads\chat\a2d210b077a34dd28648b353727cce5f.gif
 wwwroot\uploads\chat\c5de9ea059f348c5aa1f034392534ca9.webp
+wwwroot\uploads\profile\077f3c0cc57a413ea5db8b831ab3feb3.webp
+wwwroot\uploads\profile\2621b96cd139473c8c979d633e20b15b.png
+wwwroot\uploads\profile\4ebe569e5d174db99ec78206ba02b29f.jpg
+wwwroot\uploads\profile\920b1f610c094e6d9af50701cd708717.jpg
+wwwroot\uploads\profile\952bcab2faf24e3eb21927e1cd2b390d.png
 wwwroot\uploads\profile\d0e22d0bc6b641c082a45e4f45fadd2b.jpg
 wwwroot\uploads\voice\02ed4f8d887b4ff688cc507ff69bde62.webm
 wwwroot\uploads\voice\2c72807efbaf4c578ca12a9a28607b1c.webm

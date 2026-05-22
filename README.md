@@ -1,172 +1,216 @@
 # System Chat Box Realtime
 
-## 1. Giới thiệu
+## Tong quan
 
-**System Chat Box Realtime** là một hệ thống chat thời gian thực được xây dựng theo mô hình **Client – Server**, phục vụ nhu cầu nhắn tin realtime giữa nhiều người dùng.  
-Hệ thống được thiết kế theo hướng **mở rộng, tách lớp rõ ràng**, dễ dàng triển khai và vận hành trong môi trường container với Docker.
+`SystemChatBoxRealtime` la ung dung chat realtime xay dung bang ASP.NET Core theo kien truc client-server, gom 2 service:
 
----
+- `ApplicationServer`: Web API quan ly du lieu va nghiep vu chat
+- `WebServer`: MVC front-end, proxy API va WebSocket cho realtime
 
-## 2. Kiến trúc tổng thể
+He thong ho tro:
 
-Hệ thống được chia thành các thành phần chính:
+- nhan tin text
+- gui anh va audio
+- tao phong chat 1-1 va phong nhom
+- thong bao realtime
+- WebRTC signaling cho goi audio/video
 
-- **WebServer (Client)**  
-  - ASP.NET Core MVC  
-  - Cung cấp giao diện người dùng  
-  - Kết nối realtime tới Server thông qua WebSocket  
+## Kien truc
 
-- **SystemChatBoxRealtime (Server)**  
-  - ASP.NET Core Web API  
-  - Xử lý nghiệp vụ chat  
-  - Quản lý kết nối WebSocket  
-  - Lưu trữ dữ liệu thông qua Entity Framework  
+### 1. ApplicationServer
 
-- **Database**  
-  - Lưu trữ thông tin người dùng, phòng chat, tin nhắn  
+Web API `net9.0` lam backend chinh:
 
-- **Docker**  
-  - Đóng gói và triển khai toàn bộ hệ thống  
+- CRUD conversation, message, user, profile, notification
+- Entity Framework Core + SQL Server
+- Cookie authentication dong bo voi `WebServer`
+- CORS cho phep `WebServer` truy cap
 
----
+### 2. WebServer
 
-## 3. Công nghệ sử dụng
+ASP.NET Core MVC `net9.0` lam lop giao dien:
 
-### Backend (Server)
-- ASP.NET Core Web API
+- render trang login, register, home, profile
+- proxy `/api/*` sang `ApplicationServer`
+- mo endpoint WebSocket `/ws`
+- forward cookie sang backend qua `HttpClient`
+
+### 3. Realtime
+
+- WebSocket handler nam trong `WebServer/Services/WebSocketHandler.cs`
+- client co the `subscribe` / `unsubscribe` theo `conversationId`
+- ho tro `ping` / `pong`
+- ho tro `call.send` de gui payload WebRTC
+
+## Cong nghe
+
+- ASP.NET Core 9
+- MVC + Web API
 - Entity Framework Core
+- SQL Server
 - WebSocket
-- RESTful API
-- Dependency Injection
-
-### Frontend (Client)
-- ASP.NET Core MVC
-- HTML, CSS, JavaScript
-- WebSocket Client
-
-### DevOps & Deployment
+- Cookie authentication
+- HttpClient
+- DotNetEnv
 - Docker
-- Mô hình Client – Server
 
----
+## Chuc nang chinh
 
-## 4. Chức năng chính
+- dang ky, dang nhap, dang xuat
+- tim kiem user, xem profile cong khai va profile ca nhan
+- tao va lay thread chat
+- lay danh sach tin nhan theo conversation
+- gui message text, image, audio
+- danh dau da doc
+- quan ly thanh vien phong chat nhom
+- lay / tao thong bao chat
+- goi WebRTC thong qua kenh realtime
 
-- Kết nối realtime giữa client và server bằng WebSocket
-- Gửi và nhận tin nhắn theo thời gian thực
-- Quản lý phiên kết nối người dùng
-- Lưu trữ lịch sử tin nhắn
-- Tách biệt rõ ràng giữa Client và Server
-- Dễ dàng mở rộng cho nhiều client trong tương lai
+## Cau hinh va chay du an
 
----
+### Yeu cau
 
-## 5. Cấu trúc thư mục
+- .NET 9 SDK
+- SQL Server
+- 2 file `.env` hoac bien moi truong tuong duong
+
+### Bien moi truong
+
+#### `ApplicationServer/.env`
+
+```powershell
+DB_Connection=Server=...;Database=...;User Id=...;Password=...;Trust Server Certificate=True
+WebServer_Origin=http://localhost:5007
+```
+
+#### `WebServer/.env`
+
+```powershell
+ApiClients__Auth__BaseUrl=http://localhost:5296/
+```
+
+Luu y:
+
+- `ApplicationServer` dang doc `DB_Connection` tu environment, khong doc connection string trong `appsettings.json`
+- `WebServer` doc `ApiClients:Auth:BaseUrl` tu config
+- ca 2 service dung chung thu muc `shared-data-protection-keys/` de cookie auth hoat dong dong bo
+
+### Chay local
+
+```powershell
+cd ApplicationServer
+dotnet run
+
+cd ..\WebServer
+dotnet run
+```
+
+### Default ports theo `launchSettings.json`
+
+- `ApplicationServer`: `http://localhost:5296` / `https://localhost:7268`
+- `WebServer`: `http://localhost:5007` / `https://localhost:7231`
+
+## API chinh
+
+### ApplicationServer
+
+#### Auth
+
+- `POST /api/auth/login`
+- `POST /api/auth/register`
+
+#### Conversations
+
+- `POST /api/conversations` - tao / lay phong 1-1
+- `POST /api/conversations/group` - tao phong nhom
+- `GET /api/conversations/threads?accountId=X` - lay danh sach thread
+- `GET /api/conversations/{id}/messages?me=X&limit=Y&beforeMessageId=Z`
+- `POST /api/conversations/{id}/messages`
+- `POST /api/conversations/{id}/messages/image`
+- `POST /api/conversations/{id}/messages/audio`
+- `POST /api/conversations/{id}/mark-read?me=X`
+- `GET /api/conversations/{id}/members?me=X`
+- `DELETE /api/conversations/{id}/members/{memberId}?actorId=X`
+- `GET /api/conversations/{id}/peer?meId=X`
+
+#### Users
+
+- `GET /api/users/{id}`
+- `GET /api/users/search?email=X`
+
+#### Profile
+
+- `GET /api/profile/me`
+- `PUT /api/profile/me`
+- `POST /api/profile/me/avatar`
+- `POST /api/profile/me/cover`
+- `GET /api/profile/by-email?email=X`
+- `GET /api/profile/{userId}`
+
+#### Notifications
+
+- `GET /api/notifications`
+- `GET /api/notifications/unread-count`
+- `POST /api/notifications/{id}/read`
+- `POST /api/notifications/read-all`
+- `POST /api/notifications/chat-message`
+
+### WebServer
+
+- `POST /auth/login`
+- `POST /auth/register`
+- `GET /notifications`
+- `GET /notifications/unread-count`
+- `POST /notifications/{id}/read`
+- `POST /notifications/read-all`
+- `GET /ws`
+
+## Realtime message types
+
+### WebSocket control
+
+- `subscribe`
+- `unsubscribe`
+- `ping`
+- `pong`
+- `call.send`
+
+### Message types
+
+- `text`
+- `image`
+- `audio`
+
+## Cau truc thu muc
 
 ```text
 SystemChatBoxRealtime/
-│
-├── SystemChatBoxRealtime/     # Backend - ASP.NET Core Web API
-│
-├── WebServer/                 # Frontend - ASP.NET Core MVC
-│
-├── .dockerignore
-├── .gitignore
-├── SystemChatBoxRealtime.sln
-└── README.md
--------------------------------
-WebServer/
-│
-├─ Controllers/
-│   ├─ HomeController.cs
-│   ├─ AccountController.cs
-│   └─ ...
-│
-├─ Models/                  (Entity/Domain models hoặc EF models)
-│   ├─ Account.cs
-│   ├─ Post.cs
-│   └─ ...
-│
-├─ ViewModels/              (DTO cho View: form, list, detail)
-│   ├─ Account/
-│   │   ├─ LoginVm.cs
-│   │   └─ RegisterVm.cs
-│   ├─ Post/
-│   │   ├─ PostListVm.cs
-│   │   └─ PostDetailVm.cs
-│   └─ Shared/
-│       └─ PaginationVm.cs
-│
-├─ Services/                (Business logic)
-│   ├─ Interfaces/
-│   │   ├─ IAuthService.cs
-│   │   └─ IPostService.cs
-│   ├─ AuthService.cs
-│   └─ PostService.cs
-│
-├─ Data/                    (EF Core DbContext, migrations, seeding)
-│   ├─ SocialNetworkContext.cs
-│   ├─ Seed/
-│   │   └─ DataSeeder.cs
-│   └─ Migrations/
-│
-├─ Infrastructure/          (Email, FileStorage, Cache, External)
-│   ├─ Email/
-│   │   ├─ EmailSettings.cs
-│   │   └─ SmtpEmailSender.cs
-│   └─ ...
-│
-├─ Filters/                 (ActionFilter, ExceptionFilter)
-│   └─ ...
-│
-├─ Middlewares/             (Custom middleware)
-│   └─ ...
-│
-├─ Views/
-│   ├─ Shared/
-│   │   ├─ _Layout.cshtml
-│   │   ├─ _LayoutAuth.cshtml        (layout riêng cho login/register)
-│   │   ├─ _LayoutAdmin.cshtml       (nếu có admin)
-│   │   ├─ _ViewImports.cshtml
-│   │   ├─ _ViewStart.cshtml
-│   │   ├─ _ValidationScriptsPartial.cshtml
-│   │   └─ Components/               (ViewComponent views)
-│   │       └─ Navbar/
-│   │           └─ Default.cshtml
-│   │
-│   ├─ Home/
-│   │   ├─ Index.cshtml
-│   │   └─ ...
-│   ├─ Account/
-│   │   ├─ Login.cshtml
-│   │   └─ Register.cshtml
-│   └─ Post/
-│       ├─ Index.cshtml
-│       └─ Detail.cshtml
-│
-├─ Views/Shared/Partials/            (Partial view)
-│   ├─ _Navbar.cshtml
-│   ├─ _Footer.cshtml
-│   ├─ _Sidebar.cshtml
-│   ├─ _Breadcrumb.cshtml
-│   └─ _Toast.cshtml
-│
-├─ TagHelpers/              (Custom tag helpers nếu cần)
-│   └─ ...
-│
-├─ wwwroot/
-│   ├─ css/
-│   │   ├─ vendor/
-│   │   └─ app/
-│   │       ├─ site.css
-│   │       └─ auth.css
-│   ├─ js/
-│   │   ├─ vendor/
-│   │   └─ app/
-│   │       ├─ site.js
-│   │       └─ auth.js
-│   ├─ img/
-│   └─ lib/                  (nếu dùng LibMan)
-│
-├─ appsettings.json
-└─ Program.cs
+|-- ApplicationServer/
+|   |-- Controllers/
+|   |-- Dtos/
+|   |-- Models/
+|   |-- Program.cs
+|   `-- ApplicationServer.csproj
+|-- WebServer/
+|   |-- Controllers/
+|   |-- Services/
+|   |-- ViewModels/
+|   |-- Views/
+|   |-- wwwroot/
+|   |-- Program.cs
+|   `-- WebServer.csproj
+|-- shared-data-protection-keys/
+|-- README.md
+`-- SystemChatBoxRealtime.sln
+```
+
+## Docker
+
+Moi service co `Dockerfile` rieng trong thu muc goc cua project.
+
+## Ghi chu
+
+- cookie auth co thoi han 8 gio
+- tin nhan anh / audio duoc luu trong `wwwroot/uploads/`
+- WebSocket endpoint duoc map thu cong tai `/ws`
+- thong bao chat duoc tao tu controller notifications

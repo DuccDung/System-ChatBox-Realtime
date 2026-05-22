@@ -248,6 +248,10 @@ public partial class SocialNetworkContext : DbContext
 
             entity.ToTable("post_comments");
 
+            entity.HasIndex(e => e.PostId, "IX_post_comments_post_id");
+            entity.HasIndex(e => e.ParentCommentId, "IX_post_comments_parent_comment_id");
+            entity.HasIndex(e => e.AccountId, "IX_post_comments_account_id");
+
             entity.Property(e => e.CommentId).HasColumnName("comment_id");
             entity.Property(e => e.AccountId).HasColumnName("account_id");
             entity.Property(e => e.Content).HasColumnName("content");
@@ -255,8 +259,15 @@ public partial class SocialNetworkContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("create_at");
+            entity.Property(e => e.IsRemove)
+                .HasDefaultValue(false)
+                .HasColumnName("is_remove");
             entity.Property(e => e.ParentCommentId).HasColumnName("parent_comment_id");
             entity.Property(e => e.PostId).HasColumnName("post_id");
+            entity.Property(e => e.UpdateAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("update_at");
 
             entity.HasOne(d => d.Account).WithMany(p => p.PostComments)
                 .HasForeignKey(d => d.AccountId)
@@ -279,9 +290,16 @@ public partial class SocialNetworkContext : DbContext
 
             entity.ToTable("post_like");
 
+            entity.HasIndex(e => new { e.PostId, e.UserId }, "UQ_post_like_post_user").IsUnique();
+
             entity.Property(e => e.LikeId).HasColumnName("like_id");
             entity.Property(e => e.PostId).HasColumnName("post_id");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Account).WithMany(p => p.PostLikes)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_postlikes_account");
 
             entity.HasOne(d => d.Post).WithMany(p => p.PostLikes)
                 .HasForeignKey(d => d.PostId)
@@ -320,9 +338,20 @@ public partial class SocialNetworkContext : DbContext
 
             entity.ToTable("post_shares");
 
+            entity.HasIndex(e => new { e.PostId, e.AccountId }, "UQ_post_shares_post_account").IsUnique();
+
             entity.Property(e => e.PsId).HasColumnName("ps_id");
             entity.Property(e => e.AccountId).HasColumnName("account_id");
+            entity.Property(e => e.CreateAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("create_at");
             entity.Property(e => e.PostId).HasColumnName("post_id");
+
+            entity.HasOne(d => d.Account).WithMany(p => p.PostShares)
+                .HasForeignKey(d => d.AccountId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK_postshare_account");
 
             entity.HasOne(d => d.Post).WithMany(p => p.PostShares)
                 .HasForeignKey(d => d.PostId)

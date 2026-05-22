@@ -1,0 +1,48 @@
+@model List<PostFeedItemDto>
+@{
+    Layout = "_LayoutPosts";
+    ViewData["Title"] = "Bang tin";
+    var currentUserId = ViewBag.CurrentUserId is int id ? id : 0;
+    var returnUrl = ViewBag.ReturnUrl as string ?? Url.Action("Feed", "Posts")!;
+
+    ViewBag.InDetail = false;
+    ViewBag.CurrentUserId = currentUserId;
+    ViewBag.ReturnUrl = returnUrl;
+}
+
+<section class="posts-page">
+    <div class="posts-panel">
+        <h1 class="posts-panel__title">Bai viet</h1>
+
+        @if (TempData["PostError"] is string error && !string.IsNullOrWhiteSpace(error))
+        {
+            <div class="posts-empty">@error</div>
+        }
+
+        <form class="post-composer" method="post" action="@Url.Action("Create", "Posts")">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@returnUrl" />
+            <input type="hidden" name="postType" value="text" />
+            <textarea name="content" rows="4" placeholder="Ban dang nghi gi?"></textarea>
+            <div class="post-composer__row">
+                <div></div>
+                <div></div>
+                <button class="post-btn primary" type="submit">Dang bai</button>
+            </div>
+        </form>
+    </div>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <div class="posts-empty">Chua co bai viet nao.</div>
+    }
+    else
+    {
+        <div class="post-list">
+            @foreach (var post in Model)
+            {
+                @await Html.PartialAsync("Partials/_PostCard", post)
+            }
+        </div>
+    }
+</section>

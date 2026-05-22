@@ -31,7 +31,11 @@ public partial class Account
 
     public virtual ICollection<PostComment> PostComments { get; set; } = new List<PostComment>();
 
+    public virtual ICollection<PostLike> PostLikes { get; set; } = new List<PostLike>();
+
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+
+    public virtual ICollection<PostShare> PostShares { get; set; } = new List<PostShare>();
 
     public virtual ICollection<Profile> Profiles { get; set; } = new List<Profile>();
 }

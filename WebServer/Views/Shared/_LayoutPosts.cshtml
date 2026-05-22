@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewData["Title"] as string ?? "Bai viet")</title>
+    <link rel="stylesheet" href="~/css/pages/posts/main.css" asp-append-version="true" />
+    <link rel="icon" href="~/assets/icons/facebook.svg" />
+</head>
+<body>
+    <header class="posts-shell">
+        <div class="posts-shell__inner">
+            <a class="posts-shell__brand" href="@Url.Action("Feed", "Posts")">
+                <span class="posts-shell__mark" aria-hidden="true">P</span>
+                <span class="posts-shell__brand-copy">
+                    <strong>Bai viet</strong>
+                    <span>@(ViewData["Title"] as string ?? "Feed")</span>
+                </span>
+            </a>
+
+            <nav class="posts-shell__nav" aria-label="Dieu huong bai viet">
+                <a class="posts-shell__link" href="@Url.Action("Main", "Home")">Ve chat</a>
+                <a class="posts-shell__link posts-shell__link--primary" href="@Url.Action("Feed", "Posts")">Tai lai</a>
+            </nav>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

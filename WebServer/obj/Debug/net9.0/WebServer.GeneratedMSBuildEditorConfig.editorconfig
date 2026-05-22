@@ -32,6 +32,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNYWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Posts/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Posts/Feed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRmVlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Profile/Me.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxNZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Shared/Partials/_ChatThreads.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9DaGF0VGhyZWFkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Shared/Partials/_CommentNode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Db21tZW50Tm9kZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Shared/Partials/_ConversationMessages.cshtml]
@@ -72,8 +84,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9JbmNvbWluZ0NhbGxQb3B1cC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Shared/Partials/_PostCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Qb3N0Q2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Shared/Partials/_Topbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Ub3BiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/Shared/_LayoutPosts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQb3N0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/laptrinhweb/code_outsrc/SystemChatBoxRealtime/SystemChatBoxRealtime/WebServer/Views/_ViewImports.cshtml]

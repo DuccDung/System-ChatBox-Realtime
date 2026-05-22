@@ -18,6 +18,10 @@ public partial class PostComment
 
     public DateTime? CreateAt { get; set; }
 
+    public DateTime? UpdateAt { get; set; }
+
+    public bool? IsRemove { get; set; }
+
     public virtual Account Account { get; set; } = null!;
 
     public virtual ICollection<PostComment> InverseParentComment { get; set; } = new List<PostComment>();

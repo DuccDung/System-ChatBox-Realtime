@@ -1,4 +1,5 @@
-﻿using System;
+using ApplicationServer.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ApplicationServer;
@@ -10,6 +11,8 @@ public partial class PostLike
     public int? UserId { get; set; }
 
     public int? PostId { get; set; }
+
+    public virtual Account? Account { get; set; }
 
     public virtual Post? Post { get; set; }
 }

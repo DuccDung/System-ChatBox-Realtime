@@ -1,0 +1,44 @@
+@model PostDetailDto
+@{
+    Layout = "_LayoutPosts";
+    ViewData["Title"] = "Chi tiet bai viet";
+    var currentUserId = ViewBag.CurrentUserId is int id ? id : 0;
+    var returnUrl = ViewBag.ReturnUrl as string ?? Url.Action("Detail", "Posts", new { postId = Model.PostId })!;
+
+    ViewBag.InDetail = true;
+    ViewBag.CurrentUserId = currentUserId;
+    ViewBag.ReturnUrl = returnUrl;
+}
+
+<section class="posts-page">
+    @if (TempData["PostError"] is string error && !string.IsNullOrWhiteSpace(error))
+    {
+        <div class="posts-empty">@error</div>
+    }
+
+    @await Html.PartialAsync("Partials/_PostCard", Model)
+
+    <div class="posts-panel">
+        <h2 class="posts-panel__title">Binh luan</h2>
+        <form class="comment-form" method="post" action="@Url.Action("CreateComment", "Posts", new { postId = Model.PostId })">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@returnUrl" />
+            <textarea name="content" placeholder="Viet binh luan..."></textarea>
+            <button class="post-btn primary" type="submit">Gui binh luan</button>
+        </form>
+    </div>
+
+    @if (Model.Comments == null || Model.Comments.Count == 0)
+    {
+        <div class="posts-empty">Chua co binh luan nao.</div>
+    }
+    else
+    {
+        <div class="comment-tree">
+            @foreach (var comment in Model.Comments)
+            {
+                @await Html.PartialAsync("Partials/_CommentNode", comment)
+            }
+        </div>
+    }
+</section>

@@ -177,6 +177,29 @@ namespace WebServer.Services
             return data;
         }
 
+        public async Task<ConversationDto> CreateDirectAsync(int accountId, int friendId)
+        {
+            if (accountId <= 0) throw new ArgumentException("accountId is required.");
+            if (friendId <= 0) throw new ArgumentException("friendId is required.");
+            if (accountId == friendId) throw new ArgumentException("friendId must be different from accountId.");
+
+            var body = new
+            {
+                accountId,
+                friendId
+            };
+
+            var res = await _http.PostAsJsonAsync("api/conversations", body);
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Create direct conversation failed. Status: {res.StatusCode}. Body: {err}");
+            }
+
+            var data = await res.Content.ReadFromJsonAsync<ConversationDto>();
+            return data ?? throw new Exception("Create direct conversation succeeded but response body is empty.");
+        }
+
         public async Task<ConversationDto> CreateGroupAsync(int ownerId, string? title, List<int> memberIds)
         {
             if (ownerId <= 0) throw new ArgumentException("ownerId is required.");
@@ -227,6 +250,27 @@ namespace WebServer.Services
                 var err = await res.Content.ReadAsStringAsync();
                 throw new Exception($"Remove group member failed. Status: {res.StatusCode}. Body: {err}");
             }
+        }
+
+        public async Task<ReadReceiptDto> MarkReadAsync(int conversationId, int meAccountId)
+        {
+            if (conversationId <= 0) throw new ArgumentException("conversationId is required.");
+            if (meAccountId <= 0) throw new ArgumentException("meAccountId is required.");
+
+            var res = await _http.PostAsync($"api/conversations/{conversationId}/mark-read?me={meAccountId}", null);
+            if (!res.IsSuccessStatusCode)
+            {
+                var err = await res.Content.ReadAsStringAsync();
+                throw new Exception($"Mark read failed. Status: {res.StatusCode}. Body: {err}");
+            }
+
+            var data = await res.Content.ReadFromJsonAsync<ReadReceiptDto>();
+            return data ?? new ReadReceiptDto
+            {
+                Ok = true,
+                ConversationId = conversationId,
+                ReaderId = meAccountId
+            };
         }
     }
 }

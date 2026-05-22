@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebServer.Dtos;
 using WebServer.Interfaces;
 
 namespace WebServer.Controllers
@@ -55,6 +56,52 @@ namespace WebServer.Controllers
         /// <summary>
         /// Trang profile công khai của user khác
         /// </summary>
+        [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        [HttpPut]
+        [Route("/Profile/Me/Profile")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateProfile([FromBody] UserDto request)
+        {
+            if (request == null)
+                return BadRequest(new { message = "Dữ liệu hồ sơ không hợp lệ." });
+
+            var accountName = request.AccountName?.Trim();
+            var bio = request.Bio?.Trim();
+
+            if (string.IsNullOrWhiteSpace(accountName))
+                return BadRequest(new { message = "Tên hiển thị không được để trống." });
+
+            if (accountName.Length > 80)
+                return BadRequest(new { message = "Tên hiển thị không được vượt quá 80 ký tự." });
+
+            if (!string.IsNullOrEmpty(bio) && bio.Length > 280)
+                return BadRequest(new { message = "Giới thiệu không được vượt quá 280 ký tự." });
+
+            if (request.DateOfBirth.HasValue && request.DateOfBirth.Value > DateOnly.FromDateTime(DateTime.Today))
+                return BadRequest(new { message = "Ngày sinh không được lớn hơn ngày hiện tại." });
+
+            if (request.Gender.HasValue && request.Gender.Value > 2)
+                return BadRequest(new { message = "Giới tính không hợp lệ." });
+
+            try
+            {
+                var updatedUser = await _userService.UpdateUserProfileAsync(new UserDto
+                {
+                    AccountName = accountName,
+                    Bio = bio,
+                    DateOfBirth = request.DateOfBirth,
+                    Gender = request.Gender
+                });
+
+                return Ok(updatedUser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating profile");
+                return BadRequest(new { message = "Không thể cập nhật hồ sơ. Vui lòng thử lại." });
+            }
+        }
+
         [HttpGet]
         [Route("/Profile/Public/{userId}")]
         public async Task<IActionResult> Public(int userId)

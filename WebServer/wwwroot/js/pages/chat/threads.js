@@ -4,12 +4,14 @@ import { load } from "../../utils/helper.js";
 const threadsContainer = document.getElementById("threadList");
 const threadSearchInput = document.getElementById("threadSearch");
 const threadTabs = Array.from(document.querySelectorAll(".tabs .tab[data-tab]"));
+const threadFilterPopover = document.getElementById("threadFilterPopover");
 
 const FILTER_STORAGE_KEY = "chat.threadFilter";
 const UNREAD_STORAGE_PREFIX = "chat.unreadThreads";
 const DEFAULT_FILTER = "all";
 
 let currentFilter = readSavedFilter();
+let filterPopoverTimer = 0;
 
 export async function loadThreads() {
     if (!threadsContainer) return;
@@ -45,7 +47,7 @@ export function applyThreadFilters() {
     window.dispatchEvent(new CustomEvent("threads:visibility-changed"));
 }
 
-export function markThreadAsUnread(conversationId) {
+export function markThreadAsUnread(conversationId, { applyFilters = true } = {}) {
     const id = normalizeConversationId(conversationId);
     if (!id) return;
 
@@ -57,11 +59,11 @@ export function markThreadAsUnread(conversationId) {
     if (item) {
         item.dataset.unread = "true";
         syncUnreadUi(item);
-        applyThreadFilters();
+        if (applyFilters) applyThreadFilters();
     }
 }
 
-export function markThreadAsRead(conversationId) {
+export function markThreadAsRead(conversationId, { applyFilters = true } = {}) {
     const id = normalizeConversationId(conversationId);
     if (!id) return;
 
@@ -73,7 +75,7 @@ export function markThreadAsRead(conversationId) {
     if (item) {
         item.dataset.unread = "false";
         syncUnreadUi(item);
-        applyThreadFilters();
+        if (applyFilters) applyThreadFilters();
     }
 }
 
@@ -108,7 +110,8 @@ function hydrateThreadStates() {
 
     for (const item of getThreadItems()) {
         const id = normalizeConversationId(item.dataset.id);
-        item.dataset.unread = unreadIds.has(id) ? "true" : "false";
+        const serverUnread = item.dataset.unread === "true";
+        item.dataset.unread = serverUnread || unreadIds.has(id) ? "true" : "false";
         syncUnreadUi(item);
     }
 }
@@ -127,8 +130,12 @@ function syncUnreadUi(item) {
             badge.setAttribute("aria-hidden", "true");
             item.appendChild(badge);
         }
+        const action = item.querySelector(".js-mark-unread");
+        if (action) action.textContent = "Đánh dấu là đã đọc";
     } else {
         badge?.remove();
+        const action = item.querySelector(".js-mark-unread");
+        if (action) action.textContent = "Đánh dấu là chưa đọc";
     }
 }
 
@@ -147,9 +154,15 @@ function syncEmptyState(items) {
         return;
     }
 
+    const message = getEmptyMessage();
+    if (!message) {
+        existing?.remove();
+        return;
+    }
+
     const empty = existing || document.createElement("li");
     empty.className = "threads-empty threads-filter-empty";
-    empty.textContent = getEmptyMessage();
+    empty.textContent = message;
 
     if (!existing) {
         threadsContainer.appendChild(empty);
@@ -159,12 +172,43 @@ function syncEmptyState(items) {
 function getEmptyMessage() {
     switch (currentFilter) {
         case "unread":
-            return "Không có cuộc trò chuyện chưa đọc.";
+            return "";
         case "groups":
             return "Không có cuộc trò chuyện nhóm.";
         default:
             return "Không tìm thấy cuộc trò chuyện phù hợp.";
     }
+}
+
+function getFilterMessage(filter) {
+    switch (filter) {
+        case "unread":
+            return "Đang hiển thị các cuộc trò chuyện chưa đọc.";
+        case "groups":
+            return "Đang hiển thị các nhóm chat.";
+        default:
+            return "Đang hiển thị toàn bộ cuộc trò chuyện.";
+    }
+}
+
+function showFilterPopover(filter, sourceTab) {
+    if (!threadFilterPopover || !sourceTab) return;
+
+    window.clearTimeout(filterPopoverTimer);
+    threadFilterPopover.textContent = getFilterMessage(filter);
+    threadFilterPopover.hidden = false;
+
+    const leftPane = sourceTab.closest(".left-pane");
+    const paneRect = leftPane?.getBoundingClientRect();
+    const tabRect = sourceTab.getBoundingClientRect();
+    if (paneRect) {
+        threadFilterPopover.style.left = `${Math.max(12, tabRect.left - paneRect.left)}px`;
+        threadFilterPopover.style.top = `${tabRect.bottom - paneRect.top + 8}px`;
+    }
+
+    filterPopoverTimer = window.setTimeout(() => {
+        threadFilterPopover.hidden = true;
+    }, 1600);
 }
 
 function matchesCurrentFilter(item) {
@@ -264,6 +308,7 @@ threadTabs.forEach((tab) => {
         currentFilter = nextFilter;
         saveCurrentFilter();
         applyThreadFilters();
+        showFilterPopover(nextFilter, tab);
     });
 });
 

@@ -202,6 +202,17 @@ async function reloadMessages(conversationId) {
 
         const newSection = temp.querySelector("#messageScroller");
         scroller.innerHTML = newSection ? newSection.innerHTML : html;
+        if (newSection?.dataset.readReceiptAvatar) {
+            scroller.dataset.readReceiptAvatar = newSection.dataset.readReceiptAvatar;
+        } else {
+            delete scroller.dataset.readReceiptAvatar;
+        }
+        if (newSection?.dataset.conversationId) {
+            scroller.dataset.conversationId = newSection.dataset.conversationId;
+        }
+        if (newSection?.dataset.meId) {
+            scroller.dataset.meId = newSection.dataset.meId;
+        }
 
         scroller.scrollTop = scroller.scrollHeight;
     } catch (err) {

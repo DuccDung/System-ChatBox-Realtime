@@ -1,4 +1,5 @@
 import { subscribeConversation, connectWs } from "../../services/ws-client.js";
+import { chatService } from "../../services/chatService.js";
 import { markThreadAsRead, markThreadAsUnread, moveThreadToTop, updateThreadPreview } from "./threads.js";
 
 const scroller = document.getElementById("messageScroller");
@@ -29,6 +30,11 @@ window.addEventListener("ws:message", (event) => {
         return;
     }
 
+    if (msg.type === "message.read") {
+        handleMessageRead(msg);
+        return;
+    }
+
     const supportedTypes = new Set(["message-text", "message-image", "message-audio"]);
     if (!supportedTypes.has(msg.type)) return;
 
@@ -47,7 +53,27 @@ window.addEventListener("ws:message", (event) => {
 
     markThreadAsRead(msg.conversationId);
     appendMessageToScroller(msg.payload, msg.type);
+    markConversationReadOnServer(msg.conversationId);
 });
+
+function handleMessageRead(msg) {
+    const conversationId = Number.parseInt(String(msg.conversationId || "0"), 10);
+    const activeConversationId = getActiveConversationId();
+    if (!conversationId || conversationId !== activeConversationId) return;
+
+    const payload = msg.payload || {};
+    const ids = payload.readMessageIds || payload.ReadMessageIds || [];
+    const lastReadMessageId = payload.lastReadMessageId || payload.LastReadMessageId || ids[ids.length - 1];
+    applyReadReceipt(lastReadMessageId);
+}
+
+async function markConversationReadOnServer(conversationId) {
+    try {
+        await chatService.markRead(conversationId);
+    } catch (error) {
+        console.error("mark read failed", error);
+    }
+}
 
 function handleGroupMemberRemoved(msg) {
     const conversationId = Number.parseInt(String(msg.conversationId || "0"), 10);
@@ -140,6 +166,9 @@ function appendMessageToScroller(message, wsType) {
 
     const group = document.createElement("div");
     group.className = `bubble-group ${spacing}`.trim();
+    group.dataset.messageId = String(message.messageId ?? message.MessageId ?? "");
+    group.dataset.senderId = String(senderId || "");
+    group.dataset.isRead = String(message.isRead ?? message.IsRead ?? false).toLowerCase();
 
     const payloadTypeRaw = (message.messageType ?? message.MessageType ?? "").toString().toLowerCase();
     const messageKind = wsType === "message-image" ? "image"
@@ -157,6 +186,43 @@ function appendMessageToScroller(message, wsType) {
 
     scroller.appendChild(group);
     scroller.scrollTop = scroller.scrollHeight;
+}
+
+function applyReadReceipt(lastReadMessageId) {
+    if (!scroller || !lastReadMessageId) return;
+
+    const meId = getMeId();
+    const target = Array.from(scroller.querySelectorAll(".bubble-group[data-message-id]"))
+        .filter((group) => Number.parseInt(group.dataset.senderId || "0", 10) === meId)
+        .find((group) => Number.parseInt(group.dataset.messageId || "0", 10) === Number.parseInt(String(lastReadMessageId), 10));
+
+    if (!target) return;
+
+    scroller.querySelectorAll(".message-read-receipt").forEach((node) => node.remove());
+    target.dataset.isRead = "true";
+
+    const avatar = getReadReceiptAvatar();
+    if (!avatar) return;
+
+    const receipt = document.createElement("div");
+    receipt.className = "message-read-receipt";
+    receipt.title = "Đã xem";
+
+    const img = document.createElement("img");
+    img.src = avatar;
+    img.alt = "Đã xem";
+    img.onerror = () => {
+        img.onerror = null;
+        img.src = "/assets/images/avatar-default.png";
+    };
+
+    receipt.appendChild(img);
+    target.appendChild(receipt);
+    scroller.scrollTop = scroller.scrollHeight;
+}
+
+function getReadReceiptAvatar() {
+    return scroller?.dataset.readReceiptAvatar || "";
 }
 
 function renderTextBubble(message, sideClass, curTime) {

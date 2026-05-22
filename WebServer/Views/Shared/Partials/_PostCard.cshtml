@@ -1,0 +1,116 @@
+@model PostFeedItemDto
+@{
+    var currentUserId = ViewBag.CurrentUserId is int id ? id : 0;
+    var returnUrl = ViewBag.ReturnUrl as string ?? Url.Action("Feed", "Posts")!;
+    var inDetail = ViewBag.InDetail is bool flag && flag;
+
+    string SafeImg(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+            return Url.Content("~/assets/images/avatar-default.png");
+        return url!;
+    }
+
+    string ToText(string? value)
+        => string.IsNullOrWhiteSpace(value) ? "" : value!;
+}
+
+<article class="post-card">
+    <header class="post-card__header">
+        <img class="avatar-img" src="@SafeImg(Model.Author.PhotoPath)" alt="avatar" />
+        <div class="post-card__meta">
+            <a class="post-card__author" href="/Profile/Public/@Model.Author.AccountId">@Model.Author.AccountName</a>
+            <div class="post-card__time">@Model.CreateAt?.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</div>
+        </div>
+    </header>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Content))
+    {
+        <div class="post-card__content">@ToText(Model.Content)</div>
+    }
+
+    @if (Model.Media.Count > 0)
+    {
+        <div class="post-media">
+            @foreach (var media in Model.Media)
+            {
+                if (string.Equals(media.MediaType, "video", StringComparison.OrdinalIgnoreCase))
+                {
+                    <video controls>
+                        <source src="@media.MediaUrl" />
+                    </video>
+                }
+                else
+                {
+                    <img src="@media.MediaUrl" alt="media" />
+                }
+            }
+        </div>
+    }
+
+    <div class="post-stats">
+        <span>@Model.LikeCount likes</span>
+        <span>@Model.CommentCount comments</span>
+        <span>@Model.ShareCount shares</span>
+    </div>
+
+    <div class="post-actions">
+        @if (Model.IsLikedByMe)
+        {
+            <form method="post" action="@Url.Action("Unlike", "Posts", new { postId = Model.PostId })">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <button class="post-btn" type="submit">Bo like</button>
+            </form>
+        }
+        else
+        {
+            <form method="post" action="@Url.Action("Like", "Posts", new { postId = Model.PostId })">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <button class="post-btn" type="submit">Like</button>
+            </form>
+        }
+
+        @if (Model.IsSharedByMe)
+        {
+            <form method="post" action="@Url.Action("Unshare", "Posts", new { postId = Model.PostId })">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <button class="post-btn" type="submit">Bo chia se</button>
+            </form>
+        }
+        else
+        {
+            <form method="post" action="@Url.Action("Share", "Posts", new { postId = Model.PostId })">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <button class="post-btn" type="submit">Share</button>
+            </form>
+        }
+
+        @if (!inDetail)
+        {
+            <a class="post-link-btn" href="@Url.Action("Detail", "Posts", new { postId = Model.PostId })">Chi tiet</a>
+        }
+    </div>
+
+    @if (currentUserId == Model.AccountId)
+    {
+        <details class="post-edit">
+            <summary>Sua bai viet</summary>
+            <form class="post-edit" method="post" action="@Url.Action("Edit", "Posts", new { postId = Model.PostId })">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <input type="hidden" name="postType" value="@Model.PostType" />
+                <textarea name="content">@Model.Content</textarea>
+                <button class="post-btn primary" type="submit">Cap nhat</button>
+            </form>
+            <form method="post" action="@Url.Action("Delete", "Posts", new { postId = Model.PostId })" onsubmit="return confirm('Xoa bai viet nay?');">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@Url.Action("Feed", "Posts")" />
+                <button class="post-btn" type="submit">Xoa</button>
+            </form>
+        </details>
+    }
+</article>

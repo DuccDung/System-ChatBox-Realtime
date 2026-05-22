@@ -7,7 +7,7 @@
         <div class="list-header">
             <h2>Đoạn chat</h2>
             <div class="list-actions">
-                <button class="icon-btn" id="newMsgBtn">
+                <button class="icon-btn new-chat-trigger" id="newMsgBtn" aria-haspopup="dialog" aria-controls="newChatPopup" aria-label="Tạo đoạn chat">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" d="M18 20v-3h-3v-2h3v-3h2v3h3v2h-3v3h-2ZM3 21q-.825 0-1.413-.588T1 19V5q0-.825.588-1.413T3 3h14q.825 0 1.413.588T19 5v5h-2V8H3v11h13v2H3Z" /></svg>
                 </button>
             </div>
@@ -29,7 +29,79 @@
         <ul class="thread-list" id="threadList" aria-label="Thread list">
             
         </ul>
+
+        <div class="thread-filter-popover" id="threadFilterPopover" hidden role="status" aria-live="polite"></div>
     </aside>
+
+    <div class="chat-create-popup" id="newChatPopup" hidden aria-hidden="true">
+        <div class="chat-create-popup__backdrop" data-new-chat-close="backdrop"></div>
+        <section class="chat-create-popup__panel" role="dialog" aria-modal="true" aria-labelledby="newChatTitle">
+            <header class="chat-create-popup__header">
+                <div>
+                    <p class="chat-create-popup__eyebrow">Messenger</p>
+                    <h3 id="newChatTitle">Tạo cuộc trò chuyện</h3>
+                </div>
+                <button class="chat-create-popup__close" type="button" data-new-chat-close="button" aria-label="Đóng">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            </header>
+
+            <div class="chat-create-popup__mode" role="tablist" aria-label="Loại cuộc trò chuyện">
+                <button class="chat-create-popup__mode-btn is-active" type="button" data-new-chat-mode="direct">
+                    <span class="chat-create-popup__mode-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.68L4 20l1.82-5.1A7.5 7.5 0 1 1 20 11.5Z" />
+                        </svg>
+                    </span>
+                    Chat riêng
+                </button>
+                <button class="chat-create-popup__mode-btn" type="button" data-new-chat-mode="group">
+                    <span class="chat-create-popup__mode-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0ZM4 21a8 8 0 0 1 16 0M18 8a3 3 0 0 1 0 6M22 21a6 6 0 0 0-4-5.66" />
+                        </svg>
+                    </span>
+                    Nhóm
+                </button>
+            </div>
+
+            <div class="chat-create-popup__body">
+                <div class="chat-create-popup__group" id="newChatGroupFields" hidden>
+                    <label class="chat-create-popup__label" for="newChatGroupTitle">Tên nhóm</label>
+                    <input id="newChatGroupTitle" class="chat-create-popup__input" type="text" maxlength="120" placeholder="Ví dụ: Nhóm dự án" />
+
+                    <div class="chat-create-popup__selected-head">
+                        <span>Thành viên đã chọn</span>
+                        <strong id="newChatSelectedCount">0</strong>
+                    </div>
+                    <div class="chat-create-popup__selected" id="newChatSelectedMembers">
+                        <div class="chat-create-popup__empty">Chưa chọn thành viên.</div>
+                    </div>
+                </div>
+
+                <label class="chat-create-popup__label" for="newChatEmailInput">Tìm theo email</label>
+                <div class="chat-create-popup__search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+                    </svg>
+                    <input id="newChatEmailInput" type="email" autocomplete="email" placeholder="Nhập email người dùng" />
+                    <button id="newChatSearchBtn" class="chat-create-popup__search-btn" type="button">Tìm</button>
+                </div>
+
+                <div class="chat-create-popup__status" id="newChatStatus" hidden></div>
+                <div class="chat-create-popup__results" id="newChatResults">
+                    <div class="chat-create-popup__empty">Nhập email để bắt đầu tìm kiếm.</div>
+                </div>
+            </div>
+
+            <footer class="chat-create-popup__footer">
+                <button class="chat-create-popup__secondary" type="button" data-new-chat-close="button">Hủy</button>
+                <button class="chat-create-popup__primary" id="newChatPrimaryBtn" type="button" disabled>Mở chat</button>
+            </footer>
+        </section>
+    </div>
 
     <!-- RIGHT: conversation -->
     <main class="chat-pane">

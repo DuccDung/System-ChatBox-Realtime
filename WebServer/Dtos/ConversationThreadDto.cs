@@ -16,6 +16,12 @@ namespace WebServer.Dtos
         public string Snippet { get; set; } = "";
         [JsonPropertyName("lastMessageAt")]
         public DateTime? LastMessageAt { get; set; }
+        [JsonPropertyName("lastMessageSenderId")]
+        public int? LastMessageSenderId { get; set; }
+        [JsonPropertyName("lastMessageIsRead")]
+        public bool LastMessageIsRead { get; set; }
+        [JsonPropertyName("isUnread")]
+        public bool IsUnread { get; set; }
         [JsonPropertyName("isGroup")]
         public bool IsGroup { get; set; }
         [JsonPropertyName("memberCount")]
@@ -82,6 +88,11 @@ namespace WebServer.Dtos
         public List<int> MemberIds { get; set; } = new();
     }
 
+    public class CreateDirectConversationRequest
+    {
+        public int FriendId { get; set; }
+    }
+
     public class ConversationDto
     {
         public int ConversationId { get; set; }
@@ -90,6 +101,15 @@ namespace WebServer.Dtos
         public DateTime? CreatedAt { get; set; }
         public int? LeaderAccountId { get; set; }
         public int MemberCount { get; set; }
+    }
+
+    public class ReadReceiptDto
+    {
+        public bool Ok { get; set; }
+        public int ConversationId { get; set; }
+        public int ReaderId { get; set; }
+        public List<int> ReadMessageIds { get; set; } = new();
+        public int? LastReadMessageId { get; set; }
     }
 
     public class ConversationMemberDto

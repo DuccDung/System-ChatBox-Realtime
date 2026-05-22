@@ -46,7 +46,21 @@ builder.Services.AddHttpClient<IConversationService, ConversationService>(
         client.BaseAddress = new Uri(opt.BaseUrl);
     }).AddHttpMessageHandler(sp => new CookieForwardingHandler(sp.GetRequiredService<IHttpContextAccessor>()));
 
+builder.Services.AddHttpClient<IPostService, PostService>(
+    (sp, client) =>
+    {
+        var opt = sp.GetRequiredService<IOptions<ApiClientOptions>>().Value;
+        client.BaseAddress = new Uri(opt.BaseUrl);
+    }).AddHttpMessageHandler(sp => new CookieForwardingHandler(sp.GetRequiredService<IHttpContextAccessor>()));
+
 builder.Services.AddHttpClient<IUserService, UserService>(
+    (sp, client) =>
+    {
+        var opt = sp.GetRequiredService<IOptions<ApiClientOptions>>().Value;
+        client.BaseAddress = new Uri(opt.BaseUrl);
+    }).AddHttpMessageHandler(sp => new CookieForwardingHandler(sp.GetRequiredService<IHttpContextAccessor>()));
+
+builder.Services.AddHttpClient<INotificationService, NotificationService>(
     (sp, client) =>
     {
         var opt = sp.GetRequiredService<IOptions<ApiClientOptions>>().Value;
@@ -114,7 +128,10 @@ app.Map("/ws", async httpContext =>
 // MUST be before MapStaticAssets and MapControllerRoute
 app.Map("/api/{**slug}", async (HttpContext httpContext) =>
 {
-    var slug = httpContext.Request.Path.Value.Substring("/api/".Length);
+    var requestPath = httpContext.Request.Path.Value ?? string.Empty;
+    var slug = requestPath.StartsWith("/api/", StringComparison.OrdinalIgnoreCase)
+        ? requestPath.Substring("/api/".Length)
+        : string.Empty;
     var query = httpContext.Request.QueryString.ToString();
     var targetUrl = $"{apiBaseUrl}/api/{slug}{query}";
 

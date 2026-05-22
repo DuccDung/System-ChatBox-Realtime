@@ -1,0 +1,66 @@
+@model CommentDto
+@{
+    var currentUserId = ViewBag.CurrentUserId is int id ? id : 0;
+    var returnUrl = ViewBag.ReturnUrl as string ?? Url.Action("Detail", "Posts", new { postId = Model.PostId })!;
+    var isRemoved = Model.IsRemove == true;
+
+    string SafeImg(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+            return Url.Content("~/assets/images/avatar-default.png");
+        return url!;
+    }
+}
+
+<div class="comment-card @(isRemoved ? "is-removed" : "")">
+    <header class="comment-card__header">
+        <img class="avatar-img" src="@SafeImg(Model.Author.PhotoPath)" alt="avatar" />
+        <div class="comment-card__meta">
+            <a class="comment-card__author" href="/Profile/Public/@Model.Author.AccountId">@Model.Author.AccountName</a>
+            <div class="comment-card__time">@Model.CreateAt?.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</div>
+        </div>
+    </header>
+
+    <div class="comment-card__content">@Model.Content</div>
+
+    @if (!isRemoved)
+    {
+        <div class="comment-actions">
+            <form method="post" action="@Url.Action("CreateComment", "Posts", new { postId = Model.PostId })" class="reply-form">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="parentCommentId" value="@Model.CommentId" />
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <textarea name="content" placeholder="Tra loi binh luan nay"></textarea>
+                <button class="post-btn" type="submit">Reply</button>
+            </form>
+        </div>
+    }
+
+    @if (currentUserId == Model.AccountId && !isRemoved)
+    {
+        <details class="comment-edit">
+            <summary>Sua</summary>
+            <form class="comment-edit" method="post" action="@Url.Action("UpdateComment", "Posts", new { postId = Model.PostId, commentId = Model.CommentId })">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <textarea name="content">@Model.Content</textarea>
+                <button class="post-btn primary" type="submit">Cap nhat</button>
+            </form>
+            <form method="post" action="@Url.Action("DeleteComment", "Posts", new { postId = Model.PostId, commentId = Model.CommentId })" onsubmit="return confirm('Xoa binh luan nay?');">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="returnUrl" value="@returnUrl" />
+                <button class="post-btn" type="submit">Xoa</button>
+            </form>
+        </details>
+    }
+
+    @if (Model.Children.Count > 0)
+    {
+        <div class="comment-children">
+            @foreach (var child in Model.Children)
+            {
+                @await Html.PartialAsync("Partials/_CommentNode", child)
+            }
+        </div>
+    }
+</div>

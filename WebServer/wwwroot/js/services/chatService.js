@@ -77,6 +77,16 @@ export const chatService = {
             memberIds
         });
     },
+    async createDirect(friendId) {
+        return await api_origin.post("/chat/direct", {
+            friendId
+        });
+    },
+    async markRead(conversationId) {
+        return await api_origin.post("/chat/mark-read", null, {
+            params: { conversationId }
+        });
+    },
 };
 export const callService = {
     async getIncomingPopup(payload) {

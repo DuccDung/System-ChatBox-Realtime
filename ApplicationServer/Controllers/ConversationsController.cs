@@ -211,7 +211,7 @@ namespace ApplicationServer.Controllers
                     // lấy tin nhắn cuối cùng (theo CreatedAt)
                     LastMessage = c!.Messages
                         .OrderByDescending(m => m.CreatedAt)
-                        .Select(m => new { m.Content, m.MessageType, m.CreatedAt, m.SenderId })
+                        .Select(m => new { m.Content, m.MessageType, m.CreatedAt, m.SenderId, m.IsRead })
                         .FirstOrDefault(),
 
                     // lấy "người còn lại" trong 1-1
@@ -287,6 +287,11 @@ namespace ApplicationServer.Controllers
                     AvatarUrl = avatar,
                     Snippet = snippet,
                     LastMessageAt = lastAt,
+                    LastMessageSenderId = x.LastMessage?.SenderId,
+                    LastMessageIsRead = x.LastMessage?.IsRead == true,
+                    IsUnread = x.LastMessage != null
+                        && x.LastMessage.SenderId != accountId
+                        && x.LastMessage.IsRead != true,
                     IsGroup = c.IsGroup,
                     MemberCount = x.MemberCount,
                     CurrentUserRole = currentUserRole,
@@ -359,9 +364,44 @@ namespace ApplicationServer.Controllers
                 .AnyAsync(cm => cm.ConversationId == conversationId && cm.AccountId == me);
             if (!isMember) return Forbid();
 
-            // NOTE: hệ thống đọc thật sự cho group/private thường cần bảng MessageReadReceipt (message_id, account_id, read_at)
-            // Tạm thời: nếu bạn đang dùng Message.IsRead (bool) global thì không đủ cho group.
-            return Ok(new { ok = true });
+            var messagesToRead = await _context.Messages
+                .Where(m =>
+                    m.ConversationId == conversationId &&
+                    m.SenderId != me &&
+                    (m.IsRead == null || m.IsRead == false) &&
+                    (m.IsRemove == null || m.IsRemove == false))
+                .OrderBy(m => m.MessageId)
+                .ToListAsync();
+
+            if (messagesToRead.Count == 0)
+            {
+                return Ok(new
+                {
+                    ok = true,
+                    conversationId,
+                    readerId = me,
+                    readMessageIds = Array.Empty<int>(),
+                    lastReadMessageId = (int?)null
+                });
+            }
+
+            foreach (var message in messagesToRead)
+            {
+                message.IsRead = true;
+            }
+
+            await _context.SaveChangesAsync();
+
+            var ids = messagesToRead.Select(m => m.MessageId).ToList();
+
+            return Ok(new
+            {
+                ok = true,
+                conversationId,
+                readerId = me,
+                readMessageIds = ids,
+                lastReadMessageId = ids.LastOrDefault()
+            });
         }
 
         [HttpGet("{conversationId:int}/members")]

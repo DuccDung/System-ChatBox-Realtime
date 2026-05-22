@@ -27,12 +27,18 @@
         if (prevTime == null) return false;
         return (curTime - prevTime.Value).TotalMinutes > 15;
     }
+
+    string SafeAvatar(string? url)
+        => string.IsNullOrWhiteSpace(url)
+            ? Url.Content("~/assets/images/avatar-default.png")
+            : url!;
 }
 
 <section id="messageScroller"
          class="scroller"
          data-conversation-id="@Model.ConversationId"
-         data-me-id="@Model.MeAccountId">
+         data-me-id="@Model.MeAccountId"
+         data-read-receipt-avatar="@(Model.ReadReceiptAvatarUrl ?? "")">
 
     @if (Model.Messages == null || Model.Messages.Count == 0)
     {
@@ -42,6 +48,12 @@
     {
         DateTime? prevTime = null;
         var now = DateTime.Now;
+        var lastReadOwnMessageId = Model.Messages
+            .Where(x => x.Sender?.AccountId == Model.MeAccountId && x.IsRead)
+            .OrderBy(x => x.CreatedAt)
+            .ThenBy(x => x.MessageId)
+            .Select(x => (int?)x.MessageId)
+            .LastOrDefault();
 
         foreach (var m in Model.Messages)
         {
@@ -57,7 +69,10 @@
 
             var spacing = SpacingClass(prevTime, m.CreatedAt);
 
-            <div class="bubble-group @spacing">
+            <div class="bubble-group @spacing"
+                 data-message-id="@m.MessageId"
+                 data-sender-id="@m.Sender?.AccountId"
+                 data-is-read="@m.IsRead.ToString().ToLowerInvariant()">
 
                 @if (string.Equals(m.MessageType, "image", StringComparison.OrdinalIgnoreCase))
                 {
@@ -87,6 +102,13 @@
                         <div class="message-time-tooltip">
                             @TooltipTime(m.CreatedAt)
                         </div>
+                    </div>
+                }
+
+                @if (isMe && lastReadOwnMessageId == m.MessageId && !string.IsNullOrWhiteSpace(Model.ReadReceiptAvatarUrl))
+                {
+                    <div class="message-read-receipt" title="Đã xem">
+                        <img src="@SafeAvatar(Model.ReadReceiptAvatarUrl)" alt="Đã xem" />
                     </div>
                 }
 

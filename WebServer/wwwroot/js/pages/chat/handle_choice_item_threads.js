@@ -90,10 +90,19 @@ async function openThread(item) {
     if (btnVoiceCall) btnVoiceCall.hidden = isGroup;
     if (btnVideoCall) btnVideoCall.hidden = isGroup;
 
-    markThreadAsRead(conversationId);
-
     await loadMessages(conversationId);
+    markThreadAsRead(conversationId, { applyFilters: false });
+    await markConversationRead(conversationId);
     subscribeConversation(parseInt(conversationId, 10));
+}
+
+async function markConversationRead(conversationId) {
+    try {
+        await chatService.markRead(conversationId);
+        markThreadAsRead(conversationId, { applyFilters: false });
+    } catch (err) {
+        console.error("mark read failed", err);
+    }
 }
 
 async function openGroupMembers(conversationId) {
@@ -145,7 +154,7 @@ document.addEventListener("click", async (e) => {
     }
 });
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", async (e) => {
     const markUnreadAction = e.target.closest(".thread-menu .js-mark-unread");
     if (!markUnreadAction) return;
 
@@ -154,15 +163,25 @@ document.addEventListener("click", (e) => {
     const item = markUnreadAction.closest(".thread-item[data-id]");
     if (!item) return;
 
-    markThreadAsUnread(item.dataset.id);
+    if (item.dataset.unread === "true") {
+        markThreadAsRead(item.dataset.id);
+        try {
+            await chatService.markRead(item.dataset.id);
+        } catch (err) {
+            console.error("mark read failed", err);
+        }
+    } else {
+        markThreadAsUnread(item.dataset.id);
+    }
+
     item.querySelector(".thread-menu")?.setAttribute("hidden", "");
 });
 
-window.addEventListener("threads:visibility-changed", async () => {
-    if (!threadList) return;
+    window.addEventListener("threads:visibility-changed", async () => {
+        if (!threadList) return;
 
-    const activeItem = threadList.querySelector(".thread-item.active");
-    if (activeItem && !activeItem.hidden) return;
+        const activeItem = threadList.querySelector(".thread-item.active");
+        if (activeItem && !activeItem.hidden) return;
 
     activeItem?.classList.remove("active");
 
@@ -170,11 +189,21 @@ window.addEventListener("threads:visibility-changed", async () => {
         .find((item) => !item.hidden);
 
     if (firstVisibleItem) {
-        await openThread(firstVisibleItem);
-    }
-});
+            await openThread(firstVisibleItem);
+        }
+    });
 
-async function loadMessages(conversationId) {
+    window.addEventListener("chat:open-conversation", async (event) => {
+        const conversationId = Number.parseInt(String(event.detail?.conversationId || "0"), 10);
+        if (!conversationId) return;
+
+        const item = threadList.querySelector(`.thread-item[data-id="${conversationId}"]`);
+        if (item) {
+            await openThread(item);
+        }
+    });
+
+    async function loadMessages(conversationId) {
     const scroller = document.getElementById("messageScroller");
     if (!scroller) return;
 
@@ -189,6 +218,17 @@ async function loadMessages(conversationId) {
 
         const newSection = temp.querySelector("#messageScroller");
         scroller.innerHTML = newSection ? newSection.innerHTML : html;
+        if (newSection?.dataset.readReceiptAvatar) {
+            scroller.dataset.readReceiptAvatar = newSection.dataset.readReceiptAvatar;
+        } else {
+            delete scroller.dataset.readReceiptAvatar;
+        }
+        if (newSection?.dataset.conversationId) {
+            scroller.dataset.conversationId = newSection.dataset.conversationId;
+        }
+        if (newSection?.dataset.meId) {
+            scroller.dataset.meId = newSection.dataset.meId;
+        }
 
         scroller.scrollTop = scroller.scrollHeight;
     } catch (err) {
@@ -203,6 +243,17 @@ function autoOpenFirstThreadWhenReady() {
     const start = Date.now();
 
     const timer = setInterval(async () => {
+        const pendingConversationId = Number.parseInt(window.sessionStorage.getItem("chat:openConversationId") || "0", 10);
+        if (pendingConversationId) {
+            const pendingItem = threadList?.querySelector(`.thread-item[data-id="${pendingConversationId}"]`);
+            if (pendingItem && !pendingItem.hidden) {
+                clearInterval(timer);
+                window.sessionStorage.removeItem("chat:openConversationId");
+                await openThread(pendingItem);
+                return;
+            }
+        }
+
         const firstItem = Array.from(threadList?.querySelectorAll(".thread-item[data-id]") || [])
             .find((item) => !item.hidden);
         if (firstItem) {

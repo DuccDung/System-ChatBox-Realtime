@@ -29,6 +29,9 @@
         public string AvatarUrl { get; set; } = "";
         public string Snippet { get; set; } = "";
         public DateTime? LastMessageAt { get; set; }
+        public int? LastMessageSenderId { get; set; }
+        public bool LastMessageIsRead { get; set; }
+        public bool IsUnread { get; set; }
         public bool IsGroup { get; set; }
         public int MemberCount { get; set; }
         public string CurrentUserRole { get; set; } = "member";

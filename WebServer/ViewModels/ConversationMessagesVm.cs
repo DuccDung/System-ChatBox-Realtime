@@ -8,6 +8,7 @@ namespace WebServer.ViewModels
         {
             public int ConversationId { get; set; }
             public int MeAccountId { get; set; }
+            public string? ReadReceiptAvatarUrl { get; set; }
             public List<ConversationMessageDto> Messages { get; set; } = new();
         }
         public class IncomingCallVm

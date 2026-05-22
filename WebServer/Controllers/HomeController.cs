@@ -13,11 +13,20 @@ namespace WebServer.Controllers
     {
         private readonly IUserService _userService;
         private readonly IConversationService _conversationService;
+        private readonly INotificationService _notificationService;
+        private readonly ILogger<HomeController> _logger;
         private readonly RealtimeHub realtime;
-        public HomeController(IUserService userService, IConversationService conversationService , RealtimeHub realtime)
+        public HomeController(
+            IUserService userService,
+            IConversationService conversationService,
+            INotificationService notificationService,
+            ILogger<HomeController> logger,
+            RealtimeHub realtime)
         {
             _userService = userService;
             _conversationService = conversationService;
+            _notificationService = notificationService;
+            _logger = logger;
             this.realtime = realtime;
         }
 
@@ -86,6 +95,59 @@ namespace WebServer.Controllers
             }
         }
 
+        [HttpPost("/chat/direct")]
+        public async Task<IActionResult> CreateDirect([FromBody] CreateDirectConversationRequest req)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out var accountId))
+                return Unauthorized(new { message = "Not logged in." });
+
+            if (req == null || req.FriendId <= 0)
+                return BadRequest(new { message = "FriendId is required." });
+
+            try
+            {
+                var conversation = await _conversationService.CreateDirectAsync(accountId, req.FriendId);
+                return Ok(conversation);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpPost("/chat/mark-read")]
+        public async Task<IActionResult> MarkRead([FromQuery] int conversationId)
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdStr, out var meId))
+                return Unauthorized(new { message = "Not logged in." });
+
+            if (conversationId <= 0)
+                return BadRequest(new { message = "conversationId is required." });
+
+            try
+            {
+                var receipt = await _conversationService.MarkReadAsync(conversationId, meId);
+
+                if (receipt.ReadMessageIds.Count > 0)
+                {
+                    await realtime.BroadcastToConversationAsync(conversationId, new
+                    {
+                        type = "message.read",
+                        conversationId,
+                        payload = receipt
+                    }, excludeUserId: userIdStr);
+                }
+
+                return Ok(receipt);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
         [HttpDelete("/chat/group/members")]
         public async Task<IActionResult> RemoveGroupMember([FromQuery] int conversationId, [FromQuery] int memberId)
         {
@@ -133,7 +195,7 @@ namespace WebServer.Controllers
             try
             {
                 var user = await _userService.SearchUsersByEmailAsync(email, limit);
-                if (user.AccountId == int.Parse(userId))
+                if (int.TryParse(userId, out var currentUserId) && user.AccountId == currentUserId)
                 {
                     return Content("<div class='form_friends__empty'>Đây là tài khoản của bạn!</div>", "text/html");
                 }
@@ -194,6 +256,21 @@ namespace WebServer.Controllers
                         .ToList()
                 };
 
+                try
+                {
+                    var peer = await conversationService.GetPeerAsync(conversationId, meId);
+                    if (peer?.Peer != null)
+                    {
+                        vm.ReadReceiptAvatarUrl = string.IsNullOrWhiteSpace(peer.Peer.PhotoPath)
+                            ? Url.Content("~/assets/images/avatar-default.png")
+                            : peer.Peer.PhotoPath;
+                    }
+                }
+                catch
+                {
+                    vm.ReadReceiptAvatarUrl = null;
+                }
+
                 return PartialView("Partials/_ConversationMessages", vm);
             }
             catch
@@ -232,6 +309,9 @@ namespace WebServer.Controllers
                     new { type = "message-text", conversationId = req.ConversationId, payload = created },
                     excludeUserId: userIdStr
                 );
+
+                await NotifyMessageRecipientsAsync(req.ConversationId, senderId, created);
+
                 // trả về message dto (hoặc ok=true cũng được)
                 return Ok(created);
             }
@@ -279,6 +359,8 @@ namespace WebServer.Controllers
                     excludeUserId: userIdStr
                 );
 
+                await NotifyMessageRecipientsAsync(req.ConversationId, senderId, created);
+
                 return Ok(created);
             }
             catch (Exception ex)
@@ -322,6 +404,8 @@ namespace WebServer.Controllers
                     excludeUserId: userIdStr
                 );
 
+                await NotifyMessageRecipientsAsync(req.ConversationId, senderId, created);
+
                 return Ok(created);
             }
             catch (Exception ex)
@@ -329,6 +413,28 @@ namespace WebServer.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        private async Task NotifyMessageRecipientsAsync(int conversationId, int senderId, ConversationMessageDto message)
+        {
+            try
+            {
+                var notifications = await _notificationService.CreateChatMessageNotificationsAsync(
+                    conversationId,
+                    senderId,
+                    message.MessageType,
+                    message.Content);
+
+                foreach (var notification in notifications)
+                {
+                    await realtime.SendNotificationToUserAsync(notification.ConsumerId.ToString(), notification);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to create realtime notifications for conversation {ConversationId}", conversationId);
+            }
+        }
+
         private static string WsEventTypeFromMessageType(string? messageType)
         {
             if (string.IsNullOrWhiteSpace(messageType)) return "message-text";

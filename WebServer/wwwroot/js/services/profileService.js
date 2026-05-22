@@ -34,23 +34,18 @@ export const profileService = {
      */
     async updateProfile(profileData) {
         const token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
-
-        const response = await fetch('/api/profile/me', {
+        const response = await fetchWithTimeout('/Profile/Me/Profile', {
             method: 'PUT',
             credentials: 'include',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 ...(token && { 'RequestVerificationToken': token })
             },
             body: JSON.stringify(profileData)
-        });
+        }, 15000);
 
-        if (!response.ok) {
-            const error = await response.text();
-            throw new Error(`Failed to update profile: ${error}`);
-        }
-
-        return response.json();
+        return readJsonResponse(response, 'Không thể cập nhật hồ sơ.');
     },
 
     /**
@@ -60,18 +55,13 @@ export const profileService = {
         const formData = new FormData();
         formData.append('avatar', file);
 
-        const response = await fetch('/Profile/Me/Avatar', {
+        const response = await fetchWithTimeout('/Profile/Me/Avatar', {
             method: 'POST',
             credentials: 'include',
             body: formData
-        });
+        }, 30000);
 
-        if (!response.ok) {
-            const error = await response.text();
-            throw new Error(`Failed to upload avatar: ${error}`);
-        }
-
-        return response.json();
+        return readJsonResponse(response, 'Không thể upload ảnh đại diện.');
     },
 
     /**
@@ -81,18 +71,13 @@ export const profileService = {
         const formData = new FormData();
         formData.append('cover', file);
 
-        const response = await fetch('/Profile/Me/Cover', {
+        const response = await fetchWithTimeout('/Profile/Me/Cover', {
             method: 'POST',
             credentials: 'include',
             body: formData
-        });
+        }, 30000);
 
-        if (!response.ok) {
-            const error = await response.text();
-            throw new Error(`Failed to upload cover: ${error}`);
-        }
-
-        return response.json();
+        return readJsonResponse(response, 'Không thể upload ảnh bìa.');
     },
 
     /**
@@ -116,3 +101,38 @@ export const profileService = {
         return response.json();
     }
 };
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = 15000) {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+        return await fetch(url, {
+            ...options,
+            signal: controller.signal
+        });
+    } finally {
+        window.clearTimeout(timeoutId);
+    }
+}
+
+async function readJsonResponse(response, fallbackMessage) {
+    const contentType = response.headers.get('content-type') || '';
+    const isJson = contentType.includes('application/json');
+    const text = await response.text();
+    let payload = null;
+
+    if (text && isJson) {
+        try {
+            payload = JSON.parse(text);
+        } catch {
+            payload = null;
+        }
+    }
+
+    if (!response.ok) {
+        throw new Error(payload?.message || fallbackMessage);
+    }
+
+    return payload;
+}

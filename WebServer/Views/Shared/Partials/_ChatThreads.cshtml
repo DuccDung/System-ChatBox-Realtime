@@ -46,7 +46,9 @@ else
             data-member-count="@t.MemberCount"
             data-role="@t.CurrentUserRole"
             data-can-manage-members="@t.CanManageMembers.ToString().ToLowerInvariant()"
-            data-unread="false">
+            data-last-sender-id="@t.LastMessageSenderId"
+            data-last-message-is-read="@t.LastMessageIsRead.ToString().ToLowerInvariant()"
+            data-unread="@t.IsUnread.ToString().ToLowerInvariant()">
             <div class="avatar">
                 <img src="@SafeImg(t.AvatarUrl)" alt="@t.Name" />
             </div>
