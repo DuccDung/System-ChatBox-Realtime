@@ -1,4 +1,5 @@
-﻿import { subscribeConversation, connectWs } from "../../services/ws-client.js";
+import { subscribeConversation, connectWs } from "../../services/ws-client.js";
+import { markThreadAsRead, markThreadAsUnread, moveThreadToTop, updateThreadPreview } from "./threads.js";
 
 const scroller = document.getElementById("messageScroller");
 
@@ -19,9 +20,6 @@ export function subscribeActiveConversation() {
     subscribeConversation(conversationId);
 }
 
-/* ==============================
-   WS MESSAGE ROUTER
-============================== */
 window.addEventListener("ws:message", (event) => {
     const msg = event.detail;
     if (!msg) return;
@@ -31,15 +29,23 @@ window.addEventListener("ws:message", (event) => {
         return;
     }
 
-    // bạn tách type: message-text | message-image | message-audio
     const supportedTypes = new Set(["message-text", "message-image", "message-audio"]);
     if (!supportedTypes.has(msg.type)) return;
 
+    updateThreadListFromIncoming(msg);
+
     const activeConversationId = getActiveConversationId();
-    if (!activeConversationId) return;
+    if (!activeConversationId) {
+        markThreadAsUnread(msg.conversationId);
+        return;
+    }
 
-    if (msg.conversationId !== activeConversationId) return;
+    if (msg.conversationId !== activeConversationId) {
+        markThreadAsUnread(msg.conversationId);
+        return;
+    }
 
+    markThreadAsRead(msg.conversationId);
     appendMessageToScroller(msg.payload, msg.type);
 });
 
@@ -92,9 +98,24 @@ function getMeId() {
     }
 }
 
-/* ==============================
-   APPEND MESSAGE UI
-============================== */
+function updateThreadListFromIncoming(msg) {
+    const createdAt = msg?.payload?.createdAt || msg?.payload?.CreatedAt || new Date().toISOString();
+    updateThreadPreview(msg.conversationId, {
+        snippet: toThreadSnippet(msg),
+        createdAt
+    });
+    moveThreadToTop(msg.conversationId);
+}
+
+function toThreadSnippet(msg) {
+    const type = String(msg?.type || "").toLowerCase();
+    const content = msg?.payload?.content ?? msg?.payload?.Content ?? "";
+
+    if (type === "message-image") return "[Hình ảnh]";
+    if (type === "message-audio") return "[Âm thanh]";
+    return String(content || "Tin nhắn mới");
+}
+
 function appendMessageToScroller(message, wsType) {
     if (!scroller) return;
 
@@ -120,7 +141,6 @@ function appendMessageToScroller(message, wsType) {
     const group = document.createElement("div");
     group.className = `bubble-group ${spacing}`.trim();
 
-    // messageType lấy từ wsType (ưu tiên) hoặc từ payload.MessageType
     const payloadTypeRaw = (message.messageType ?? message.MessageType ?? "").toString().toLowerCase();
     const messageKind = wsType === "message-image" ? "image"
         : wsType === "message-audio" ? "audio"
@@ -194,8 +214,6 @@ function renderAudioBubble(message, sideClass, curTime) {
 
     return msgDiv;
 }
-
-/* ================= Helpers giống Razor ================= */
 
 function parseDate(v) {
     if (!v) return new Date();

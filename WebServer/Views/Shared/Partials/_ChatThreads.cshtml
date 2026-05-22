@@ -41,10 +41,12 @@ else
             data-id="@t.ConversationId"
             data-name="@t.Name"
             data-avatar="@SafeImg(t.AvatarUrl)"
+            data-snippet="@SafeText(t.Snippet, "Chưa có tin nhắn")"
             data-is-group="@t.IsGroup.ToString().ToLowerInvariant()"
             data-member-count="@t.MemberCount"
             data-role="@t.CurrentUserRole"
-            data-can-manage-members="@t.CanManageMembers.ToString().ToLowerInvariant()">
+            data-can-manage-members="@t.CanManageMembers.ToString().ToLowerInvariant()"
+            data-unread="false">
             <div class="avatar">
                 <img src="@SafeImg(t.AvatarUrl)" alt="@t.Name" />
             </div>
@@ -78,37 +80,3 @@ else
         </li>
     }
 }
-
-<script>
-    (function () {
-      // Toggle menu 3 chấm cho từng thread
-      document.querySelectorAll(".thread-item .more-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const item = btn.closest(".thread-item");
-          const menu = item.querySelector(".thread-menu");
-
-          // đóng menu khác
-          document.querySelectorAll(".thread-menu").forEach(m => {
-            if (m !== menu) m.hidden = true;
-          });
-
-          menu.hidden = !menu.hidden;
-        });
-      });
-
-      // click ngoài -> đóng menu
-      document.addEventListener("click", () => {
-        document.querySelectorAll(".thread-menu").forEach(m => m.hidden = true);
-      });
-
-      // click vào thread-item -> bạn có thể mở conversation theo data-id
-      document.querySelectorAll(".thread-item").forEach(item => {
-        item.addEventListener("click", () => {
-          const conversationId = item.getAttribute("data-id");
-          // TODO: gọi ajax load messages hoặc điều hướng
-          // console.log("Open conversation:", conversationId);
-        });
-      });
-    })();
-</script>

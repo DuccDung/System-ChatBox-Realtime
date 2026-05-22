@@ -1,6 +1,7 @@
 import { chatService } from "../../services/chatService.js";
 import { subscribeConversation } from "../../services/ws-client.js";
 import { openAppModal } from "../../utils/modal.js";
+import { markThreadAsRead, markThreadAsUnread } from "./threads.js";
 
 const threadList = document.getElementById("threadList");
 const peerName = document.getElementById("peerName");
@@ -89,9 +90,7 @@ async function openThread(item) {
     if (btnVoiceCall) btnVoiceCall.hidden = isGroup;
     if (btnVideoCall) btnVideoCall.hidden = isGroup;
 
-    item.classList.remove("highlight", "unread");
-    const badge = item.querySelector(".unread-badge");
-    if (badge) badge.remove();
+    markThreadAsRead(conversationId);
 
     await loadMessages(conversationId);
     subscribeConversation(parseInt(conversationId, 10));
@@ -146,6 +145,35 @@ document.addEventListener("click", async (e) => {
     }
 });
 
+document.addEventListener("click", (e) => {
+    const markUnreadAction = e.target.closest(".thread-menu .js-mark-unread");
+    if (!markUnreadAction) return;
+
+    e.stopPropagation();
+
+    const item = markUnreadAction.closest(".thread-item[data-id]");
+    if (!item) return;
+
+    markThreadAsUnread(item.dataset.id);
+    item.querySelector(".thread-menu")?.setAttribute("hidden", "");
+});
+
+window.addEventListener("threads:visibility-changed", async () => {
+    if (!threadList) return;
+
+    const activeItem = threadList.querySelector(".thread-item.active");
+    if (activeItem && !activeItem.hidden) return;
+
+    activeItem?.classList.remove("active");
+
+    const firstVisibleItem = Array.from(threadList.querySelectorAll(".thread-item[data-id]"))
+        .find((item) => !item.hidden);
+
+    if (firstVisibleItem) {
+        await openThread(firstVisibleItem);
+    }
+});
+
 async function loadMessages(conversationId) {
     const scroller = document.getElementById("messageScroller");
     if (!scroller) return;
@@ -175,7 +203,8 @@ function autoOpenFirstThreadWhenReady() {
     const start = Date.now();
 
     const timer = setInterval(async () => {
-        const firstItem = threadList?.querySelector(".thread-item");
+        const firstItem = Array.from(threadList?.querySelectorAll(".thread-item[data-id]") || [])
+            .find((item) => !item.hidden);
         if (firstItem) {
             clearInterval(timer);
 

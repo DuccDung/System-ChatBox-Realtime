@@ -1200,8 +1200,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>cbqxhzlb99</Fingerprint>
-      <Integrity>iM9pNwFUxW7/zHp0f8E7nawJb+7rvMoVTBBSDa9AQRQ=</Integrity>
+      <Fingerprint>vv2vq41tb5</Fingerprint>
+      <Integrity>W1pG3YzasHBQyaGwyZ+/vKokE01vTtZJUAU6DhsgH0Q=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\pages\home\main.css'))</OriginalItemSpec>
@@ -1380,8 +1380,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vcr8ty5f5d</Fingerprint>
-      <Integrity>ga5+ukniVVvy7jDcnYwb+cS1ldnQjvQxgjritwWkV+E=</Integrity>
+      <Fingerprint>02m3y18xhs</Fingerprint>
+      <Integrity>aFjUQGgSbzEbqPkbhEnZcD0TO1Btw86zH6nDb2/0iUE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\chat_realtime.js'))</OriginalItemSpec>
@@ -1398,8 +1398,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rjcpt2p33a</Fingerprint>
-      <Integrity>x+DMTXM+0VdowIh19a64AtB6DDKxpNhbdMGaKb45tiM=</Integrity>
+      <Fingerprint>rayzu3n9dk</Fingerprint>
+      <Integrity>ne2t5I/BtzmC/z2A/D6ExYCTC46tKkTkH4H3aYSf+jM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\handle_choice_item_threads.js'))</OriginalItemSpec>
@@ -1452,8 +1452,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rsdce2b2y8</Fingerprint>
-      <Integrity>2xaZbTS7NVFCkphGhelA8fwUJrr57vDGy/o9jQDfuUw=</Integrity>
+      <Fingerprint>wff2vnl7bm</Fingerprint>
+      <Integrity>rAV0EfEG2/AwF+D6juan0w5SaKjtHHX7G+go6wJA68I=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\pages\chat\threads.js'))</OriginalItemSpec>
